@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Espaço entre a foto e o título */
+    flex-wrap: wrap; /* Permite que o conteúdo se ajuste em telas menores */
+}
+
+.profile-pic {
+    width: 60px; /* Tamanho da foto */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover; /* Garante que a imagem se ajuste bem no círculo */
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+header h1 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.project {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.project h3 {
+    margin-top: 0.5rem;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+#contact {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.social-links li {
+    margin: 0.5rem 0;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
