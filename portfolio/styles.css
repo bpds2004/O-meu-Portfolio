@@ -68,7 +68,7 @@ header nav ul li a {
     width: 300px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project img {
@@ -82,7 +82,32 @@ header nav ul li a {
 
 .project:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+.project button {
+    background-color: #007BFF; /* Cor de fundo azul */
+    color: #fff; /* Texto branco */
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Indica que é clicável */
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-top: 1rem; /* Espaço entre o botão e o restante do conteúdo */
+}
+
+.project button:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+    transform: translateY(-3px); /* Leve elevação no hover */
+}
+
+.project button:active {
+    transform: translateY(0); /* Remove a elevação ao clicar */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 
 #contact {
     background-color: #333;
@@ -116,3 +141,60 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+
+/* Modo Claro (padrão) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+/* Estilos para o Modo Noturno */
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+header.dark-mode {
+    background-color: #1a1a1a;
+}
+
+footer.dark-mode {
+    background-color: #1a1a1a;
+}
+
+.project.dark-mode {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+header nav ul li a.dark-mode {
+    color: #bbb;
+}
+
+button.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+
+#typed-text {
+    display: inline-block;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(20, end), blink 0.6s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
