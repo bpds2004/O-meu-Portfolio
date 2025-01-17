@@ -1,40 +1,61 @@
+/* Estilos globais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
 }
 
+body.dark-mode {
+    background-color: #121212;
+    color: #ddd;
+}
+
+/* Cabeçalho */
 header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+header.dark-mode {
+    background-color: #1a1a1a;
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; /* Espaço entre a foto e o título */
-    flex-wrap: wrap; /* Permite que o conteúdo se ajuste em telas menores */
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .profile-pic {
-    width: 60px; /* Tamanho da foto */
+    width: 60px;
     height: 60px;
     border-radius: 50%;
-    object-fit: cover; /* Garante que a imagem se ajuste bem no círculo */
+    object-fit: cover;
     position: absolute;
     top: 1rem;
     left: 1rem;
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
 }
 
 header h1 {
     margin: 0;
+    font-size: 1.8rem;
     flex-grow: 1;
 }
 
@@ -51,70 +72,204 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
+header nav ul li a:hover {
+    color: #007BFF;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+    color: #007BFF;
+}
+
+/* Projetos */
 #projects {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 2rem;
+    padding: 3rem;
+    gap: 2rem;
 }
 
 .project {
     margin: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 300px;
+    border-radius: 12px;
+    width: 250px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, background-color 0.3s, box-shadow 0.4s;
+    text-align: center;
+    overflow: hidden;
+}
+
+.project:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.project.dark-mode {
+    background-color: #1a1a1a;
+    border-color: #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .project img {
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.project img:hover {
+    transform: scale(1.05);
 }
 
 .project h3 {
     margin-top: 0.5rem;
-}
-
-.project:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
 }
 
 .project button {
-    background-color: #007BFF; /* Cor de fundo azul */
-    color: #fff; /* Texto branco */
+    background-color: #007BFF;
+    color: #fff;
     border: none;
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Indica que é clicável */
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-top: 1rem; /* Espaço entre o botão e o restante do conteúdo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
 }
 
 .project button:hover {
-    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
-    transform: translateY(-3px); /* Leve elevação no hover */
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 .project button:active {
-    transform: translateY(0); /* Remove a elevação ao clicar */
+    transform: scale(1);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-
-#contact {
-    background-color: #333;
-    color: #fff;
-    padding: 2rem;
+/* Secção "Sobre Mim" */
+#about {
+    margin: 5rem auto;
+    padding: 4rem;
+    border-radius: 12px;
+    max-width: 600px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+    transition: all 0.5s;
+    overflow: hidden;
     text-align: center;
-    margin-bottom: 4rem;
+    position: relative;
+}
+
+#about.dark-mode {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
+}
+
+#about:hover {
+    transform: scale(1.02);
+}
+
+#about .img-thumbnail {
+    max-width: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#about .img-thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+#about h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#about p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0 auto;
+    max-width: 600px;
+}
+#about ul {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0 auto;
+    max-width: 600px;
+}
+/* Botão animado na seção "Sobre Mim" */
+#about button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+#about button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+#about button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contatos */
+#contact {
+    margin: 5rem auto;
+    padding: 4rem;
+    border-radius: 12px;
+    max-width: 300px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+    transition: all 0.5s;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    margin-bottom: 8rem; /* Aumenta a margem inferior */
+}
+
+#contact:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Aumenta o efeito de sombra */
+}
+
+#contact.dark-mode {
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
 }
 
 .social-links {
@@ -122,16 +277,41 @@ header nav ul li a {
     padding: 0;
     margin: 1rem 0;
 }
-
+#contact h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000000;
+}
 .social-links li {
     margin: 0.5rem 0;
 }
 
 .social-links a {
-    color: #fff;
+    color: #333; /* Cor padrão dos links */
     text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s, transform 0.3s;
 }
 
+#contact.dark-mode .social-links a {
+    color: #ddd; /* Cor dos links no modo escuro */
+}
+
+.social-links a:hover {
+    color: #007BFF; /* Cor ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+.social-links a:before {
+    content: "🔗 "; /* Ícone padrão para links */
+}
+
+.social-links a[href^="mailto:"]:before {
+    content: "📧 "; /* Ícone personalizado para e-mail */
+}
+
+/* Rodapé */
 footer {
     background-color: #333;
     color: #fff;
@@ -140,61 +320,10 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-
-/* Modo Claro (padrão) */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #000;
-}
-
-/* Estilos para o Modo Noturno */
-body.dark-mode {
-    background-color: #121212;
-    color: #fff;
-}
-
-header.dark-mode {
-    background-color: #1a1a1a;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 footer.dark-mode {
     background-color: #1a1a1a;
-}
-
-.project.dark-mode {
-    background-color: #1e1e1e;
-    border-color: #333;
-}
-
-header nav ul li a.dark-mode {
-    color: #bbb;
-}
-
-button.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
-
-
-#typed-text {
-    display: inline-block;
-    border-right: 2px solid #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s steps(20, end), blink 0.6s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
 }
 

@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Abrir index.html no Chrome",
+            "file": "C:/Users/Utilizador/Desktop/Projects/O-meu-Portfolio/portfolio/index.html",
+            "webRoot": "C:/Users/Utilizador/Desktop/Projects/O-meu-Portfolio/portfolio"
+        }
+    ]
+}
