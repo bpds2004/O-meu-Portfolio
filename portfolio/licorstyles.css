@@ -3,7 +3,30 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333;
+    color: #f1f1f1;
+    background-color: #000;
+    overflow-x: hidden;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .container {
@@ -13,9 +36,18 @@ body {
 }
 
 header {
-    background: #5A2A27;
-    color: #fff;
+    background: #000;
+    color: #daa520;
     padding: 10px 0;
+    border-bottom: 2px solid #daa520;
+    animation: fadeIn 1s ease-in-out;
+}
+
+header .logo {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 header h1 {
@@ -36,21 +68,23 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #daa520;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #FFD700;
 }
 
 /* Hero section */
 .hero {
     background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
+    color: #daa520;
     text-align: center;
     padding: 100px 20px;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .hero h2 {
@@ -64,27 +98,30 @@ nav ul li a:hover {
 }
 
 .hero .btn {
-    background: #D4A373;
-    color: #fff;
+    background: #daa520;
+    color: #000;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .hero .btn:hover {
-    background: #B2835E;
+    background: #FFD700;
 }
 
 /* Produtos */
 #products {
     padding: 50px 0;
-    background: #f9f9f9;
+    background: #111;
     text-align: center;
+    animation: slideUp 1.5s ease-out;
 }
 
 #products h2 {
     margin-bottom: 20px;
+    color: #daa520;
 }
 
 .product-list {
@@ -95,107 +132,130 @@ nav ul li a:hover {
 }
 
 .product {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #000;
+    border: 1px solid #daa520;
     border-radius: 5px;
     padding: 20px;
     width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.2);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3);
 }
 
 .product img {
     max-width: 100%;
     border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.1);
 }
 
 .product h3 {
     margin: 15px 0 10px;
+    color: #daa520;
 }
 
 .product button {
-    background: #5A2A27;
-    color: #fff;
+    background: #daa520;
+    color: #000;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .product button:hover {
-    background: #3E1E1B;
+    background: #FFD700;
 }
 
 /* Sobre Nós */
 #about {
     padding: 50px 0;
+    background: #000;
+    animation: fadeIn 2s ease-out;
 }
 
 #about h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #daa520;
 }
 
 #about p {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    color: #f1f1f1;
+}
+
+.about-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
 }
 
 /* Contato */
 #contact {
     padding: 50px 0;
-    background: #f9f9f9;
+    background: #111;
+    text-align: center;
+    animation: fadeIn 2.5s ease-out;
 }
 
 #contact h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #FFD700;
 }
 
-#contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#contact p {
+    color: #f1f1f1;
+    margin-bottom: 20px;
 }
 
-#contact form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.contact-info {
+    list-style: none;
+    padding: 0;
+    color: #FFD700;
+    font-size: 1.2em;
 }
 
-#contact form input,
-#contact form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
+.contact-info li {
+    margin: 10px 0;
 }
 
-#contact form button {
-    background: #5A2A27;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.contact-info a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-#contact form button:hover {
-    background: #3E1E1B;
+.contact-info a:hover {
+    color: #daa520;
 }
 
 /* Rodapé */
 footer {
-    background: #333;
-    color: #fff;
+    background: #000;
+    color: #daa520;
     text-align: center;
     padding: 10px 0;
+    border-top: 2px solid #daa520;
+    animation: fadeIn 3s ease-out;
 }

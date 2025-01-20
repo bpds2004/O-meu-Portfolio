@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Licor D'Graça - Loja Online</title>
+    <title>Licor Dª Graça - Loja Online</title>
     <link rel="stylesheet" href="licorstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Licor D'Graça</h1>
+            <a href="#home"><img src="licordgraca.png" alt="Logo Licor D'Graça" class="logo"></a>
             <nav>
                 <ul>
                     <li><a href="#home">Início</a></li>
@@ -24,33 +25,72 @@
     <section id="home" class="hero">
         <div class="container">
             <h2>O sabor único em cada gota</h2>
-            <p>Descubra os licores artesanais da Licor D'Graça, feitos com paixão e tradição.</p>
+            <p>Descubra os licores artesanais da Licor Dª Graça, feitos com paixão e tradição.</p>
             <a href="#products" class="btn">Explore os produtos</a>
         </div>
     </section>
 
     <section id="products">
         <div class="container">
-            <h2>Nossos Produtos</h2>
+            <h2>Os Nossos Produtos</h2>
             <div class="product-list">
                 <div class="product">
-                    <img src="images/licor1.jpg" alt="Licor Tradicional">
-                    <h3>Licor Tradicional</h3>
-                    <p>750ml - R$ 50,00</p>
+                    <img src="frutos.jpg" alt="Licor Frutos Vermelhos">
+                    <h3>L'amour</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
                     <button>Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
-                    <img src="images/licor2.jpg" alt="Licor de Frutas">
-                    <h3>Licor de Frutas</h3>
-                    <p>750ml - R$ 60,00</p>
+                    <img src="limao.jpg" alt="Licor Limão">
+                    <h3>Fresh</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
                     <button>Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
-                    <img src="images/licor3.jpg" alt="Licor Especial">
-                    <h3>Licor Especial</h3>
-                    <p>750ml - R$ 70,00</p>
+                    <img src="chocolimao.jpg" alt="Licor chocolate">
+                    <h3>Afrodite</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
                     <button>Adicionar ao Carrinho</button>
                 </div>
+                <div class="product">
+                    <img src="laranja.jpg" alt="Licor Laranja">
+                    <h3>Fonte Azul</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="cafe.jpg" alt="Licor Cafe">
+                    <h3>Pleasure</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="ervas.jpg" alt="Licor Ervas">
+                    <h3>S Frei Gil </h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="pastel.jpg" alt="Licor Pastel">
+                    <h3>João Ramalho</h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="chocopimenta.jpg" alt="Licor Pimenta">
+                    <h3> Morais de Carvalho </h3>
+                    <p>200ml - 16,00€ </p>
+                    <p>Descrição </p>
+                    <button>Adicionar ao Carrinho</button>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -58,32 +98,30 @@
     <section id="about">
         <div class="container">
             <h2>Sobre Nós</h2>
+            <img src="patroa.png" alt="Fotografia da Patroa" class="about-image">
             <p>Na Licor D'Graça, acreditamos na arte de criar sabores únicos. Cada garrafa é produzida com ingredientes selecionados e muito amor.</p>
+            <p>Localização: Queirã, Vouzela, Portugal</p>
+            <p>Patroa: Tia Graça, uma mestra na criação de sabores artesanais com mais de 10 anos de experiência.</p>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
             <h2>Contato</h2>
-            <p>Entre em contato conosco para saber mais:</p>
-            <form>
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit">Enviar</button>
-            </form>
+            <p>Entre em contato connosco através dos seguintes meios:</p>
+            <ul class="contact-info">
+                <li><i class="fab fa-instagram"></i> <strong>Instagram:</strong> <a href="https://www.instagram.com/licordgraca" target="_blank">@licordgraca</a></li>
+                <li><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:licor.donagraca@gmail.com">licor.donagraca@gmail.com</a></li>
+                <li><i class="fab fa-facebook"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/Licor-D-Graça" target="_blank">facebook.com/Licor-D-Graça</a></li>
+                <li><i class="fas fa-phone-alt"></i> <strong>Telemóvel:</strong> <a href="tel:+351938923021">+351 938 923 021</a></li>
+            </ul>
         </div>
     </section>
+    
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Licor D'Graça. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Licor Dª Graça. Todos os direitos reservados.</p>
         </div>
     </footer>
 </body>
