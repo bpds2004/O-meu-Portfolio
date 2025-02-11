@@ -146,31 +146,30 @@
         function finalizarCompra() {
             const listaCarrinho = document.getElementById('cart-list');
             const items = listaCarrinho.getElementsByTagName('li');
-            let compras = '';
+            let compras = "Resumo da Compra - Licor Dª Graça\n\n";
 
             for (let i = 0; i < items.length; i++) {
-                compras += items[i].textContent + '\n';
+                compras += items[i].textContent + "\n";
             }
             compras += `\nTotal: €${total.toFixed(2)}`;
 
-            fetch("http://localhost:3000/send-email", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ compras })
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert("Compra finalizada e email enviado!");
-                listaCarrinho.innerHTML = "";
-                total = 0;
-                document.getElementById("cart-total").textContent = "Total: €0.00";
-            })
-            .catch(error => {
-                console.error("Erro ao enviar email:", error);
-            });
+            // Criar um blob (arquivo de texto) e gerar o link para download
+            const blob = new Blob([compras], { type: "text/plain" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "Compra.txt"; // Nome do arquivo
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Limpar o carrinho após download
+            listaCarrinho.innerHTML = "";
+            total = 0;
+            document.getElementById("cart-total").textContent = "Total: €0.00";
+
+            alert("Download concluído! Arquivo salvo como 'Compra.txt'");
         }
+
         
     </script>
 
