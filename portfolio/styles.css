@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
 /* Estilos globais */
 body {
-    font-family: "Poppins", Arial, sans-serif;
+    font-family: "Comfortaa", Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -165,28 +167,85 @@ header nav ul li a:hover {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Secção "Sobre Mim" */
 #about {
     margin: 5rem auto;
-    padding: 4rem;
+   
+    padding: 2rem 6rem;
     border-radius: 12px;
     max-width: 600px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+    background-color: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
     overflow: hidden;
     text-align: center;
     position: relative;
 }
 
+
 #about.dark-mode {
-    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    background-color: inherit;
     box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
 }
 
 #about:hover {
     transform: scale(1.02);
 }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background-color: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    
+    transition: transform 0.3s;
+}
+.card.dark-mode {
+    background-color: inherit;
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.skill {
+    font-size: 16px;
+}
+
+.progress {
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress div {
+    height: 100%;
+    width: 0; /* Começa com 0% para a animação */
+    background: #3498db;
+    transition: width 2s ease-in-out;
+}
+
+
+
 
 #about .img-thumbnail {
     max-width: 150px;
@@ -201,27 +260,7 @@ header nav ul li a:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-#about h2 {
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ffffff;
-}
 
-#about p {
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin: 0 auto;
-    max-width: 600px;
-}
-#about ul {
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin: 0 auto;
-    max-width: 600px;
-}
 /* Botão animado na seção "Sobre Mim" */
 #about button {
     background-color: #007BFF;
@@ -253,8 +292,8 @@ header nav ul li a:hover {
     padding: 4rem;
     border-radius: 12px;
     max-width: 300px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+    background-color: inherit;
+    box-shadow:0 8px 16px rgba(0, 0, 0, 0.2);
     transition: all 0.5s;
     overflow: hidden;
     text-align: center;
@@ -268,7 +307,7 @@ header nav ul li a:hover {
 }
 
 #contact.dark-mode {
-    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+    background-color: inherit;
     box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
 }
 
@@ -277,26 +316,18 @@ header nav ul li a:hover {
     padding: 0;
     margin: 1rem 0;
 }
-#contact h2 {
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #000000;
-}
+
 .social-links li {
     margin: 0.5rem 0;
 }
 
 .social-links a {
-    color: #333; /* Cor padrão dos links */
+   
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s, transform 0.3s;
 }
 
-#contact.dark-mode .social-links a {
-    color: #ddd; /* Cor dos links no modo escuro */
-}
 
 .social-links a:hover {
     color: #007BFF; /* Cor ao passar o mouse */
@@ -309,6 +340,30 @@ header nav ul li a:hover {
 
 .social-links a[href^="mailto:"]:before {
     content: "📧 "; /* Ícone personalizado para e-mail */
+}
+
+#contact button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+#contact button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+#contact button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Rodapé */

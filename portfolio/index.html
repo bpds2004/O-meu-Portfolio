@@ -66,18 +66,51 @@
             <img class="img-thumbnail" src="EU.jpeg" alt="Eu">
             <h2>Sobre Mim</h2>
             <p>Olá, sou Beatriz Sousa.
-                Uma brevemente licenciada em engenharia informática na Universidade-Trás-Os-Montes e Alto Douro.
-                No momento sou a vice-presidente do Núcleo de Estudantes de Engenharia Informática da UTAD.</p>
+                Uma brevemente licenciada em engenharia informática na Universidade-Trás-Os-Montes e Alto Douro.</p>
+                <p>Atualmente sou a vice-presidente do Núcleo de Estudantes de Engenharia Informática da UTAD.</p>
+                <p>Sou apaixonada por criar páginas web e jogos, procurando sempre aprender e aprimorar as minhas habilidades.</p>
+                <p>Tenho alguma experiência em desenvolvimento front-end e design de jogos, com projetos pessoais e escolares.</p>
+                <p>Procuro oportunidades para aplicar os meus conhecimentos e paixão em projetos mais desafiadores e inovadores.</p>
+
             <h2>Destaques do Currículo</h2>
-            <ul>
-                <li><strong>Experiência:</strong> Desenvolvimento Web Frontend.</li>
-                <li><strong>Conhecimentos:</strong> HTML, CSS, JavaScript, Python,C, C#, C++</li>
-                <li><strong>Competências Digitais:</strong> Redes Sociais, Microsoft Office, Facilidade de Aprendizagem de Novos Softwares, Organizada no trabalho, Vontade de aprender sempre mais, Responsável,
-                    Trabalhadora, empenhadada, Pontual, Gosto pelo trabalho em equipa.</li>
-                <li><strong>Formação:</strong> Licenciada em Engenharia Informática na UTAD 2024/25.</li>
-                <li><strong>Idiomas:</strong> Inglês avançado.</li>
-                <li><strong>Carta de condução:</strong> B </li>
-            </ul>
+            <div class="cards">
+                <div class="card">
+                    <h3>Experiência</h3>
+                    <p>Desenvolvimento Web Frontend.</p>
+                </div>
+                <div class="card">
+                    <h2>As Minhas Skills</h2>
+                    <div class="skills">
+                        <div class="skill"><span>HTML</span>
+                            <div class="progress"><div data-width="90%"></div></div>
+                        </div>
+                        <div class="skill"><span>CSS</span>
+                            <div class="progress"><div data-width="85%"></div></div>
+                        </div>
+                        <div class="skill"><span>JavaScript</span>
+                            <div class="progress"><div data-width="70%"></div></div>
+                        </div>
+                        <div class="skill"><span>Python</span>
+                            <div class="progress"><div data-width="70%"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <h3>Competências Digitais</h3>
+                    <p>Redes Sociais, Microsoft Office, Facilidade de Aprendizagem.</p>
+                </div>
+                <div class="card">
+                    <h3>Formação</h3>
+                    <p>Licenciatura em Engenharia Informática - UTAD 2024/25.</p>
+                </div>
+                <div class="card">
+                    <h3>Idiomas</h3>
+                    <p>Inglês Avançado.</p>
+                </div>
+            </div>
+            
+            
             
         </div>
         
@@ -88,7 +121,7 @@
             <li><a href="https://www.linkedin.com/in/beatriz-pinto-de-sousa/" target="_blank">LinkedIn</a></li>
             <li><a href="https://github.com/bpds2004" target="_blank">GitHub</a></li>
             <li><a href="BeatrizSousa_CV.pdf" target="_blank">📄 Ver Currículo</a></li>
-            <li><a href="mailto:beatrizsousa.200404@gmail.com">beatrizsousa.200404@gmail.com</a></li>
+            <li><a href="mailto:beatrizpintosousa.04@gmail.com">beatrizpintosousa.04@gmail.com</a></li>
         </ul>
     </section>
     
@@ -143,6 +176,22 @@
     typeEffect();
 
     document.querySelector('#about').classList.toggle('dark-mode');
+
+    function animateSkills() {
+    const skills = document.querySelectorAll('.progress div');
+    const section = document.querySelector('.skills');
+    const sectionPosition = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3; // Ajusta para quando ativar
+
+    if (sectionPosition < screenPosition) {
+        skills.forEach(skill => {
+            skill.style.width = skill.getAttribute('data-width'); // Define a largura real
+        });
+    }
+}
+
+    window.addEventListener('scroll', animateSkills);
+
 </script>
 
 </html>
