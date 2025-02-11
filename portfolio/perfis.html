@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha um Perfil - Netflix</title>
+    <link rel="stylesheet" href="styles_Netflix.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Quem está a ver a Netflix?</h1>
+        <div class="profiles">
+            <div class="profile" onclick="selectProfile()">
+                <img src="perfil1.jpg" alt="Miguel">
+                <p>Miguel</p>
+            </div>
+            <div class="profile" onclick="selectProfile()">
+                <img src="perfil2.jpg" alt="Ana">
+                <p>Ana</p>
+            </div>
+            <div class="profile" onclick="selectProfile()">
+                <img src="perfil3.png" alt="Bia">
+                <p>Bia</p>
+            </div>
+            <div class="profile" onclick="selectProfile()">
+                <img src="perfil4.png" alt="David">
+                <p>Crianças</p>
+            </div>
+            <div class="profile" onclick="selectProfile()">
+                <img src="perfil5.jpg" alt="Lu">
+                <p>Lu</p>
+            </div>
+        </div>
+        <button class="manage-button">Gerir perfis</button>
+    </div>
+
+    <script>
+        function selectProfile() {
+            window.location.href = "netflix.html"; 
+        }
+    </script>
+</body>
+</html>
