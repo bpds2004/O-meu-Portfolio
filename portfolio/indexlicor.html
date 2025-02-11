@@ -118,8 +118,8 @@
                 <li><i class="fas fa-phone-alt"></i> <strong>Telemóvel:</strong> <a href="tel:+351938923021">+351 938 923 021</a></li>
             </ul>
         </div>
-    </section>
-        <section id="cart">
+    
+    <section id="cart">
         <div class="cart-container">
             <h2>Carrinho de Compras</h2>
             <ul id="cart-list"></ul>
@@ -147,26 +147,31 @@
             const listaCarrinho = document.getElementById('cart-list');
             const items = listaCarrinho.getElementsByTagName('li');
             let compras = '';
+
             for (let i = 0; i < items.length; i++) {
                 compras += items[i].textContent + '\n';
             }
             compras += `\nTotal: €${total.toFixed(2)}`;
 
-            fetch('/send-email', {
-                method: 'POST',
+            fetch("http://localhost:3000/send-email", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ compras })
             })
             .then(response => response.text())
             .then(data => {
-                alert('Compra finalizada e email enviado!');
+                alert("Compra finalizada e email enviado!");
+                listaCarrinho.innerHTML = "";
+                total = 0;
+                document.getElementById("cart-total").textContent = "Total: €0.00";
             })
             .catch(error => {
-                console.error('Erro ao enviar email:', error);
+                console.error("Erro ao enviar email:", error);
             });
         }
+        
     </script>
 
     <footer>

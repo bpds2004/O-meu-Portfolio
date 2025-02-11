@@ -1,39 +1,43 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+
 const app = express();
-const port = 3000;
+app.use(express.json());
+app.use(cors()); 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/send-email', (req, res) => {
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "bpds200404@gmail.com", 
+        pass: "bibi1112" 
+    }
+});
+
+// Rota para enviar o e-mail
+app.post("/send-email", (req, res) => {
     const { compras } = req.body;
 
-    // Configurar o transporte do nodemailer
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'seu-email@gmail.com',
-            pass: 'sua-senha'
-        }
-    });
-
     const mailOptions = {
-        from: 'seu-email@gmail.com',
-        to: 'licor@gmail.com',
-        subject: 'Compras Realizadas',
-        text: compras
+        from: "bpds200404@gmail.com",
+        to: "licor.donagraca@gmail.com", 
+        subject: "Confirmação de Compra - Licor Dª Graça",
+        text: `Obrigado pela sua compra!\n\nDetalhes do pedido:\n${compras}`
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return res.status(500).send(error.toString());
+            console.error(error);
+            res.status(500).send("Erro ao enviar o e-mail.");
+        } else {
+            console.log("E-mail enviado: " + info.response);
+            res.status(200).send("E-mail enviado com sucesso!");
         }
-        res.status(200).send('Email enviado: ' + info.response);
     });
 });
 
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+// Inicia o servidor na porta 3000
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000");
 });
