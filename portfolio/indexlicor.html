@@ -16,7 +16,7 @@
                     <li><a href="#home">Início</a></li>
                     <li><a href="#products">Produtos</a></li>
                     <li><a href="#about">Sobre</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#contact">Contatos</a></li>
                 </ul>
             </nav>
         </div>
@@ -25,7 +25,7 @@
     <section id="home" class="hero">
         <div class="container">
             <h2>O sabor único em cada gota</h2>
-            <p>Descubra os licores artesanais da Licor Dª Graça, feitos com paixão e tradição.</p>
+            <p>Descubra os licores artesanais da Tia Graça, feitos com paixão e tradição.</p>
             <a href="#products" class="btn">Explore os produtos</a>
         </div>
     </section>
@@ -39,56 +39,56 @@
                     <h3>L'amour</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('L amour', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="limao.jpg" alt="Licor Limão">
                     <h3>Fresh</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('Fresh', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="chocolimao.jpg" alt="Licor chocolate">
                     <h3>Afrodite</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('Afrodite', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="laranja.jpg" alt="Licor Laranja">
                     <h3>Fonte Azul</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('Fonte Azul', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="cafe.jpg" alt="Licor Cafe">
                     <h3>Pleasure</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('Pleasure', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="ervas.jpg" alt="Licor Ervas">
                     <h3>S Frei Gil </h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('S Frei Gil', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="pastel.jpg" alt="Licor Pastel">
                     <h3>João Ramalho</h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('João Ramalho', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="chocopimenta.jpg" alt="Licor Pimenta">
                     <h3> Morais de Carvalho </h3>
                     <p>200ml - 16,00€ </p>
                     <p>Descrição </p>
-                    <button>Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('Morais de Carvalho', '16,00€')">Adicionar ao Carrinho</button>
                 </div>
                 
             </div>
@@ -99,15 +99,17 @@
         <div class="container">
             <h2>Sobre Nós</h2>
             <img src="patroa.png" alt="Fotografia da Patroa" class="about-image">
+            <div class="animated-rectangle">
             <p>Na Licor D'Graça, acreditamos na arte de criar sabores únicos. Cada garrafa é produzida com ingredientes selecionados e muito amor.</p>
-            <p>Localização: Queirã, Vouzela, Portugal</p>
-            <p>Patroa: Tia Graça, uma mestra na criação de sabores artesanais com mais de 10 anos de experiência.</p>
+            <p>📍 Localização: Queirã, Vouzela, Portugal</p>
+            <p>🍷 Fundadora: Tia Graça, mestra na criação de sabores artesanais há mais de 10 anos.</p>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2>Contato</h2>
+            <h2>Contatos</h2>
             <p>Entre em contato connosco através dos seguintes meios:</p>
             <ul class="contact-info">
                 <li><i class="fab fa-instagram"></i> <strong>Instagram:</strong> <a href="https://www.instagram.com/licordgraca" target="_blank">@licordgraca</a></li>
@@ -117,7 +119,55 @@
             </ul>
         </div>
     </section>
+        <section id="cart">
+        <div class="cart-container">
+            <h2>Carrinho de Compras</h2>
+            <ul id="cart-list"></ul>
+            <p id="cart-total">Total: €0.00</p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </section>
     
+    <script>
+        let total = 0;
+    
+        function adicionarAoCarrinho(nome, preco) {
+            const listaCarrinho = document.getElementById('cart-list');
+            const item = document.createElement('li');
+            item.textContent = `${nome} - ${preco}`;
+            listaCarrinho.appendChild(item);
+    
+            // Atualizar o total
+            const precoNumerico = parseFloat(preco.replace('€', '').replace(',', '.'));
+            total += precoNumerico;
+            document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
+        }
+    
+        function finalizarCompra() {
+            const listaCarrinho = document.getElementById('cart-list');
+            const items = listaCarrinho.getElementsByTagName('li');
+            let compras = '';
+            for (let i = 0; i < items.length; i++) {
+                compras += items[i].textContent + '\n';
+            }
+            compras += `\nTotal: €${total.toFixed(2)}`;
+
+            fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ compras })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Compra finalizada e email enviado!');
+            })
+            .catch(error => {
+                console.error('Erro ao enviar email:', error);
+            });
+        }
+    </script>
 
     <footer>
         <div class="container">
