@@ -129,6 +129,48 @@
     </section>
     
     <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Animação de fade-in nos elementos ao carregar
+            const elements = document.querySelectorAll(".fade-in");
+            elements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = "translateY(20px)";
+                setTimeout(() => {
+                    el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+                    el.style.opacity = 1;
+                    el.style.transform = "translateY(0)";
+                }, 200);
+            });
+
+            // Animação ao rolar a página
+            function scrollAnimation() {
+                const scrollElements = document.querySelectorAll(".scroll-reveal");
+                scrollElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 50) {
+                        el.style.opacity = 1;
+                        el.style.transform = "translateY(0)";
+                    }
+                });
+            }
+            document.addEventListener("scroll", scrollAnimation);
+            scrollAnimation();
+
+            // Efeito nos botões ao passar o mouse
+            const buttons = document.querySelectorAll("button");
+            buttons.forEach(btn => {
+                btn.addEventListener("mouseenter", () => {
+                    btn.style.transform = "scale(1.1)";
+                    btn.style.transition = "transform 0.3s ease";
+                });
+                btn.addEventListener("mouseleave", () => {
+                    btn.style.transform = "scale(1)";
+                });
+            });
+        });
+
+
         let total = 0;
     
         function adicionarAoCarrinho(nome, preco) {
@@ -167,7 +209,7 @@
             total = 0;
             document.getElementById("cart-total").textContent = "Total: €0.00";
 
-            alert("Download concluído! Arquivo salvo como 'Compra.txt'");
+            alert("Download concluído! Compra guardada como 'Compra.txt'");
         }
 
         
