@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="EU.jpeg" alt="A minha foto" class="profile-pic">
+            <h1><span id="typed-text"></span></h1>
+
+            <nav>
+                <ul>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#about">Sobre Mim</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle">🌙 Modo Noturno</button>
+        </div>
+    </header>
+    
+    <section id="projects">
+        <h2>Os Meus Projetos</h2>
+        
+        <div class="project">
+            <img src="project1.jpg" alt="Projeto 1">
+            <h3>Netflix Clone</h3>
+            <p>Um projeto que simula a interface da Netflix, incluindo a exibição de cards de filmes e séries.</p>
+            <button onclick="openCode('netflix')">Ver Interface</button>
+        </div>
+        <div class="project">
+            <img src="licordgraca.png" alt="projeto 2">
+            <h3>Site Licor Dª Graça</h3>
+            <p>O site da Licor D'Graça é uma plataforma online projetada para destacar e vender os licores artesanais da marca.</p>
+            <button onclick="openCode('licor')">Ver Interface</button>
+        </div>
+        <div class="project">
+            <img src="project2.jpg" alt="Projeto 3">
+            <h3>Calculadora</h3>
+            <p>Uma aplicação de calculadora simples, mas funcional que permite realizar operações matemáticas básicas como soma, subtração, multiplicação e divisão.</p>
+            <button onclick="openCode('calculadora')">Ver Código Python</button>
+        </div>
+        <div class="project">
+            <img src="jogo da minhoca.png" alt="Projeto 4">
+            <h3>Snake Game</h3>
+            <p>Uma recriação do clássico jogo da "cobra". O jogador controla a cobra que cresce ao comer a maçã, enquanto evita colidir consigo mesma.</p>
+            <button onclick="openCode('minhoca')">Ver Interface</button>
+            <button onclick="openCode('minhocapy')">Ver código em python</button>
+        </div>
+        <div class="project">
+            <img src="ping_pong.jpg" alt="Projeto 5">
+            <h3>Ping Pong</h3>
+            <p>Um jogo de Ping Pong onde dois jogadores controlam as raquetes para rebater a bola. Possui um placar para monitorar os pontos de cada jogador.</p>
+            <button onclick="openCode('pingpong')">Ver Código em pyhton</button>
+        </div>
+    <h3>Todos os projetos estão disponíveis no meu perfil de GitHub</h3>
+    </section>
+
+    
+    <div id="about-container">
+        <div id="about">
+            <img class="img-thumbnail" src="EU.jpeg" alt="Eu">
+            <h2>Sobre Mim</h2>
+            <p>Olá, sou Beatriz Sousa.
+                Uma brevemente licenciada em engenharia informática na Universidade-Trás-Os-Montes e Alto Douro.</p>
+                <p>Atualmente sou a vice-presidente do Núcleo de Estudantes de Engenharia Informática da UTAD.</p>
+                <p>Sou apaixonada por criar páginas web e jogos, procurando sempre aprender e aprimorar as minhas habilidades.</p>
+                <p>Tenho alguma experiência em desenvolvimento front-end e design de jogos, com projetos pessoais e escolares.</p>
+                <p>Procuro oportunidades para aplicar os meus conhecimentos e paixão em projetos mais desafiadores e inovadores.</p>
+
+            <h2>Destaques do Currículo</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Experiência</h3>
+                    <p>Desenvolvimento Web Frontend.</p>
+                </div>
+                <div class="card">
+                    <h2>As Minhas Skills</h2>
+                    <div class="skills">
+                        <div class="skill"><span>HTML</span>
+                            <div class="progress"><div data-width="90%"></div></div>
+                        </div>
+                        <div class="skill"><span>CSS</span>
+                            <div class="progress"><div data-width="85%"></div></div>
+                        </div>
+                        <div class="skill"><span>JavaScript</span>
+                            <div class="progress"><div data-width="70%"></div></div>
+                        </div>
+                        <div class="skill"><span>Python</span>
+                            <div class="progress"><div data-width="70%"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <h3>Competências Digitais</h3>
+                    <p>Redes Sociais, Microsoft Office, Facilidade de Aprendizagem.</p>
+                </div>
+                <div class="card">
+                    <h3>Formação</h3>
+                    <p>Licenciatura em Engenharia Informática - UTAD 2024/25.</p>
+                </div>
+                <div class="card">
+                    <h3>Idiomas</h3>
+                    <p>Inglês Avançado.</p>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+    <section id="contact">
+        <h2>Contacto</h2>
+        <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/beatriz-pinto-de-sousa/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/bpds2004" target="_blank">GitHub</a></li>
+            <li><a href="BeatrizSousaCV.pdf" target="_blank">📄 Ver Currículo</a></li>
+            <li><a href="mailto:beatrizpintosousa.04@gmail.com">beatrizpintosousa.04@gmail.com</a></li>
+        </ul>
+    </section>
+    
+
+    <footer>
+        <p>&copy; Beatriz Sousa</p>
+    </footer>
+</body>
+<script>
+    function openCode(project) {
+        let urls = {
+            netflix: 'perfis.html',
+            licor: 'indexlicor.html',
+            calculadora: href="https://github.com/bpds2004/Calculadora-Simples",
+            minhoca: 'snakegame.html',
+            minhocapy: href="https://github.com/bpds2004/jogo-da-minhoca",
+            pingpong: href="https://github.com/bpds2004/Ping-Pong-simples"
+        };
+
+        if (urls[project]) {
+            window.open(urls[project], '_blank', 'width=800,height=600');
+        } else {
+            alert('Código não encontrado para este projeto.');
+        }
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('header').classList.toggle('dark-mode');
+        document.querySelector('footer').classList.toggle('dark-mode');
+        document.querySelectorAll('.project').forEach(el => el.classList.toggle('dark-mode'));
+
+        // Atualizar o texto e o ícone do botão
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.textContent = '☀️ Modo Claro';
+        } else {
+            themeToggle.textContent = '🌙 Modo Noturno';
+        }
+    });
+    const text = "O Meu Portfólio";
+    let i = 0;
+    const speed = 100;
+
+    function typeEffect() {
+        if (i < text.length) {
+            document.getElementById('typed-text').textContent += text.charAt(i);
+            i++;
+            setTimeout(typeEffect, speed);
+        }
+    }
+    typeEffect();
+
+    document.querySelector('#about').classList.toggle('dark-mode');
+
+    function animateSkills() {
+    const skills = document.querySelectorAll('.progress div');
+    const section = document.querySelector('.skills');
+    const sectionPosition = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3; // Ajusta para quando ativar
+
+    if (sectionPosition < screenPosition) {
+        skills.forEach(skill => {
+            skill.style.width = skill.getAttribute('data-width'); // Define a largura real
+        });
+    }
+}
+
+    window.addEventListener('scroll', animateSkills);
+
+</script>
+
+</html>

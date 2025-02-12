@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+/* Estilos globais */
+body {
+    font-family: "Comfortaa", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ddd;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+header.dark-mode {
+    background-color: #1a1a1a;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    flex-grow: 1;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #007BFF;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+    color: #007BFF;
+}
+
+/* Projetos */
+#projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3rem;
+    gap: 2rem;
+}
+
+.project {
+    margin: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, background-color 0.3s, box-shadow 0.4s;
+    text-align: center;
+    overflow: hidden;
+}
+
+.project:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.project.dark-mode {
+    background-color: #1a1a1a;
+    border-color: #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.project img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.project img:hover {
+    transform: scale(1.05);
+}
+
+.project h3 {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.project button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.project button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.project button:active {
+    transform: scale(1);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Secção "Sobre Mim" */
+#about {
+    margin: 5rem auto;
+   
+    padding: 2rem 6rem;
+    border-radius: 12px;
+    max-width: 600px;
+    background-color: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+
+#about.dark-mode {
+    background-color: inherit;
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
+}
+
+#about:hover {
+    transform: scale(1.02);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background-color: inherit;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    
+    transition: transform 0.3s;
+}
+.card.dark-mode {
+    background-color: inherit;
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.skill {
+    font-size: 16px;
+}
+
+.progress {
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress div {
+    height: 100%;
+    width: 0; /* Começa com 0% para a animação */
+    background: #3498db;
+    transition: width 2s ease-in-out;
+}
+
+
+
+
+#about .img-thumbnail {
+    max-width: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#about .img-thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Botão animado na seção "Sobre Mim" */
+#about button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+#about button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+#about button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contatos */
+#contact {
+    margin: 5rem auto;
+    padding: 4rem;
+    border-radius: 12px;
+    max-width: 300px;
+    background-color: inherit;
+    box-shadow:0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    margin-bottom: 8rem; /* Aumenta a margem inferior */
+}
+
+#contact:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Aumenta o efeito de sombra */
+}
+
+#contact.dark-mode {
+    background-color: inherit;
+    box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.social-links li {
+    margin: 0.5rem 0;
+}
+
+.social-links a {
+   
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+
+.social-links a:hover {
+    color: #007BFF; /* Cor ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+.social-links a:before {
+    content: "🔗 "; /* Ícone padrão para links */
+}
+
+.social-links a[href^="mailto:"]:before {
+    content: "📧 "; /* Ícone personalizado para e-mail */
+}
+
+#contact button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+#contact button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+#contact button:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer.dark-mode {
+    background-color: #1a1a1a;
+}
+
