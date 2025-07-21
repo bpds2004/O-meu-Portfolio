@@ -5,23 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Meu Portfólio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        const toggle = document.getElementById("theme-toggle");
+
+        toggle.addEventListener("change", () => {
+        const isDark = toggle.checked;
+        document.body.classList.toggle("dark-mode", isDark);
+        document.querySelector("header").classList.toggle("dark-mode", isDark);
+        document.querySelector("footer").classList.toggle("dark-mode", isDark);
+        document.querySelectorAll('.project, .card').forEach(el => el.classList.toggle("dark-mode", isDark));
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+    </script>
+
+
+
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="EU.jpeg" alt="A minha foto" class="profile-pic">
-            <h1><span id="typed-text"></span></h1>
+    <div class="content-wrapper">
+   <header>
+  <div class="header-container">
+    <img src="eu.jpg" alt="A minha foto" class="profile-pic">
+    <h1><span id="typed-text"></span></h1>
 
-            <nav>
-                <ul>
-                    <li><a href="#projects">Projetos</a></li>
-                    <li><a href="#about">Sobre Mim</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-            <button id="theme-toggle">🌙 Modo Noturno</button>
+    <nav>
+      <ul>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#about">Sobre Mim</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+       <!-- Dark Mode Switch -->
+  <label class="theme-switch">
+    <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle" />
+    <div class="theme-switch__container">
+      <div class="theme-switch__clouds"></div>
+      <div class="theme-switch__stars-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+          <path fill="currentColor" d="M135.831...Z"/>
+        </svg>
+      </div>
+      <div class="theme-switch__circle-container">
+        <div class="theme-switch__sun-moon-container">
+          <div class="theme-switch__moon">
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
+            <div class="theme-switch__spot"></div>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </label>
+
+    
+</header>
+
     
     <section id="projects">
         <h2>Os Meus Projetos</h2>
@@ -75,89 +116,241 @@
 
     
     <div id="about-container">
-        <div id="about">
-            <img class="img-thumbnail" src="EU.jpeg" alt="Eu">
-            <h2>Sobre Mim</h2>
-            <p>Olá, sou Beatriz Sousa.
-                Uma brevemente licenciada em engenharia informática na Universidade-Trás-Os-Montes e Alto Douro.</p>
-                <p>Atualmente sou a vice-presidente do Núcleo de Estudantes de Engenharia Informática da UTAD.</p>
-                <p>Sou apaixonada por criar páginas web e jogos, procurando sempre aprender e aprimorar as minhas habilidades.</p>
-                <p>Tenho alguma experiência em desenvolvimento front-end e design de jogos, com projetos pessoais e escolares.</p>
-                <p>Procuro oportunidades para aplicar os meus conhecimentos e paixão em projetos mais desafiadores e inovadores.</p>
+  <div id="about">
+    <img class="img-thumbnail" src="eu.jpg" alt="Eu">
+    <h2>Sobre Mim</h2>
 
-            <h2>Destaques do Currículo</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Experiência</h3>
-                    <p>Desenvolvimento Web Frontend.</p>
-                </div>
-                <div class="card">
-                    <h2>As Minhas Skills</h2>
-                    <div class="skills">
-                        <div class="skill">
-                            <span>HTML</span>
-                            <div class="progress"><div data-width="100%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>CSS</span>
-                            <div class="progress"><div data-width="90%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>JavaScript</span>
-                            <div class="progress"><div data-width="80%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>Python</span>
-                            <div class="progress"><div data-width="80%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>Flutter</span>
-                            <div class="progress"><div data-width="100%"></div></div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card">
-                    <h3>Competências Digitais</h3>
-                    <p>Redes Sociais, Microsoft Office, Facilidade de Aprendizagem.</p>
-                </div>
-                <div class="card">
-                    <h3>Formação</h3>
-                    <p>Licenciatura em Engenharia Informática - UTAD 2024/25.</p>
-                </div>
-                <div class="card">
-                    <h3>Idiomas</h3>
-                    <p>Inglês Avançado.</p>
-                </div>
-            </div>
-            
-            
-            
-        </div>
-        
-    </div>
-    <section id="contact">
-        <h2>Contacto</h2>
-        <ul class="social-links">
-            <li><a href="https://www.linkedin.com/in/beatriz-pinto-de-sousa/" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/bpds2004" target="_blank">GitHub</a></li>
-            <li><a href="BeatrizSousaCV.pdf" target="_blank">📄 Ver Currículo</a></li>
-            <li><a href="mailto:beatrizpintosousa.04@gmail.com">beatrizpintosousa.04@gmail.com</a></li>
-        </ul>
-    </section>
+    <p>Olá, sou a <strong>Beatriz Sousa</strong>, licenciada em Engenharia Informática pela Universidade de Trás-os-Montes e Alto Douro (UTAD).</p>
     
+    <p>No último ano, desempenhei funções como <strong>vice-presidente do Núcleo de Estudantes de Engenharia Informática</strong>, onde colaborei na organização de eventos, workshops e iniciativas académicas para fomentar o crescimento da comunidade estudantil.</p>
+    
+    <p>Sou apaixonada pelo mundo do desenvolvimento web e do design de jogos. Gosto de transformar ideias em soluções digitais funcionais, com foco na experiência do utilizador e na estética visual.</p>
+    
+    <p>Tenho experiência em <strong>desenvolvimento front-end</strong> (HTML, CSS, JavaScript, Flutter) e também em <strong>projetos com impacto social e académico</strong>, desde websites institucionais a aplicações movéis educativas e informativas.</p>
+    
+    <p>Considero-me uma pessoa <strong>criativa, determinada e organizada</strong>, com espírito de equipa e vontade constante de aprender. Estou sempre pronta a abraçar novos desafios que me permitam crescer pessoal e profissionalmente.</p>
+    
+    <p>Procuro oportunidades em áreas como <strong>desenvolvimento web, movél e UX/UI design</strong>, onde possa aplicar os meus conhecimentos técnicos, criatividade e capacidade de comunicação.</p>
+<h2>Destaques do Currículo</h2>
 
+<!-- EXPERIÊNCIA -->
+<h2 style="margin-top: 3rem;">🌟 Destaques e Experiência</h2>
+<div class="cards">
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>🌟 Destaques</h3>
+      <p>Vice-presidente do Núcleo de Estudantes de Engenharia Informática da UTAD no ano letivo 2024/2025, com foco em organização de eventos e desenvolvimento de projetos académicos.</p>
+      <h3>💼 Experiência</h3>
+      <p>Desenvolvimento Web Frontend (HTML, CSS, JS, Flutter), criação de interfaces, participação em projetos académicos e pessoais.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>🧠 Competências Digitais</h3>
+      <p>Microsoft Office, GitHub, VS Code, Redes Sociais, Canva, facilidade de adaptação tecnológica.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<h2 style="margin-top: 3rem;">🛠️ As Minhas Skills</h2>
+<div class="cards">
+    <div class="cards center-skill-card">
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <div class="skills">
+        <div class="skill">
+          <span>HTML</span>
+          <div class="progress"><div data-width="100%"></div></div>
+        </div>
+        <div class="skill">
+          <span>CSS</span>
+          <div class="progress"><div data-width="90%"></div></div>
+        </div>
+        <div class="skill">
+          <span>JavaScript</span>
+          <div class="progress"><div data-width="80%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Python</span>
+          <div class="progress"><div data-width="80%"></div></div>
+        </div>
+        <div class="skill">
+          <span>Flutter</span>
+          <div class="progress"><div data-width="100%"></div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORMAÇÃO -->
+<h2 style="margin-top: 3rem;">📚 Formação Académica</h2>
+<div class="cards">
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>🎓 Licenciatura em Engenharia Informática</h3>
+      <p>Universidade de Trás-os-Montes e Alto Douro – UTAD (2021–2024)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>🗣 Idiomas</h3>
+      <p>Português (nativo), Inglês (avançado)</p>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTOS -->
+<h2 style="margin-top: 3rem;">🎤 Eventos e Participações</h2>
+<div class="cards">
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>UTAD Summit</h3>
+      <p>Participação e organização ativa no principal evento académico e tecnológico da UTAD, com palestras, networking e workshops.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>ENEI – Encontro Nacional de Estudantes de Informática</h3>
+      <p>Representação da UTAD num dos maiores encontros de estudantes de informática em Portugal.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>Code & Conquer – 1ª Edição (UTAD)</h3>
+      <p>Competição de programação com resolução de problemas em tempo real, em ambiente competitivo.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="blob"></div>
+    <div class="bg">
+      <h3>Eventos Tecnológicos da UTAD</h3>
+      <p>Hackathons, talks de empresas, feiras de emprego e eventos com antigos alunos da área.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+    <section id="contact">
+    <h2>Contactos</h2>
+
+    <div class="social-card">
+        <span>Social</span>
+        <a class="social-link" href="https://www.linkedin.com/in/beatriz-pinto-de-sousa/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a class="social-link" href="https://github.com/bpds2004" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+        </a>
+        <a class="social-link" href="BeatrizSousaCV.pdf" target="_blank" title="Currículo PDF">
+        <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="social-link" href="mailto:beatrizpintosousa.04@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+    </section>
     <footer>
-        <p>&copy; Beatriz Sousa</p>
+      <div class="footer-content">
+        <p>&copy; 2025 Beatriz Sousa · Feito com 💻 e ☕</p>
+        <p>Este portfólio é uma demonstração das minhas habilidades e projetos desenvolvidos ao longo da minha jornada académica e profissional.</p>
+        
+      </div>
     </footer>
+  </div>
+    <script>
+    window.onload = () => {
+      const text = "O Meu Portfólio";
+      const typedTextElement = document.getElementById("typed-text");
+      let index = 0;
+
+      function type() {
+        if (index < text.length) {
+          typedTextElement.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, 100);
+        }
+      }
+      type();
+
+      const toggle = document.getElementById("theme-toggle");
+
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggle.checked = true;
+        document.querySelector('header')?.classList.add('dark-mode');
+        document.querySelector('footer')?.classList.add('dark-mode');
+        document.querySelectorAll('.project, .card').forEach(el => el.classList.add('dark-mode'));
+      }
+
+      toggle.addEventListener("change", () => {
+        const isDark = toggle.checked;
+        document.body.classList.toggle("dark-mode", isDark);
+        document.querySelector("header")?.classList.toggle("dark-mode", isDark);
+        document.querySelector("footer")?.classList.toggle("dark-mode", isDark);
+        document.querySelectorAll(".card, .project").forEach(el => el.classList.toggle("dark-mode", isDark));
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      const skills = document.querySelectorAll('.progress div');
+      const section = document.querySelector('.skills');
+
+      function animateSkills() {
+        const sectionPosition = section.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        if (sectionPosition < screenPosition) {
+          skills.forEach(skill => {
+            skill.style.width = skill.getAttribute('data-width');
+          });
+        }
+      }
+
+      window.addEventListener('scroll', animateSkills);
+    };
+
+    function openCode(project) {
+      let urls = {
+        netflix: 'perfis.html',
+        licor: 'indexlicor.html',
+        medtech: 'https://github.com/bpds2004/MedTech',
+        chatbot: 'https://github.com/bpds2004/bot-academico-utad',
+        calculadora: 'https://github.com/bpds2004/Calculadora-Simples',
+        minhoca: 'snakegame.html',
+        minhocapy: 'https://github.com/bpds2004/jogo-da-minhoca',
+        pingpong: 'https://github.com/bpds2004/Ping-Pong-simples'
+      };
+      if (urls[project]) {
+        window.open(urls[project], '_blank', 'width=800,height=600');
+      } else {
+        alert('Código não encontrado para este projeto.');
+      }
+    }
+  </script>
+
 </body>
+
 <script>
     function openCode(project) {
         let urls = {
             netflix: 'perfis.html',
             licor: 'indexlicor.html',
-            medtech: 'medtech-main/index.html',
-            chatbot: 'chatbot/index.html',
+            medtech: 'https://github.com/bpds2004/MedTech',
+            chatbot: 'https://github.com/bpds2004/bot-academico-utad',
             calculadora: 'https://github.com/bpds2004/Calculadora-Simples',
             minhoca: 'snakegame.html',
             minhocapy: 'https://github.com/bpds2004/jogo-da-minhoca',
@@ -172,49 +365,57 @@
     }
 
 
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.querySelector('header').classList.toggle('dark-mode');
-        document.querySelector('footer').classList.toggle('dark-mode');
-        document.querySelectorAll('.project').forEach(el => el.classList.toggle('dark-mode'));
+    const toggleSwitch = document.getElementById('switch-toggle');
 
-        // Atualizar o texto e o ícone do botão
-        if (document.body.classList.contains('dark-mode')) {
-            themeToggle.textContent = '☀️ Modo Claro';
-        } else {
-            themeToggle.textContent = '🌙 Modo Noturno';
-        }
+    // Estado inicial baseado no localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('header')?.classList.add('dark-mode');
+    document.querySelector('footer')?.classList.add('dark-mode');
+    document.querySelectorAll('.card, .project').forEach(el => el.classList.add('dark-mode'));
+    toggleSwitch.checked = true;
+    }
+
+    toggleSwitch.addEventListener('change', () => {
+    const isDark = toggleSwitch.checked;
+
+    document.body.classList.toggle('dark-mode', isDark);
+    document.querySelector('header')?.classList.toggle('dark-mode', isDark);
+    document.querySelector('footer')?.classList.toggle('dark-mode', isDark);
+    document.querySelectorAll('.card, .project').forEach(el => el.classList.toggle('dark-mode', isDark));
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
-    const text = "O Meu Portfólio";
-    let i = 0;
-    const speed = 100;
 
-    function typeEffect() {
-        if (i < text.length) {
-            document.getElementById('typed-text').textContent += text.charAt(i);
-            i++;
-            setTimeout(typeEffect, speed);
+        const text = "O Meu Portfólio";
+        let i = 0;
+        const speed = 100;
+
+        function typeEffect() {
+            if (i < text.length) {
+                document.getElementById('typed-text').textContent += text.charAt(i);
+                i++;
+                setTimeout(typeEffect, speed);
+            }
+        }
+        typeEffect();
+
+        document.querySelector('#about').classList.toggle('dark-mode');
+
+        function animateSkills() {
+        const skills = document.querySelectorAll('.progress div');
+        const section = document.querySelector('.skills');
+        const sectionPosition = section.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3; // Ajusta para quando ativar
+
+        if (sectionPosition < screenPosition) {
+            skills.forEach(skill => {
+                skill.style.width = skill.getAttribute('data-width'); // Define a largura real
+            });
         }
     }
-    typeEffect();
 
-    document.querySelector('#about').classList.toggle('dark-mode');
-
-    function animateSkills() {
-    const skills = document.querySelectorAll('.progress div');
-    const section = document.querySelector('.skills');
-    const sectionPosition = section.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.3; // Ajusta para quando ativar
-
-    if (sectionPosition < screenPosition) {
-        skills.forEach(skill => {
-            skill.style.width = skill.getAttribute('data-width'); // Define a largura real
-        });
-    }
-}
-
-    window.addEventListener('scroll', animateSkills);
+    window.addEventListener('scroll', animateSkills);}
 
 </script>
 
