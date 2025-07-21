@@ -39,7 +39,7 @@
             <button onclick="openCode('licor')">Ver Interface</button>
         </div>
         <div class="project">
-            <img src="medtech/medtech.png" alt="projeto 6">
+            <img src="medtech-main/medtech.jpg" alt="projeto 6">
             <h3>MedTech</h3>
             <p>App móvel em Flutter para gestão de dados médicos e marcações</p>
             <button onclick="openCode('medtech')">Ver Interface</button>
@@ -156,12 +156,12 @@
         let urls = {
             netflix: 'perfis.html',
             licor: 'indexlicor.html',
-            medtech: 'medtech/login.dart',
+            medtech: 'medtech-main/index.html',
             chatbot: 'bot-academico-utad/index.html',
-            calculadora: href="https://github.com/bpds2004/Calculadora-Simples",
+            calculadora: 'https://github.com/bpds2004/Calculadora-Simples',
             minhoca: 'snakegame.html',
-            minhocapy: href="https://github.com/bpds2004/jogo-da-minhoca",
-            pingpong: href="https://github.com/bpds2004/Ping-Pong-simples"
+            minhocapy: 'https://github.com/bpds2004/jogo-da-minhoca',
+            pingpong: 'https://github.com/bpds2004/Ping-Pong-simples'
         };
 
         if (urls[project]) {
@@ -170,6 +170,7 @@
             alert('Código não encontrado para este projeto.');
         }
     }
+
 
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
