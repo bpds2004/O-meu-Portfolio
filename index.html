@@ -25,7 +25,7 @@
     
     <section id="projects">
         <h2>Os Meus Projetos</h2>
-        
+
         <div class="project">
             <img src="project1.jpg" alt="Projeto 1">
             <h3>Netflix Clone</h3>
@@ -37,6 +37,18 @@
             <h3>Site Licor Dª Graça</h3>
             <p>O site da Licor D'Graça é uma plataforma online projetada para destacar e vender os licores artesanais da marca.</p>
             <button onclick="openCode('licor')">Ver Interface</button>
+        </div>
+        <div class="project">
+            <img src="medtech/medtech.png" alt="projeto 6">
+            <h3>MedTech</h3>
+            <p>App móvel em Flutter para gestão de dados médicos e marcações</p>
+            <button onclick="openCode('medtech')">Ver Interface</button>
+        </div>
+        <div class="project">
+            <img src="bot-academico-utad/public/img.png" alt="projeto 7">
+            <h3>ChatBot UTAD</h3>
+            <p>Chatbot académico em HTML com base no regulamento pedagógico da UTAD</p>
+            <button onclick="openCode('chatbot')">Ver Interface</button>
         </div>
         <div class="project">
             <img src="project2.jpg" alt="Projeto 3">
@@ -57,7 +69,8 @@
             <p>Um jogo de Ping Pong onde dois jogadores controlam as raquetes para rebater a bola. Possui um placar para monitorar os pontos de cada jogador.</p>
             <button onclick="openCode('pingpong')">Ver Código em pyhton</button>
         </div>
-    <h3>Todos os projetos estão disponíveis no meu perfil de GitHub</h3>
+
+        <h3>Todos os projetos estão disponíveis no meu perfil de GitHub</h3>
     </section>
 
     
@@ -81,17 +94,25 @@
                 <div class="card">
                     <h2>As Minhas Skills</h2>
                     <div class="skills">
-                        <div class="skill"><span>HTML</span>
+                        <div class="skill">
+                            <span>HTML</span>
+                            <div class="progress"><div data-width="100%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>CSS</span>
                             <div class="progress"><div data-width="90%"></div></div>
                         </div>
-                        <div class="skill"><span>CSS</span>
-                            <div class="progress"><div data-width="85%"></div></div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="progress"><div data-width="80%"></div></div>
                         </div>
-                        <div class="skill"><span>JavaScript</span>
-                            <div class="progress"><div data-width="70%"></div></div>
+                        <div class="skill">
+                            <span>Python</span>
+                            <div class="progress"><div data-width="80%"></div></div>
                         </div>
-                        <div class="skill"><span>Python</span>
-                            <div class="progress"><div data-width="70%"></div></div>
+                        <div class="skill">
+                            <span>Flutter</span>
+                            <div class="progress"><div data-width="100%"></div></div>
                         </div>
                     </div>
 
@@ -135,6 +156,8 @@
         let urls = {
             netflix: 'perfis.html',
             licor: 'indexlicor.html',
+            medtech: 'medtech/login.dart',
+            chatbot: 'bot-academico-utad/index.html',
             calculadora: href="https://github.com/bpds2004/Calculadora-Simples",
             minhoca: 'snakegame.html',
             minhocapy: href="https://github.com/bpds2004/jogo-da-minhoca",
