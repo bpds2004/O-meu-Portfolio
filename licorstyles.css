@@ -353,8 +353,9 @@ footer {
         background-color: #daa520;
     }
 
-/* Checkout overlay */
-#checkout {
+/* Checkout and payment overlay */
+#checkout,
+#payment {
     display: none;
     position: fixed;
     top: 0;
@@ -368,9 +369,11 @@ footer {
     box-sizing: border-box;
 }
 
-    #checkout .cart-container {
+    #checkout .cart-container,
+    #payment .cart-container {
         margin: 0 auto;
         max-width: 300px;
+        text-align: center;
     }
 
     #checkout textarea {
@@ -396,5 +399,8 @@ footer {
 
         #checkout button:hover {
             background-color: #daa520;
-        
-}
+        }
+
+    #payment a {
+        color: #FFD700;
+    }

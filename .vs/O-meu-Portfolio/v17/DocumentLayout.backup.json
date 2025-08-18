@@ -5,6 +5,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|c:\\users\\bibi2\\source\\repos\\o-meu-portfolio\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|c:\\users\\bibi2\\source\\repos\\o-meu-portfolio\\pagamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|solutionrelative:pagamento.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\licorstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|solutionrelative:licorstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\indexlicor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|solutionrelative:indexlicor.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\bot-academico-utad\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{57C63B7A-1B4C-4567-A863-424B9219E03D}|C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio|solutionrelative:bot-academico-utad\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,26 +46,65 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "pagamento.html",
+              "DocumentMoniker": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\pagamento.html",
+              "RelativeDocumentMoniker": "pagamento.html",
+              "ToolTip": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\pagamento.html",
+              "RelativeToolTip": "pagamento.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-18T01:08:18.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "licorstyles.css",
+              "DocumentMoniker": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\licorstyles.css",
+              "RelativeDocumentMoniker": "licorstyles.css",
+              "ToolTip": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\licorstyles.css",
+              "RelativeToolTip": "licorstyles.css",
+              "ViewState": "AgIAAIUBAAAAAAAAAAAwwI8BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-18T00:58:26.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "indexlicor.html",
+              "DocumentMoniker": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\indexlicor.html",
+              "RelativeDocumentMoniker": "indexlicor.html",
+              "ToolTip": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\indexlicor.html",
+              "RelativeToolTip": "indexlicor.html",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAwwIgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-18T00:09:58.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\bot-academico-utad\\index.html",
+              "RelativeDocumentMoniker": "bot-academico-utad\\index.html",
+              "ToolTip": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\bot-academico-utad\\index.html",
+              "RelativeToolTip": "bot-academico-utad\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-07-21T19:04:30.291Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\index.html",
               "RelativeDocumentMoniker": "index.html",
               "ToolTip": "C:\\Users\\bibi2\\source\\repos\\O-meu-Portfolio\\index.html",
               "RelativeToolTip": "index.html",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAAAJkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAAFgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2025-07-21T18:02:53.823Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         },
