@@ -128,6 +128,19 @@
         </div>
     </section>
     
+    <section id="checkout" style="display:none;">
+        <div class="cart-container">
+            <h2>Finalizar Compra</h2>
+            <ul id="checkout-list"></ul>
+            <p id="checkout-total"></p>
+            <label for=" phone">Contacto:</label>
+            <textarea id="phone" placeholder="Insira o seu contacto"> </textarea>
+            <label for="address">Morada:</label>
+            <textarea id="address" placeholder="Insira a sua morada"></textarea>
+            <button onclick="comprar()">Comprar</button>
+        </div>
+    </section>
+
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -188,28 +201,31 @@
         function finalizarCompra() {
             const listaCarrinho = document.getElementById('cart-list');
             const items = listaCarrinho.getElementsByTagName('li');
-            let compras = "Resumo da Compra - Licor Dª Graça\n\n";
+            if (items.length === 0) {
+                alert('O carrinho está vazio.');
+                return;
+            }
+
+            const checkoutList = document.getElementById('checkout-list');
+            checkoutList.innerHTML = '';
 
             for (let i = 0; i < items.length; i++) {
-                compras += items[i].textContent + "\n";
+                const li = document.createElement('li');
+                li.textContent = items[i].textContent;
+                checkoutList.appendChild(li);
             }
-            compras += `\nTotal: €${total.toFixed(2)}`;
 
-            // Criar um blob (arquivo de texto) e gerar o link para download
-            const blob = new Blob([compras], { type: "text/plain" });
-            const link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "Compra.txt"; // Nome do arquivo
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            document.getElementById('checkout-total').textContent = `Total: €${total.toFixed(2)}`;
+            document.getElementById('checkout').style.display = 'block';
+        }
 
-            // Limpar o carrinho após download
-            listaCarrinho.innerHTML = "";
-            total = 0;
-            document.getElementById("cart-total").textContent = "Total: €0.00";
-
-            alert("Download concluído! Compra guardada como 'Compra.txt'");
+        function comprar() {
+            const address = document.getElementById('address').value.trim();
+            if (!address) {
+                alert('Por favor, preencha a morada.');
+                return;
+            }
+            window.location.href = 'pagamento.html';
         }
 
         
