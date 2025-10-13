@@ -45,7 +45,7 @@
                         </select>
                     </p>
                     <p>Descrição </p>
-                    <button onclick="adicionarAoCarrinho('L amour', '16,00€')">Adicionar ao Carrinho</button>
+                    <button onclick="adicionarAoCarrinho('L amour', 'size-lamour')">Adicionar ao Carrinho</button>
                 </div>
                 <div class="product">
                     <img src="limao.jpg" alt="Licor Limão">
@@ -181,10 +181,12 @@
                 <h2>Finalizar Compra</h2>
                 <ul id="checkout-list"></ul>
                 <p id="checkout-total"></p>
-                <label for=" phone">Contacto:</label>
-                <textarea id="phone" placeholder="Insira o seu contacto"> </textarea>
+                <label for="name">Nome:</label>
+                <input id="name" type="text" placeholder="Insira o seu nome" required />
+                <label for="phone">Contacto:</label>
+                <input id="phone" type="text" placeholder="Insira o seu contacto" required />
                 <label for="address">Morada:</label>
-                <textarea id="address" placeholder="Insira a sua morada"></textarea>
+                <textarea id="address" placeholder="Insira a sua morada" required></textarea>
                 <button onclick="comprar()">Comprar</button>
             </div>
         </section>
@@ -198,7 +200,15 @@
             </div>
         </section>
 
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script>
+            const EMAILJS_SERVICE_ID = 'replace_with_your_service_id';
+            const EMAILJS_TEMPLATE_ID = 'replace_with_your_template_id';
+            const EMAILJS_PUBLIC_KEY = 'replace_with_your_public_key';
+
+            if (typeof emailjs !== 'undefined' && !EMAILJS_PUBLIC_KEY.startsWith('replace_')) {
+                emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+            }
 
             document.addEventListener("DOMContentLoaded", function () {
                 // Animação de fade-in nos elementos ao carregar
@@ -278,22 +288,70 @@
             }
 
             function comprar() {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
                 const address = document.getElementById('address').value.trim();
-                if (!address) {
-                    alert('Por favor, preencha a morada.');
+
+                if (!name) {
+                    alert('Por favor, preencha o seu nome.');
                     return;
                 }
+
+                if (!phone) {
+                    alert('Por favor, preencha o seu contacto.');
+                    return;
+                }
+
+                if (!address) {
+                    alert('Por favor, preencha a sua morada.');
+                    return;
+                }
+
                 const checkoutItems = document.querySelectorAll('#checkout-list li');
-                let corpo = `Morada: ${address}%0D%0A%0D%0AProdutos:%0D%0A`;
+                if (!checkoutItems.length) {
+                    alert('O carrinho está vazio.');
+                    return;
+                }
+
+                const encodedAddress = encodeURIComponent(address);
+                let corpo = `Morada:%20${encodedAddress}%0D%0A%0D%0AProdutos:%0D%0A`;
                 checkoutItems.forEach(item => {
                     corpo += `${encodeURIComponent(item.textContent)}%0D%0A`;
                 });
                 corpo += `%0D%0ATotal: €${total.toFixed(2)}`;
 
-                document.getElementById('checkout').style.display = 'none';
-                document.getElementById('payment').style.display = 'block';
+                const produtos = Array.from(checkoutItems).map(item => item.textContent).join('\n');
 
-                window.location.href = `mailto:licor.donagraca@gmail.com?subject=Nova%20Encomenda&body=${corpo}`;
+                const templateParams = {
+                    customer_name: name,
+                    customer_contact: phone,
+                    customer_address: address,
+                    order_items: produtos,
+                    order_total: `€${total.toFixed(2)}`
+                };
+
+                const enviarEmail = () => {
+                    if (typeof emailjs === 'undefined') {
+                        return Promise.reject(new Error('EmailJS não está disponível.'));
+                    }
+
+                    if (!EMAILJS_SERVICE_ID.startsWith('replace_') &&
+                        !EMAILJS_TEMPLATE_ID.startsWith('replace_') &&
+                        !EMAILJS_PUBLIC_KEY.startsWith('replace_')) {
+                        return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                    }
+                    return Promise.reject(new Error('Configuração do EmailJS em falta.'));
+                };
+
+                enviarEmail()
+                    .then(() => {
+                        alert('Encomenda enviada com sucesso! Entraremos em contacto em breve.');
+                        document.getElementById('checkout').style.display = 'none';
+                        document.getElementById('payment').style.display = 'block';
+                    })
+                    .catch(() => {
+                        window.location.href = `mailto:licor.donagraca@gmail.com?subject=Nova%20Encomenda&body=Nome:%20${encodeURIComponent(name)}%0D%0AContacto:%20${encodeURIComponent(phone)}%0D%0A${corpo}`;
+                    });
             }
 
 
