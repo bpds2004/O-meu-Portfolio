@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Descarregar APK</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:#f7f7fb;color:#111;display:flex;align-items:center;justify-content:center;height:100vh}
+    .card{background:#fff;padding:2rem;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.08);max-width:520px;width:92%}
+    h1{margin:0 0 .6rem;font-size:1.25rem}
+    p{color:#444;margin:0 0 1rem}
+    .actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1rem}
+    .btn{background:#6c5ce7;color:#fff;border:none;padding:.6rem 1rem;border-radius:8px;cursor:pointer;text-decoration:none}
+    .btn.secondary{background:#eee;color:#333}
+    .note{font-size:.9rem;color:#666;margin-top:.6rem}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Descarregar app-debug.apk</h1>
+    <p>Se pretender ver todo o funcionamento da <strong>MedTech</strong> no seu dispositivo Android, pode descarregar o ficheiro APK abaixo e instalá-lo manualmente. Certifique-se de permitir a instalação de aplicações de fontes desconhecidas nas definições do seu dispositivo.</p>
+    <div class="actions">
+      <a id="downloadBtn" class="btn" href="app-debug.apk" download>Descarregar APK</a>
+      <button id="closeBtn" class="btn secondary" type="button">Fechar</button>
+    </div>
+
+    <p class="note" id="statusNote">A verificar disponibilidade do ficheiro…</p>
+  </div>
+
+  <script>
+    // Check if app-debug.apk exists (simple HEAD request)
+    (async function(){
+      const btn = document.getElementById('downloadBtn');
+      const note = document.getElementById('statusNote');
+      try{
+        const res = await fetch('app-debug.apk', {method:'HEAD'});
+        if (!res.ok) {
+          btn.style.pointerEvents = 'none';
+          btn.style.opacity = '.5';
+          note.textContent = 'Ficheiro não encontrado no servidor. Coloque "app-debug.apk" na raiz do repositório.';
+        } else {
+          note.textContent = 'Clique em "Descarregar APK" para iniciar o download.';
+        }
+      }catch(e){
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '.5';
+        note.textContent = 'Impossível verificar o ficheiro. Serve uma cópia local do repositório com o APK colocado na raiz.';
+      }
+    })();
+
+    // Close button: try to close window, fallback to navigating to site root
+    (function(){
+      const closeBtn = document.getElementById('closeBtn');
+      if(!closeBtn) return;
+      closeBtn.addEventListener('click', () => {
+        try{
+          window.close();
+          // If window.close() is blocked (same tab), redirect after a short delay
+          setTimeout(() => {
+            if (!window.closed) location.href = '/';
+          }, 150);
+        }catch(e){
+          location.href = '/';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

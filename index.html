@@ -110,6 +110,12 @@
             <p>Um jogo de Ping Pong onde dois jogadores controlam as raquetes para rebater a bola. Possui um placar para monitorar os pontos de cada jogador.</p>
             <button onclick="openCode('pingpong')">Ver Código em pyhton</button>
         </div>
+        <div class="project">
+            <img src="expenseflow.png" alt="Projeto 6">
+            <h3>Expenseflow</h3>
+            <p>Aplicação de gestão financeira para empresas, permitindo o registo de despesas e a visualização de estatísticas.</p>
+            <button onclick="openCode('expenseflow')">Ver Interface</button>
+        </div>
 
         <h3>Todos os projetos estão disponíveis no meu perfil de GitHub</h3>
     </section>
@@ -399,15 +405,22 @@
 
 <script>
     function openCode(project) {
-        let urls = {
+      // If a project is still under construction, show a user-friendly popup instead of opening a repo
+      if (project === 'expenseflow') {
+        showConstructionModal('Este projeto está em construção. Volte mais tarde.');
+        return;
+      }
+
+      let urls = {
             netflix: 'perfis.html',
             licor: 'indexlicor.html',
-            medtech: 'https://github.com/bpds2004/MedTech',
             chatbot: 'bot-academico-utad-main/bot-academico-utad-main/index.html',
+            medtech: 'download-apk.html',
             calculadora: 'https://github.com/bpds2004/Calculadora-Simples',
             minhoca: 'snakegame.html',
             minhocapy: 'https://github.com/bpds2004/jogo-da-minhoca',
-            pingpong: 'https://github.com/bpds2004/Ping-Pong-simples'
+            pingpong: 'https://github.com/bpds2004/Ping-Pong-simples',
+            expenseflow: 'https://github.com/bpds2004/ExpenseFlow'
         };
 
         if (urls[project]) {
@@ -472,4 +485,89 @@
 
 </script>
 
-</html>
+    <!-- Construction modal (animated) -->
+    <div id="construction-modal" aria-hidden="true">
+      <div class="cm-backdrop" id="cm-backdrop"></div>
+      <div class="cm-panel" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+        <button class="cm-close" id="cm-close" aria-label="Fechar">✕</button>
+        <h3 id="cm-title">Em construção</h3>
+        <p id="cm-message" class="cm-message"></p>
+        <div class="cm-actions">
+          <button id="cm-ok">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+    /* Construction modal styles + animations */
+    #construction-modal { position: fixed; inset: 0; display: none; z-index: 2000; }
+    .cm-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); opacity:0; transition: opacity .25s ease; }
+    .cm-panel { position: absolute; left:50%; top:50%; transform: translate(-50%,-50%) scale(.9); background: var(--card-bg,#ffffff); color: var(--card-text,#111); width: min(420px,92%); border-radius: 12px; padding: 1.2rem 1.4rem; box-shadow: 0 20px 50px rgba(0,0,0,0.4); opacity:0; transition: transform .35s cubic-bezier(.2,.9,.3,1), opacity .25s; }
+    .cm-panel.show { transform: translate(-50%,-50%) scale(1); opacity:1; }
+    .cm-backdrop.show { opacity:1; }
+    .cm-close{ position:absolute; right:0.6rem; top:0.5rem; background:transparent;border:none;font-size:1.1rem;cursor:pointer;color:inherit }
+    .cm-panel h3{ margin:0 0 .4rem 0; font-size:1.1rem }
+    .cm-message{ margin:0; padding:0; font-size:1rem; min-height:2.4rem }
+    .cm-actions{ margin-top:0.8rem; text-align:right }
+    .cm-actions button{ background:#6c5ce7;color:#fff;border:none;padding:0.45rem 0.8rem;border-radius:6px;cursor:pointer }
+
+    /* typing effect for message */
+    .cm-message span{ display:inline-block; opacity:0; transform: translateY(6px); animation: cm-type .6s forwards; }
+    @keyframes cm-type{ to{ opacity:1; transform:none } }
+
+    /* dark mode adjustments */
+    body.dark-mode .cm-panel{ background:#111; color:#eee }
+    </style>
+
+    <script>
+    function showConstructionModal(text){
+      const modal = document.getElementById('construction-modal');
+      const panel = modal.querySelector('.cm-panel');
+      const backdrop = document.getElementById('cm-backdrop');
+      const msgEl = document.getElementById('cm-message');
+      // clear
+      msgEl.innerHTML = '';
+      // create span per character to animate (preserve visible spaces)
+      const chars = Array.from(text);
+      chars.forEach((ch,i)=>{
+        const span = document.createElement('span');
+        if (ch === ' ') {
+          span.innerHTML = '&nbsp;';
+        } else {
+          span.textContent = ch;
+        }
+        span.style.animationDelay = (i*30)+'ms';
+        msgEl.appendChild(span);
+      });
+      modal.style.display = 'block';
+      // force reflow then show classes
+      requestAnimationFrame(()=>{
+        backdrop.classList.add('show');
+        panel.classList.add('show');
+      });
+
+      // close handlers
+      function close(){
+        backdrop.classList.remove('show');
+        panel.classList.remove('show');
+        setTimeout(()=> modal.style.display='none', 300);
+        cleanup();
+      }
+      function cleanup(){
+        document.getElementById('cm-close').removeEventListener('click', close);
+        document.getElementById('cm-ok').removeEventListener('click', close);
+        backdrop.removeEventListener('click', close);
+        document.removeEventListener('keydown', onKey);
+      }
+      function onKey(e){ if(e.key === 'Escape') close(); }
+      document.getElementById('cm-close').addEventListener('click', close);
+      document.getElementById('cm-ok').addEventListener('click', close);
+      backdrop.addEventListener('click', close);
+      document.addEventListener('keydown', onKey);
+
+      // auto-close after 5s
+      setTimeout(close, 5000);
+    }
+    </script>
+
+    </html>
