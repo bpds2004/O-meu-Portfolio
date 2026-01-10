@@ -8,3 +8,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>
 );
+
+// Sinaliza que a aplicação React carregou com sucesso.
+window.__app_loaded__ = true;

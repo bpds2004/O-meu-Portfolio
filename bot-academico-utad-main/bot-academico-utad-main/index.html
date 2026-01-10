@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
   <head>
-    <link rel="icon" href="./img.png" type="image/png" />
+    <link rel="icon" href="public/img.png" type="image/png" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chatbot UTAD</title>
+    <style>
+      /* Aviso de desenvolvimento quando a app não é servida por Vite */
+      #dev-instructions {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #fff8e1;
+        border: 1px solid #ffd54f;
+        color: #6b4f00;
+        padding: 1rem;
+        margin: 1rem auto;
+        max-width: 900px;
+        border-radius: 6px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      }
+      #dev-instructions h2 { margin: 0 0 .25rem 0; font-size: 1rem }
+      #dev-instructions p { margin: .25rem 0; font-size: .95rem }
+      #dev-instructions code { background:#f2f2f2; padding:2px 6px; border-radius:4px }
+    </style>
   </head>
   <body>
-    
+    <div id="dev-instructions" aria-live="polite">
+      <h2>Este projecto é uma app React + Vite</h2>
+      <p>Se esta página aparecer em branco ao abrir localmente, significa que as dependências não foram instaladas e o servidor de desenvolvimento do Vite não está em execução.</p>
+      <p>Passos rápidos para correr localmente (na pasta deste projecto):</p>
+      <ol>
+        <li>Abra o terminal na pasta <code>bot-academico-utad-main/bot-academico-utad-main</code></li>
+        <li>Execute <code>npm install</code></li>
+        <li>Execute <code>npm run dev</code> e abra o URL mostrado (ex.: <code>http://localhost:5173</code>)</li>
+      </ol>
+      <p>Alternativas: <code>npm run build</code> + <code>npm run preview</code> para servir os ficheiros de produção.</p>
+      <p>Se preferir, contacta o autor para que eu coloque uma versão estática na raiz.</p>
+    </div>
+
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Se a app carregar correctamente, o código em `src/main.jsx` definirá
+      // `window.__app_loaded__ = true` — neste caso escondemos o aviso.
+      (function waitForApp() {
+        if (window.__app_loaded__) {
+          const d = document.getElementById('dev-instructions');
+          if (d) d.style.display = 'none';
+        } else {
+          // tenta novamente depois de curto atraso
+          setTimeout(waitForApp, 250);
+        }
+      })();
+    </script>
+
+    <script type="module" src="src/main.jsx"></script>
   </body>
 </html>
