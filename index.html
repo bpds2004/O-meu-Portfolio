@@ -208,9 +208,12 @@
     <div class="blob"></div>
     <div class="bg">
       <h3>🎓 Licenciatura em Engenharia Informática</h3>
-      <p>Universidade de Trás-os-Montes e Alto Douro – UTAD (2021–2024)</p>
+      <p>Universidade de Trás-os-Montes e Alto Douro</p>
+      <p style="font-size: clamp(0.5rem, calc(1rem - 1cm), 1.5rem);">(2021–2024)</p>
+      
       <h3>🎓 Mestrado em Engenharia Informática</h3>
-      <p>Universidade de Trás-os-Montes e Alto Douro – UTAD (2025–atualidade)</p>
+      <p>Universidade de Trás-os-Montes e Alto Douro </p>
+      <p style="font-size: clamp(0.5rem, calc(1rem - 1cm), 1.5rem);">(2025–atualidade)</p>
     </div>
   </div>
 
@@ -218,9 +221,61 @@
     <div class="blob"></div>
     <div class="bg">
       <h3>🗣 Idiomas</h3>
-      <p>Português (nativo), Inglês (avançado)</p>
+      <div class="language" data-lang="pt">
+        <div class="lang-row"><span class="lang-name">Português</span><span class="lang-level">Nativo</span></div>
+        <div class="lang-bar"><div class="lang-fill" data-width="100%" style="width:0%"></div></div>
+        <div class="lang-extra" style="display:none; font-size:0. ninerem; margin-top:0.4rem;">Uso diário em contexto pessoal e académico.</div>
+      </div>
+      <div class="language" data-lang="en">
+        <div class="lang-row"><span class="lang-name">Inglês</span><span class="lang-level">Avançado</span></div>
+        <div class="lang-bar"><div class="lang-fill" data-width="85%" style="width:0%"></div></div>
+        <div class="lang-extra" style="display:none; font-size:0.9rem; margin-top:0.4rem;">Leitura técnica, conversação e apresentações.</div>
+      </div>
+      <button class="toggle-details">Mostrar detalhes</button>
     </div>
   </div>
+
+  <style>
+  /* Idiomas widget */
+  .idiomas-card .language{margin-bottom:0.6rem;cursor:pointer}
+  .idiomas-card .lang-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem}
+  .idiomas-card .lang-bar{background:#e9e9e9;border-radius:999px;height:10px;overflow:hidden}
+  .idiomas-card .lang-fill{height:100%;background:linear-gradient(90deg,#6c5ce7,#00b894);width:0;transition:width 800ms ease}
+  .idiomas-card .lang-level{font-size:0.9rem;color:#666}
+  .idiomas-card .lang-name{font-weight:600}
+  .idiomas-card .toggle-details{margin-top:0.6rem;padding:0.4rem 0.6rem;border-radius:6px;border:none;background:#6c5ce7;color:#fff;cursor:pointer}
+  .idiomas-card .lang-extra{color:#444}
+  </style>
+
+  <script>
+  (function(){
+    function animate() {
+      document.querySelectorAll('.lang-fill').forEach(el=>{
+        const w = el.getAttribute('data-width') || '100%';
+        setTimeout(()=> el.style.width = w, 180);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', ()=>{
+      animate();
+      document.querySelectorAll('.language').forEach(lang=>{
+        lang.addEventListener('click', ()=>{
+          const extra = lang.querySelector('.lang-extra');
+          if(!extra) return;
+          extra.style.display = extra.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+      const btn = document.querySelector('.toggle-details');
+      if(btn){
+        btn.addEventListener('click', ()=>{
+          const extras = document.querySelectorAll('.lang-extra');
+          const anyHidden = Array.from(extras).some(e=> e.style.display !== 'block');
+          extras.forEach(e=> e.style.display = anyHidden ? 'block' : 'none');
+          btn.textContent = anyHidden ? 'Ocultar detalhes' : 'Mostrar detalhes';
+        });
+      }
+    });
+  })();
+  </script>
 </div>
 
 <!-- EVENTOS -->

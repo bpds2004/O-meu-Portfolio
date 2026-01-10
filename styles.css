@@ -400,6 +400,21 @@ header nav ul li a:hover {
     content: "🔗 "; /* Ícone padrão para links */
 }
 
+/* Garantir que o título principal fique branco no modo noturno */
+.dark-mode header h1,
+.dark-mode #typed-text {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* Dark-mode: tornar os títulos de secção visíveis */
+.dark-mode .titulo-secao {
+  color: #ffffff !important;
+}
+.dark-mode .titulo-secao::after {
+  background: linear-gradient(to right, #2ea3ff, #28d1a4) !important;
+}
+
 .social-links a[href^="mailto:"]:before {
     content: "📧 "; /* Ícone personalizado para e-mail */
 }
@@ -559,8 +574,8 @@ footer.dark-mode {
 .card {
   position: relative;
   width: 100%;
-  max-width: 280px;
-  min-height: 260px;
+  max-width: 250px;
+  min-width: 10px;
   height: auto;
   border-radius: 14px;
   z-index: 1111;
@@ -574,15 +589,16 @@ footer.dark-mode {
 
 .bg {
   position: relative;
-  width: 100%;
-  min-height: 100%;
-  z-index: 2;
+  max-width: 280%;
+  min-width: 80%;
+  min-height: auto;
+  z-index: 1;
   background: rgba(255, 255, 255, .95);
   backdrop-filter: blur(24px);
   border-radius: 10px;
   overflow: hidden;
   outline: 2px solid white;
-  padding: 1.4rem;
+  padding: 1rem;
   text-align: center;
 }
 
