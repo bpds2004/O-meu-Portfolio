@@ -9,6 +9,11 @@ body {
     color: #333;
     transition: background-color 0.3s, color 0.3s;
 }
+/* Ajuste global: reduzir ligeiramente o tamanho de parágrafos */
+p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 html, body {
   height: 100%;
   margin: 0;
@@ -190,7 +195,7 @@ header nav ul li a:hover {
 
 .project h3 {
     margin-top: 0.5rem;
-    font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .project button {
@@ -252,8 +257,9 @@ header nav ul li a:hover {
 .card {
     background-color: inherit;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 1.2rem;
-    border-radius: 8px;
+  padding: 1.6rem;
+  border-radius: 8px;
+  min-height: 220px; /* aumenta para caber texto */
     text-align: center;
     
     transition: transform 0.3s;
@@ -307,6 +313,13 @@ header nav ul li a:hover {
 #about .img-thumbnail:hover {
     transform: scale(1.1);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo específico para o card de Idiomas - manter menor */
+.idiomas-card {
+  min-height: 120px;
+  padding: 0.9rem;
+  max-width: 260px;
 }
 
 
