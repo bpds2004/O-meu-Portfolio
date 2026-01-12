@@ -30,6 +30,56 @@
         </style>
 </head>
 <body>
+    <div class="page-loader" aria-hidden="true">
+        <div class="page-loader__content">
+            <div class="hourglassBackground" aria-hidden="true">
+                <div class="hourglassContainer">
+                    <div class="hourglassCapTop"></div>
+                    <div class="hourglassCapBottom"></div>
+                    <div class="hourglassGlassTop"></div>
+                    <div class="hourglassGlass"></div>
+                    <div class="hourglassCurves"></div>
+                    <div class="hourglassSandStream"></div>
+                    <div class="hourglassSand"></div>
+                </div>
+            </div>
+            <span>A carregar...</span>
+        </div>
+    </div>
+    <div class="watch-modal" aria-hidden="true">
+        <div class="watch-modal__dialog" role="dialog" aria-modal="true" aria-label="Escolha de reprodução">
+            <div class="watch-modal__header">
+                <h2 class="watch-modal__title">Como quer assistir?</h2>
+                <button class="watch-modal__close" type="button" aria-label="Fechar">×</button>
+            </div>
+            <p>Escolhe uma opção para começar o filme.</p>
+            <div class="watch-modal__options">
+                <button class="watch-modal__option" type="button" data-watch="solo">Assistir Sozinho</button>
+                <button class="watch-modal__option" type="button" data-watch="together">Assistir com</button>
+            </div>
+            <div class="watch-modal__profiles is-hidden">
+                <p>Com quem queres assistir?</p>
+                <div class="watch-modal__profiles-grid">
+                    <button class="watch-profile" type="button">
+                        <img src="perfil1.jpg" alt="Perfil Ana">
+                        <span>Ana</span>
+                    </button>
+                    <button class="watch-profile" type="button">
+                        <img src="perfil2.jpg" alt="Perfil Bruno">
+                        <span>Bruno</span>
+                    </button>
+                    <button class="watch-profile" type="button">
+                        <img src="perfil3.png" alt="Perfil Carla">
+                        <span>Carla</span>
+                    </button>
+                    <button class="watch-profile" type="button">
+                        <img src="perfil4.png" alt="Perfil Diego">
+                        <span>Diego</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Cabeçalho -->
     <header class="header">
         <div class="logo">
@@ -176,6 +226,13 @@
         <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.add('page-transition');
+            const loader = document.querySelector('.page-loader');
+            const showLoader = () => {
+                if (loader) {
+                    loader.classList.add('is-active');
+                }
+            };
+
             document.querySelectorAll('a[href]').forEach((link) => {
                 const href = link.getAttribute('href');
                 if (!href || href.startsWith('#') || href.startsWith('mailto:')) {
@@ -189,11 +246,68 @@
                         return;
                     }
                     event.preventDefault();
+                    showLoader();
                     document.body.classList.add('is-exiting');
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 220);
+                    }, 2000);
                 });
+            });
+
+            const watchModal = document.querySelector('.watch-modal');
+            const watchModalClose = watchModal?.querySelector('.watch-modal__close');
+            const watchProfiles = watchModal?.querySelector('.watch-modal__profiles');
+            const watchSolo = watchModal?.querySelector('[data-watch="solo"]');
+            const watchTogether = watchModal?.querySelector('[data-watch="together"]');
+
+            const openWatchModal = () => {
+                if (!watchModal) {
+                    return;
+                }
+                watchModal.classList.add('is-open');
+                watchModal.setAttribute('aria-hidden', 'false');
+                if (watchProfiles) {
+                    watchProfiles.classList.add('is-hidden');
+                }
+            };
+
+            const closeWatchModal = () => {
+                if (!watchModal) {
+                    return;
+                }
+                watchModal.classList.remove('is-open');
+                watchModal.setAttribute('aria-hidden', 'true');
+            };
+
+            document.addEventListener('click', (event) => {
+                const button = event.target.closest('.btn-play');
+                if (!button) {
+                    return;
+                }
+                event.preventDefault();
+                openWatchModal();
+            });
+
+            watchModalClose?.addEventListener('click', closeWatchModal);
+            watchModal?.addEventListener('click', (event) => {
+                if (event.target === watchModal) {
+                    closeWatchModal();
+                }
+            });
+
+            watchSolo?.addEventListener('click', closeWatchModal);
+            watchTogether?.addEventListener('click', () => {
+                watchProfiles?.classList.remove('is-hidden');
+            });
+
+            watchModal?.querySelectorAll('.watch-profile').forEach((profile) => {
+                profile.addEventListener('click', closeWatchModal);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeWatchModal();
+                }
             });
         });
         </script>
