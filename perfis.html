@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="styles_Netflix.css">
 </head>
 <body>
-    <div class="profile-container">
+    <div class="intro-screen" aria-hidden="true">
+        <img class="intro-logo" src="netflix-logo.png" alt="Netflix">
+    </div>
+    <div class="profile-container is-hidden">
         <h1>Quem está a ver a Netflix?</h1>
         <div class="profiles">
             <div class="profile" onclick="selectProfile()">
@@ -35,6 +38,21 @@
     </div>
 
     <script>
+        const introScreen = document.querySelector(".intro-screen");
+        const profileContainer = document.querySelector(".profile-container");
+        const introDuration = 2800;
+
+        function finishIntro() {
+            introScreen.classList.add("is-hidden");
+            profileContainer.classList.remove("is-hidden");
+        }
+
+        window.addEventListener("load", () => {
+            setTimeout(finishIntro, introDuration);
+        });
+
+        introScreen.addEventListener("click", finishIntro);
+
         function selectProfile() {
             window.location.href = "netflix.html"; 
         }

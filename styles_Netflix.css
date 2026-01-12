@@ -16,9 +16,58 @@ main {
     padding-top: 90px;
 }
 /*perfis*/
+.intro-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.intro-screen.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-logo {
+    width: min(320px, 70vw);
+    animation: logoPulse 2.2s ease-in-out forwards;
+    filter: drop-shadow(0 0 18px rgba(229, 9, 20, 0.6));
+}
+
 .profile-container {
     margin-top: 100px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
+.profile-container.is-hidden {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+}
+
+@keyframes logoPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    35% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 h1 {
     font-size: 2rem;
     margin-bottom: 30px;
