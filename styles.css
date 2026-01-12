@@ -199,26 +199,28 @@ header nav ul li a:hover {
 }
 
 .project button {
-    background-color: #007BFF;
-    color: #fff;
+    padding: 16px 33px;
+    border-radius: 9px;
+    background: #d5f365;
     border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    font-size: 16px;
+    font-family: inherit;
+    text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     margin-top: 1rem;
+    color: #1a1a1a;
+    font-size: 16px;
 }
 
 .project button:hover {
-    background-color: #0056b3;
-    transform: scale(1.1);
+    box-shadow: 7px 5px 56px -14px #c3d900;
+    transform: scale(1.04);
 }
 
 .project button:active {
-    transform: scale(1);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: scale(0.97);
+    box-shadow: 7px 5px 56px -10px #c3d900;
 }
 
 
