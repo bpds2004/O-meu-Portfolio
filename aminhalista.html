@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Minha Lista - Flixo</title>
     <link rel="stylesheet" href="styles_Netflix.css">
+        <style>
+        /* Enhancements for A Minha Lista */
+        #availableSelect {
+            padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background:#151515; color:#fff; min-width:260px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+        }
+        #addItemBtn.manage-button { background:#6c5ce7; border-radius:8px; padding:8px 14px; color:#fff; border:none; cursor:pointer; }
+        #addItemBtn.manage-button:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(108,92,231,0.18); }
+
+        .grid-container { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+        .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2)); border-radius:12px; overflow:hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.6); transition: transform .28s ease, box-shadow .28s ease, opacity .28s ease; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.7); }
+        .card img{ width:100%; height:150px; object-fit:cover; display:block; }
+        .card .info{ padding:0.9rem; display:flex; flex-direction:column; gap:0.6rem; }
+        .card h2{ font-size:1.05rem; margin:0; color:#fff }
+        .btn-play{ background:#e50914; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; }
+        .btn-remove{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.06); padding:6px 8px; border-radius:8px; cursor:pointer; align-self:flex-end }
+
+        .new-item{ animation: popIn .36s ease; }
+        @keyframes popIn { from { transform: scale(.96) translateY(8px); opacity:0 } to { transform:none; opacity:1 } }
+
+        .removing{ transform: scale(.98) translateY(6px); opacity:0; }
+        </style>
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -27,42 +50,128 @@
     </header>
 
     <!-- Seção Principal -->
-    <main>
-        <h1 class="page-title">⭐ A Minha Lista ⭐</h1>
-        <section class="grid-container">
-            <div class="card">
-                <img src="movie1.jpg" alt="Item 1">
-                <div class="info">
-                    <h2>Anyone but you</h2>
-                    <button class="btn btn-play button-with-icon"><span class="icon">▶</span><span class="text">Assistir</span></button>
-                    <button class="btn btn-remove">❌ Remover</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="movie2.jpg" alt="Item 2">
-                <div class="info">
-                    <h2>Shrek</h2>
-                    <button class="btn btn-play button-with-icon"><span class="icon">▶</span><span class="text">Assistir</span></button>
-                    <button class="btn btn-remove">❌ Remover</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="series9.jpg" alt="Item 3">
-                <div class="info">
-                    <h2>Cobra Kai</h2>
-                    <button class="btn btn-play button-with-icon"><span class="icon">▶</span><span class="text">Assistir</span></button>
-                    <button class="btn btn-remove">❌ Remover</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="series15.jpg" alt="Item 4">
-                <div class="info">
-                    <h2>Berlin</h2>
-                    <button class="btn btn-play button-with-icon"><span class="icon">▶</span><span class="text">Assistir</span></button>
-                    <button class="btn btn-remove">❌ Remover</button>
-                </div>
-            </div>
-        </section>
-    </main>
+        <main>
+                <h1 class="page-title">⭐ A Minha Lista ⭐</h1>
+
+                <section style="max-width:1000px;margin:1.2rem auto;padding:0 1rem;">
+                        <div style="display:flex;gap:0.6rem;align-items:center;justify-content:center;margin-bottom:1rem;">
+                                <label for="availableSelect">Adicionar da página principal:</label>
+                                <select id="availableSelect">
+                                    <option>Carregando...</option>
+                                </select>
+                                <button id="addItemBtn" class="manage-button">Adicionar</button>
+                        </div>
+
+                        <div id="myList" class="grid-container" aria-live="polite">
+                                <!-- itens serão renderizados aqui -->
+                        </div>
+                </section>
+        </main>
+
+        <script>
+        (function(){
+            const SOURCE_PAGE = 'netflix.html'; // página principal onde procurar títulos
+            const STORAGE_KEY = 'mylist_v1';
+            const availableSelect = document.getElementById('availableSelect');
+            const addItemBtn = document.getElementById('addItemBtn');
+            const myListEl = document.getElementById('myList');
+
+            let available = []; // {title, img}
+            let myList = [];
+
+            function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(myList)); }
+            function load(){ try{ myList = JSON.parse(localStorage.getItem(STORAGE_KEY))||[]; }catch(e){ myList=[];} }
+
+            function renderList(){
+                myListEl.innerHTML = '';
+                if(myList.length === 0){
+                    myListEl.innerHTML = '<p style="text-align:center;opacity:0.8">A sua lista está vazia. Adicione items da página principal.</p>';
+                    return;
+                }
+                myList.forEach((it, idx)=>{
+                    const card = document.createElement('div'); card.className='card';
+                    card.innerHTML = `
+                        <img src="${it.img}" alt="${it.title}">
+                        <div class="info">
+                            <h2>${it.title}</h2>
+                            <div style="display:flex;gap:.5rem;justify-content:space-between;align-items:center">
+                              <button class="btn btn-play button-with-icon">▶ Assistir</button>
+                              <button class="btn btn-remove" data-idx="${idx}">❌ Remover</button>
+                            </div>
+                        </div>`;
+                    myListEl.appendChild(card);
+                });
+
+                // highlight newly added
+                if(window._lastAddedTitle){
+                    const nodes = Array.from(myListEl.querySelectorAll('.card'));
+                    const found = nodes.find(n=> n.querySelector('h2')?.textContent === window._lastAddedTitle);
+                    if(found){ found.classList.add('new-item'); setTimeout(()=> found.classList.remove('new-item'), 700); }
+                    window._lastAddedTitle = null;
+                }
+
+                // attach remove handlers with animation
+                myListEl.querySelectorAll('.btn-remove').forEach(btn=>{
+                    btn.addEventListener('click', ()=>{
+                        const i = parseInt(btn.getAttribute('data-idx'));
+                        if(Number.isNaN(i)) return;
+                        if(!confirm('Remover este item da sua lista?')) return;
+                        const card = btn.closest('.card');
+                        if(card) card.classList.add('removing');
+                        setTimeout(()=>{ myList.splice(i,1); save(); renderList(); populateSelect(); }, 300);
+                    });
+                });
+            }
+
+            function populateSelect(){
+                // show available items that aren't already in myList
+                const titlesInList = new Set(myList.map(i=>i.title));
+                availableSelect.innerHTML = '';
+                const filtered = available.filter(a=>!titlesInList.has(a.title));
+                if(filtered.length === 0){
+                    const opt = document.createElement('option'); opt.textContent='(Sem items disponíveis)'; opt.disabled=true; availableSelect.appendChild(opt); return;
+                }
+                filtered.forEach(a=>{
+                    const opt = document.createElement('option'); opt.value = a.title; opt.textContent = a.title; opt.dataset.img = a.img; availableSelect.appendChild(opt);
+                });
+            }
+
+            addItemBtn.addEventListener('click', ()=>{
+                const opt = availableSelect.selectedOptions[0];
+                if(!opt || opt.disabled) return alert('Nada para adicionar');
+                const title = opt.value; const img = opt.dataset.img || 'perfil-placeholder.png';
+                window._lastAddedTitle = title;
+                myList.push({title, img}); save(); renderList(); populateSelect();
+            });
+
+            // fetch source page and parse titles/images
+            fetch(SOURCE_PAGE).then(r=>r.text()).then(html=>{
+                const parser = new DOMParser(); const doc = parser.parseFromString(html,'text/html');
+                const items = [];
+                // try to get main animated title
+                const animTitle = doc.querySelector('.animacao-content h1');
+                if(animTitle){
+                    const imgEl = doc.querySelector('.animacao')?.style?.backgroundImage ? '' : (doc.querySelector('.animacao img')?.src || '');
+                    items.push({title: animTitle.textContent.trim(), img: imgEl || 'movie1.jpg'});
+                }
+                // carousel items: h3 inside .carousel-item .info
+                doc.querySelectorAll('.carousel-item .info h3, .carousel-item .info h2').forEach(h=>{
+                    const title = h.textContent.trim();
+                    // image: try to find closest img in .carousel-item
+                    const item = h.closest('.carousel-item') || h.closest('.card') || h.parentElement;
+                    const img = item ? (item.querySelector('img')?.getAttribute('src') || 'movie1.jpg') : 'movie1.jpg';
+                    if(title) items.push({title, img});
+                });
+                // dedupe preserving order
+                const seen = new Set(); available = items.filter(i=>{ if(seen.has(i.title)) return false; seen.add(i.title); return true; });
+                load(); renderList(); populateSelect();
+            }).catch(err=>{
+                console.error('Erro a carregar página fonte',err);
+                availableSelect.innerHTML = '<option disabled>Erro a carregar</option>';
+                load(); renderList();
+            });
+
+        })();
+        </script>
 </body>
 </html>
