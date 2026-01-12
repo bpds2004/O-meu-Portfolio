@@ -12,6 +12,30 @@ body {
     text-align: center;
 }
 
+body.page-transition {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: pageFadeIn 0.45s ease forwards;
+}
+
+body.page-transition.is-exiting {
+    animation: pageFadeOut 0.25s ease forwards;
+}
+
+@keyframes pageFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageFadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
 main {
     padding-top: 90px;
 }
@@ -33,7 +57,14 @@ main {
 }
 
 .intro-logo {
-    width: min(320px, 70vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.35rem;
+    text-transform: uppercase;
+    color: #e50914;
     animation: logoPulse 2.2s ease-in-out forwards;
     filter: drop-shadow(0 0 18px rgba(229, 9, 20, 0.6));
 }
@@ -334,10 +365,21 @@ h1 {
     color: white;
     opacity: 0;
     transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .card:hover .info {
     opacity: 1;
+}
+
+.card .info p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Botões interativos */
@@ -438,6 +480,10 @@ h1 {
 
 .button-with-icon:hover .icon {
     transform: translate(23px);
+}
+
+.btn-play.button-with-icon:hover .icon {
+    transform: translateX(34px);
 }
 
 .text {
