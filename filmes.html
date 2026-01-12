@@ -165,5 +165,29 @@
             </div>
         </section>
     </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('page-transition');
+        document.querySelectorAll('a[href]').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('mailto:')) {
+                return;
+            }
+            if (link.target === '_blank' || link.hasAttribute('download')) {
+                return;
+            }
+            link.addEventListener('click', (event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                    return;
+                }
+                event.preventDefault();
+                document.body.classList.add('is-exiting');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 220);
+            });
+        });
+    });
+    </script>
 </body>
 </html>
