@@ -571,3 +571,30 @@
     </script>
 
     </html>
+
+<script>
+(function(){
+  const footer = document.querySelector('footer');
+  if(!footer) return;
+  // start visible
+  footer.classList.add('footer-visible');
+  let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  window.addEventListener('scroll', ()=>{
+    const current = window.pageYOffset || document.documentElement.scrollTop;
+    // small threshold to avoid flicker
+    if (Math.abs(current - lastScroll) < 10) return;
+
+    if (current > lastScroll) {
+      // scrolling down -> hide footer
+      footer.classList.remove('footer-visible');
+      footer.classList.add('footer-hidden');
+    } else {
+      // scrolling up -> show footer
+      footer.classList.remove('footer-hidden');
+      footer.classList.add('footer-visible');
+    }
+    lastScroll = current <= 0 ? 0 : current;
+  }, {passive: true});
+})();
+</script>

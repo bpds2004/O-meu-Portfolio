@@ -464,6 +464,20 @@ footer {
   text-align: center;
 }
 
+/* Smooth slide in/out for footer when scrolling */
+footer {
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+footer.footer-hidden {
+  transform: translateY(100%);
+}
+
+footer.footer-visible {
+  transform: translateY(0);
+}
+
 
 
 footer.dark-mode {
