@@ -279,11 +279,13 @@
                 watchModal.setAttribute('aria-hidden', 'true');
             };
 
-            document.querySelectorAll('.btn-play').forEach((button) => {
-                button.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    openWatchModal();
-                });
+            document.addEventListener('click', (event) => {
+                const button = event.target.closest('.btn-play');
+                if (!button) {
+                    return;
+                }
+                event.preventDefault();
+                openWatchModal();
             });
 
             watchModalClose?.addEventListener('click', closeWatchModal);

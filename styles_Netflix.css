@@ -94,6 +94,29 @@ main {
     transform-style: preserve-3d;
 }
 
+.hourglassCapTop,
+.hourglassCapBottom {
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 6px;
+    background-color: #999999;
+    border-radius: 4px;
+}
+
+.hourglassCapTop:before,
+.hourglassCapTop:after,
+.hourglassCapBottom:before,
+.hourglassCapBottom:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 6px;
+    background-color: #999999;
+    border-radius: 50%;
+}
+
 @-webkit-keyframes hourglassRotate {
     0% {
         transform: rotateX(0deg);
@@ -144,6 +167,16 @@ main {
 
 .hourglassCapBottom:after {
     bottom: -20px;
+}
+
+.hourglassCurves,
+.hourglassSandStream,
+.hourglassSand {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 70px;
 }
 
 .hourglassGlassTop {
@@ -401,6 +434,9 @@ main {
 }
 
 .hourglassSand:after {
+    top: 45px;
+    width: 38px;
+    height: 17px;
     border-radius: 30px 30px 3px 3px;
     animation: sandDeplete 2s ease-in 0s infinite;
 }
