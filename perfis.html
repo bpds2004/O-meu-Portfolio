@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escolha um Perfil - Netflix</title>
+    <title>Escolha um Perfil - Flixo</title>
     <link rel="stylesheet" href="styles_Netflix.css">
 </head>
 <body>
     <div class="intro-screen" aria-hidden="true">
-        <img class="intro-logo" src="netflix-logo.png" alt="Netflix">
+        <img class="intro-logo" src="netflix-logo.png" alt="Flixo">
     </div>
     <div class="profile-container is-hidden">
-        <h1>Quem está a ver a Netflix?</h1>
-        <div class="profiles">
-            <div class="profile" onclick="selectProfile()">
-                <img src="perfil1.jpg" alt="Miguel">
-                <p>Miguel</p>
-            </div>
-            <div class="profile" onclick="selectProfile()">
-                <img src="perfil2.jpg" alt="Ana">
-                <p>Ana</p>
-            </div>
-            <div class="profile" onclick="selectProfile()">
-                <img src="perfil3.png" alt="Bia">
-                <p>Bia</p>
-            </div>
-            <div class="profile" onclick="selectProfile()">
-                <img src="perfil4.png" alt="David">
-                <p>Crianças</p>
-            </div>
-            <div class="profile" onclick="selectProfile()">
-                <img src="perfil5.jpg" alt="Lu">
-                <p>Lu</p>
-            </div>
+        <h1>Quem está a ver a Flixo?</h1>
+        <div class="profiles" id="profiles"></div>
+        <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.2rem;">
+          <button class="manage-button" id="manageButton">Gerir perfis</button>
+          <button class="add-button" id="addButton" style="display:none;">Adicionar perfil</button>
         </div>
-        <button class="manage-button">Gerir perfis</button>
+
+        <style>
+        /* small additions for manage UI */
+        .profile { position: relative; }
+        .delete-btn {
+          position: absolute; top: 6px; right: 6px; width:28px; height:28px; border-radius:50%;
+          background: rgba(0,0,0,0.6); color:#fff; border:none; display:flex; align-items:center; justify-content:center;
+          cursor:pointer; font-size:16px; box-shadow:0 2px 6px rgba(0,0,0,0.4);
+        }
+        .manage-mode .profile p { opacity: 0.9; }
+        .add-form { display:flex; gap:0.6rem; justify-content:center; margin-top:0.8rem; }
+        .add-form input { padding:0.4rem 0.6rem; border-radius:6px; border:1px solid #ccc }
+        </style>
     </div>
 
     <script>
@@ -53,9 +48,98 @@
 
         introScreen.addEventListener("click", finishIntro);
 
-        function selectProfile() {
-            window.location.href = "netflix.html"; 
-        }
+                function selectProfile(profileName) {
+                        // only navigate when not in manage mode
+                        if (document.body.classList.contains('manage-mode')) return;
+                        // you could save chosen profile if needed
+                    window.location.href = "netflix.html";
+                }
+
+                // --- Profile management logic ---
+                (function(){
+                    const STORAGE_KEY = 'local_profiles_v1';
+                    const profilesEl = document.getElementById('profiles');
+                    const manageBtn = document.getElementById('manageButton');
+                    const addBtn = document.getElementById('addButton');
+
+                    // initial profiles fallback (if no localStorage)
+                    const defaultProfiles = [
+                        {name: 'Miguel', img: 'perfil1.jpg'},
+                        {name: 'Ana', img: 'perfil2.jpg'},
+                        {name: 'Bia', img: 'perfil3.png'},
+                        {name: 'Crianças', img: 'perfil4.png'},
+                        {name: 'Lu', img: 'perfil5.jpg'}
+                    ];
+
+                    function loadProfiles(){
+                        try{
+                            const raw = localStorage.getItem(STORAGE_KEY);
+                            if(!raw) return defaultProfiles.slice();
+                            return JSON.parse(raw);
+                        }catch(e){ return defaultProfiles.slice(); }
+                    }
+
+                    function saveProfiles(list){
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+                    }
+
+                    let profiles = loadProfiles();
+                    let manageMode = false;
+
+                    function render(){
+                        profilesEl.innerHTML = '';
+                        profiles.forEach((p, idx)=>{
+                            const div = document.createElement('div');
+                            div.className = 'profile';
+                            div.innerHTML = `<img src="${p.img}" alt="${p.name}"><p>${p.name}</p>`;
+                            div.addEventListener('click', ()=> selectProfile(p.name));
+
+                            if(manageMode){
+                                const del = document.createElement('button');
+                                del.className = 'delete-btn';
+                                del.title = 'Eliminar perfil';
+                                del.innerHTML = '✕';
+                                del.addEventListener('click', (ev)=>{ ev.stopPropagation(); removeProfile(idx); });
+                                div.appendChild(del);
+                            }
+
+                            profilesEl.appendChild(div);
+                        });
+                    }
+
+                    function removeProfile(index){
+                        if(!confirm('Eliminar este perfil?')) return;
+                        profiles.splice(index,1);
+                        saveProfiles(profiles);
+                        render();
+                    }
+
+                    function addProfile(name, img){
+                        if(!name) return alert('Nome obrigatório');
+                        profiles.push({name: name, img: img || 'perfil-placeholder.png'});
+                        saveProfiles(profiles);
+                        render();
+                    }
+
+                    manageBtn.addEventListener('click', ()=>{
+                        manageMode = !manageMode;
+                        document.body.classList.toggle('manage-mode', manageMode);
+                        manageBtn.textContent = manageMode ? 'Concluir' : 'Gerir perfis';
+                        addBtn.style.display = manageMode ? 'inline-block' : 'none';
+                        render();
+                    });
+
+                    addBtn.addEventListener('click', ()=>{
+                        // simple prompt flow; could be replaced by modal/form
+                        const name = prompt('Nome do novo perfil:');
+                        if(!name) return;
+                        const img = prompt('URL da imagem (opcional):');
+                        addProfile(name.trim(), img && img.trim() ? img.trim() : 'perfil-placeholder.png');
+                    });
+
+                    // initial render
+                    render();
+                })();
     </script>
 </body>
 </html>
