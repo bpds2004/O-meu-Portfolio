@@ -149,6 +149,48 @@ header nav ul li a:hover {
   }
 }
 
+/* Scroll reveal + floating text */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+}
+
+.scroll-float .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(120%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.scroll-float.is-visible .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-float .char {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Projetos */
 #projects {
     display: flex;
@@ -166,13 +208,15 @@ header nav ul li a:hover {
     width: 250px;
     background-color: #fff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s, background-color 0.3s, box-shadow 0.4s;
+    transition: transform 0.35s ease, background-color 0.3s, box-shadow 0.4s;
     text-align: center;
     overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(var(--tilt-scale, 1));
+    will-change: transform;
 }
 
-.project:hover {
-    transform: translateY(-10px) rotate(-1deg);
+.project.is-tilting {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
