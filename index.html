@@ -70,19 +70,14 @@
         <div class="projects-layout">
           <div class="chibi-panel scroll-reveal">
             <h3>Boneca 3D</h3>
-            <model-viewer
-              id="chibi-model"
-              class="chibi-viewer"
-              src="boneca_chibi_base.glb"
-              alt="Boneca chibi em 3D"
-              camera-controls
-              interaction-prompt="none"
-              exposure="1"
-              shadow-intensity="0.6"
-              camera-orbit="0deg 75deg 2.2m"
-              min-camera-orbit="-35deg 60deg 1.8m"
-              max-camera-orbit="35deg 90deg 2.6m"
-            ></model-viewer>
+            <div class="chibi-viewer">
+              <img
+                id="chibi-image"
+                class="chibi-image"
+                src="eu_braçoscruzados.png"
+                alt="Boneca em estilo 3D"
+              />
+            </div>
           </div>
 
           <div class="projects-grid">
@@ -459,25 +454,25 @@
 
       revealTargets.forEach((el) => observer.observe(el));
 
-      const chibiModel = document.getElementById('chibi-model');
+      const chibiImage = document.getElementById('chibi-image');
       const projectsSection = document.getElementById('projects');
-      if (chibiModel && projectsSection) {
-        const baseDistance = '2.2m';
-        const maxYaw = 25;
-        const maxPitchOffset = 12;
+      if (chibiImage && projectsSection) {
+        const maxTilt = 12;
 
-        function updateOrbit(event) {
+        function updateTilt(event) {
           const bounds = projectsSection.getBoundingClientRect();
           const x = (event.clientX - bounds.left) / bounds.width;
           const y = (event.clientY - bounds.top) / bounds.height;
-          const yaw = (x - 0.5) * 2 * maxYaw;
-          const pitch = 75 - (y - 0.5) * 2 * maxPitchOffset;
-          chibiModel.cameraOrbit = `${yaw.toFixed(2)}deg ${pitch.toFixed(2)}deg ${baseDistance}`;
+          const rotateY = (x - 0.5) * 2 * maxTilt;
+          const rotateX = (0.5 - y) * 2 * maxTilt;
+          chibiImage.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+          chibiImage.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
         }
 
-        projectsSection.addEventListener('pointermove', updateOrbit);
+        projectsSection.addEventListener('pointermove', updateTilt);
         projectsSection.addEventListener('pointerleave', () => {
-          chibiModel.cameraOrbit = `0deg 75deg ${baseDistance}`;
+          chibiImage.style.setProperty('--tilt-x', '0deg');
+          chibiImage.style.setProperty('--tilt-y', '0deg');
         });
       }
     });

@@ -224,6 +224,7 @@ header nav ul li a:hover {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
     position: sticky;
     top: 110px;
+    perspective: 900px;
 }
 
 body.dark-mode .chibi-panel {
@@ -241,6 +242,21 @@ body.dark-mode .chibi-panel {
     height: 360px;
     background: radial-gradient(circle at top, rgba(108, 92, 231, 0.15), transparent 60%);
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.chibi-image {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    transform: translateZ(30px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, filter 0.2s ease;
+    filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.25));
+    will-change: transform;
 }
 
 .project {
