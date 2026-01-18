@@ -212,8 +212,8 @@ header nav ul li a:hover {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.2rem;
-    width: min(900px, 100%);
+    gap: 5rem;
+    width: min(1000px, 100%);
 }
 
 .chibi-panel {
