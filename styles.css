@@ -846,6 +846,27 @@ footer.dark-mode {
   display: flex;
   justify-content: center;
 }
+
+.skills-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.skills-figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 280px;
+}
+
+.skills-figure img {
+  width: min(280px, 70vw);
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
 /* Tema claro e escuro - círculo com sol e lua */
 .theme-switch {
       position: fixed;
