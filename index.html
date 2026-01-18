@@ -6,6 +6,7 @@
     <title>O Meu Portfólio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script>
         const toggle = document.getElementById("theme-toggle");
 
@@ -66,55 +67,75 @@
     
     <section id="projects">
 <h2 class="titulo-secao scroll-float" data-scroll-split="chars">Os Meus Projetos</h2>
+        <div class="projects-layout">
+          <div class="chibi-panel scroll-reveal">
+            <h3>Boneca 3D</h3>
+            <model-viewer
+              id="chibi-model"
+              class="chibi-viewer"
+              src="boneca_chibi_base.glb"
+              alt="Boneca chibi em 3D"
+              camera-controls
+              interaction-prompt="none"
+              exposure="1"
+              shadow-intensity="0.6"
+              camera-orbit="0deg 75deg 2.2m"
+              min-camera-orbit="-35deg 60deg 1.8m"
+              max-camera-orbit="35deg 90deg 2.6m"
+            ></model-viewer>
+          </div>
 
-        <div class="project scroll-reveal">
-            <img src="project1.jpg" alt="Projeto 1">
-            <h3>Netflix Clone</h3>
-            <p>Um projeto que simula a interface da Netflix, incluindo a exibição de cards de filmes e séries.</p>
-            <button onclick="openCode('netflix')">Ver Interface</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="licordgraca.png" alt="projeto 2">
-            <h3>Site Licor Dª Graça</h3>
-            <p>O site da Licor D'Graça é uma plataforma online projetada para destacar e vender os licores artesanais da marca.</p>
-            <button onclick="openCode('licor')">Ver Interface</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="medtech-main/medtech.jpg" alt="projeto 6">
-            <h3>MedTech</h3>
-            <p>App móvel em Flutter para gestão de dados médicos e marcações</p>
-            <button onclick="openCode('medtech')">Ver Interface</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="bot.png" alt="projeto 7">
-            <h3>ChatBot UTAD</h3>
-            <p>Chatbot académico em HTML com base no regulamento pedagógico da UTAD</p>
-            <button onclick="openCode('chatbot')">Ver Interface</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="project2.jpg" alt="Projeto 3">
-            <h3>Calculadora</h3>
-            <p>Uma aplicação de calculadora simples, mas funcional que permite realizar operações matemáticas básicas como soma, subtração, multiplicação e divisão.</p>
-            <button onclick="openCode('calculadora')">Ver Código Python</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="jogo da minhoca.png" alt="Projeto 4">
-            <h3>Snake Game</h3>
-            <p>Uma recriação do clássico jogo da "cobra". O jogador controla a cobra que cresce ao comer a maçã, enquanto evita colidir consigo mesma.</p>
-            <button onclick="openCode('minhoca')">Ver Interface</button>
-            <button onclick="openCode('minhocapy')">Ver código em python</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="ping_pong.jpg" alt="Projeto 5">
-            <h3>Ping Pong</h3>
-            <p>Um jogo de Ping Pong onde dois jogadores controlam as raquetes para rebater a bola. Possui um placar para monitorar os pontos de cada jogador.</p>
-            <button onclick="openCode('pingpong')">Ver Código em pyhton</button>
-        </div>
-        <div class="project scroll-reveal">
-            <img src="expenseflow.png" alt="Projeto 6">
-            <h3>Expenseflow</h3>
-            <p>Aplicação de gestão financeira para empresas, permitindo o registo de despesas e a visualização de estatísticas.</p>
-            <button onclick="openCode('expenseflow')">Ver Interface</button>
+          <div class="projects-grid">
+            <div class="project scroll-reveal">
+                <img src="project1.jpg" alt="Projeto 1">
+                <h3>Netflix Clone</h3>
+                <p>Um projeto que simula a interface da Netflix, incluindo a exibição de cards de filmes e séries.</p>
+                <button onclick="openCode('netflix')">Ver Interface</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="licordgraca.png" alt="projeto 2">
+                <h3>Site Licor Dª Graça</h3>
+                <p>O site da Licor D'Graça é uma plataforma online projetada para destacar e vender os licores artesanais da marca.</p>
+                <button onclick="openCode('licor')">Ver Interface</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="medtech-main/medtech.jpg" alt="projeto 6">
+                <h3>MedTech</h3>
+                <p>App móvel em Flutter para gestão de dados médicos e marcações</p>
+                <button onclick="openCode('medtech')">Ver Interface</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="bot.png" alt="projeto 7">
+                <h3>ChatBot UTAD</h3>
+                <p>Chatbot académico em HTML com base no regulamento pedagógico da UTAD</p>
+                <button onclick="openCode('chatbot')">Ver Interface</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="project2.jpg" alt="Projeto 3">
+                <h3>Calculadora</h3>
+                <p>Uma aplicação de calculadora simples, mas funcional que permite realizar operações matemáticas básicas como soma, subtração, multiplicação e divisão.</p>
+                <button onclick="openCode('calculadora')">Ver Código Python</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="jogo da minhoca.png" alt="Projeto 4">
+                <h3>Snake Game</h3>
+                <p>Uma recriação do clássico jogo da "cobra". O jogador controla a cobra que cresce ao comer a maçã, enquanto evita colidir consigo mesma.</p>
+                <button onclick="openCode('minhoca')">Ver Interface</button>
+                <button onclick="openCode('minhocapy')">Ver código em python</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="ping_pong.jpg" alt="Projeto 5">
+                <h3>Ping Pong</h3>
+                <p>Um jogo de Ping Pong onde dois jogadores controlam as raquetes para rebater a bola. Possui um placar para monitorar os pontos de cada jogador.</p>
+                <button onclick="openCode('pingpong')">Ver Código em pyhton</button>
+            </div>
+            <div class="project scroll-reveal">
+                <img src="expenseflow.png" alt="Projeto 6">
+                <h3>Expenseflow</h3>
+                <p>Aplicação de gestão financeira para empresas, permitindo o registo de despesas e a visualização de estatísticas.</p>
+                <button onclick="openCode('expenseflow')">Ver Interface</button>
+            </div>
+          </div>
         </div>
 
         <h3>Todos os projetos estão disponíveis no meu perfil de GitHub</h3>
@@ -437,6 +458,28 @@
       );
 
       revealTargets.forEach((el) => observer.observe(el));
+
+      const chibiModel = document.getElementById('chibi-model');
+      const projectsSection = document.getElementById('projects');
+      if (chibiModel && projectsSection) {
+        const baseDistance = '2.2m';
+        const maxYaw = 25;
+        const maxPitchOffset = 12;
+
+        function updateOrbit(event) {
+          const bounds = projectsSection.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width;
+          const y = (event.clientY - bounds.top) / bounds.height;
+          const yaw = (x - 0.5) * 2 * maxYaw;
+          const pitch = 75 - (y - 0.5) * 2 * maxPitchOffset;
+          chibiModel.cameraOrbit = `${yaw.toFixed(2)}deg ${pitch.toFixed(2)}deg ${baseDistance}`;
+        }
+
+        projectsSection.addEventListener('pointermove', updateOrbit);
+        projectsSection.addEventListener('pointerleave', () => {
+          chibiModel.cameraOrbit = `0deg 75deg ${baseDistance}`;
+        });
+      }
     });
   </script>
 
