@@ -149,6 +149,48 @@ header nav ul li a:hover {
   }
 }
 
+/* Scroll reveal + floating text */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+}
+
+.scroll-float .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(120%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.scroll-float.is-visible .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-float .char {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Projetos */
 #projects {
     display: flex;
