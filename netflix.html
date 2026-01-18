@@ -422,7 +422,10 @@
                 }
                 event.preventDefault();
                 showLoader();
-                document.body.classList.add('is-exiting');
+                // force a reflow so the loader becomes visible before starting exit animation
+                if (loader) void loader.offsetWidth;
+                // small delay to let the loader paint, then start body exit
+                setTimeout(() => { document.body.classList.add('is-exiting'); }, 80);
                 setTimeout(() => {
                     window.location.href = href;
                 }, 2000);

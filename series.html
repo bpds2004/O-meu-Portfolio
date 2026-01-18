@@ -231,7 +231,8 @@
                 }
                 event.preventDefault();
                 showLoader();
-                document.body.classList.add('is-exiting');
+                if (loader) void loader.offsetWidth;
+                setTimeout(() => { document.body.classList.add('is-exiting'); }, 80);
                 setTimeout(() => {
                     window.location.href = href;
                 }, 2000);
