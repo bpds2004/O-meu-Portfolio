@@ -437,6 +437,39 @@
       );
 
       revealTargets.forEach((el) => observer.observe(el));
+
+      const tiltCards = document.querySelectorAll('.project');
+      const rotateAmplitude = 14;
+      const scaleOnHover = 1.05;
+
+      tiltCards.forEach((card) => {
+        function handleMove(e) {
+          const rect = card.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left - rect.width / 2;
+          const offsetY = e.clientY - rect.top - rect.height / 2;
+          const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
+          const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+
+          card.style.setProperty('--tilt-x', `${rotationX}deg`);
+          card.style.setProperty('--tilt-y', `${rotationY}deg`);
+        }
+
+        function handleEnter() {
+          card.classList.add('is-tilting');
+          card.style.setProperty('--tilt-scale', scaleOnHover);
+        }
+
+        function handleLeave() {
+          card.classList.remove('is-tilting');
+          card.style.setProperty('--tilt-x', '0deg');
+          card.style.setProperty('--tilt-y', '0deg');
+          card.style.setProperty('--tilt-scale', 1);
+        }
+
+        card.addEventListener('mousemove', handleMove);
+        card.addEventListener('mouseenter', handleEnter);
+        card.addEventListener('mouseleave', handleLeave);
+      });
     });
   </script>
 
