@@ -345,10 +345,16 @@ body.dark-mode .chibi-panel {
     max-width: 600px;
     background-color: inherit;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
     overflow: hidden;
     text-align: center;
     position: relative;
+    transform-style: preserve-3d;
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --about-tilt-x: 0deg;
+    --about-tilt-y: 0deg;
+    --about-glow: rgba(113, 196, 255, 0.35);
 }
 
 
@@ -359,6 +365,46 @@ body.dark-mode .chibi-panel {
 
 #about:hover {
     transform: scale(1.02);
+}
+
+#about.about-active {
+    transform: perspective(900px) rotateX(var(--about-tilt-x)) rotateY(var(--about-tilt-y)) scale(1.02);
+    box-shadow: 0 16px 40px rgba(15, 25, 50, 0.35);
+}
+
+#about::before,
+#about::after {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#about::before {
+    background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), var(--about-glow), transparent 55%),
+        linear-gradient(140deg, rgba(96, 73, 110, 0.35), rgba(113, 196, 255, 0.25));
+    filter: blur(18px);
+    animation: about-shift 18s linear infinite;
+    z-index: 0;
+}
+
+#about::after {
+    background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, 0.5), transparent 60%);
+    mix-blend-mode: screen;
+    z-index: 1;
+}
+
+#about.about-active::before,
+#about.about-active::after {
+    opacity: 1;
+}
+
+#about > * {
+    position: relative;
+    z-index: 2;
 }
 
 .cards {
@@ -422,6 +468,7 @@ body.dark-mode .chibi-panel {
     border-radius: 50%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s, transform 0.3s;
+    animation: about-float 6s ease-in-out infinite;
 }
 
 #about .img-thumbnail:hover {
@@ -460,6 +507,28 @@ body.dark-mode .chibi-panel {
 #about button:active {
     transform: translateY(0);
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes about-shift {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.05);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes about-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 /* Contatos */

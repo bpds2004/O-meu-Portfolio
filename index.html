@@ -475,6 +475,55 @@
           chibiImage.style.setProperty('--tilt-y', '0deg');
         });
       }
+
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        let pendingEvent = null;
+        let rafId = null;
+
+        const updateAboutVars = (event) => {
+          if (!event) return;
+          const bounds = aboutSection.getBoundingClientRect();
+          const x = Math.min(Math.max(event.clientX - bounds.left, 0), bounds.width || 1);
+          const y = Math.min(Math.max(event.clientY - bounds.top, 0), bounds.height || 1);
+          const percentX = (x / (bounds.width || 1)) * 100;
+          const percentY = (y / (bounds.height || 1)) * 100;
+          const tiltX = (0.5 - y / (bounds.height || 1)) * 10;
+          const tiltY = (x / (bounds.width || 1) - 0.5) * 12;
+
+          aboutSection.style.setProperty('--pointer-x', `${percentX.toFixed(2)}%`);
+          aboutSection.style.setProperty('--pointer-y', `${percentY.toFixed(2)}%`);
+          aboutSection.style.setProperty('--about-tilt-x', `${tiltX.toFixed(2)}deg`);
+          aboutSection.style.setProperty('--about-tilt-y', `${tiltY.toFixed(2)}deg`);
+        };
+
+        const onPointerMove = (event) => {
+          pendingEvent = event;
+          if (rafId) return;
+          rafId = requestAnimationFrame(() => {
+            updateAboutVars(pendingEvent);
+            rafId = null;
+          });
+        };
+
+        const resetAbout = () => {
+          aboutSection.style.setProperty('--pointer-x', '50%');
+          aboutSection.style.setProperty('--pointer-y', '50%');
+          aboutSection.style.setProperty('--about-tilt-x', '0deg');
+          aboutSection.style.setProperty('--about-tilt-y', '0deg');
+        };
+
+        aboutSection.addEventListener('pointerenter', () => {
+          aboutSection.classList.add('about-active');
+        });
+
+        aboutSection.addEventListener('pointermove', onPointerMove);
+
+        aboutSection.addEventListener('pointerleave', () => {
+          aboutSection.classList.remove('about-active');
+          resetAbout();
+        });
+      }
     });
   </script>
 
