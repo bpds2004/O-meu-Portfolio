@@ -180,9 +180,9 @@
 
 <!-- SKILLS -->
 <h2 style="margin-top: 3rem;" class="scroll-float" data-scroll-split="chars">🛠️ As  Minhas Skills</h2>
-<div class="skills-layout">
+<div class="skills-layout" id="skills">
   <div class="skills-figure">
-    <img src="eu_braçoscruzados.png" alt="Ilustração com braços cruzados">
+    <img class="skills-image" src="eu_braçoscruzados.png" alt="Ilustração com braços cruzados">
   </div>
   <div class="cards center-skill-card">
     <div class="card scroll-reveal">
@@ -478,6 +478,28 @@
         projectsSection.addEventListener('pointerleave', () => {
           chibiImage.style.setProperty('--tilt-x', '0deg');
           chibiImage.style.setProperty('--tilt-y', '0deg');
+        });
+      }
+
+      const skillsImage = document.querySelector('.skills-image');
+      const skillsSection = document.getElementById('skills');
+      if (skillsImage && skillsSection) {
+        const maxTilt = 12;
+
+        function updateSkillsTilt(event) {
+          const bounds = skillsSection.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width;
+          const y = (event.clientY - bounds.top) / bounds.height;
+          const rotateY = (x - 0.5) * 2 * maxTilt;
+          const rotateX = (0.5 - y) * 2 * maxTilt;
+          skillsImage.style.setProperty('--skills-tilt-x', `${rotateX.toFixed(2)}deg`);
+          skillsImage.style.setProperty('--skills-tilt-y', `${rotateY.toFixed(2)}deg`);
+        }
+
+        skillsSection.addEventListener('pointermove', updateSkillsTilt);
+        skillsSection.addEventListener('pointerleave', () => {
+          skillsImage.style.setProperty('--skills-tilt-x', '0deg');
+          skillsImage.style.setProperty('--skills-tilt-y', '0deg');
         });
       }
 

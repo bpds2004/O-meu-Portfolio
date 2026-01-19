@@ -860,12 +860,20 @@ footer.dark-mode {
   justify-content: center;
   align-items: center;
   max-width: 280px;
+  perspective: 900px;
 }
 
 .skills-figure img {
   width: min(280px, 70vw);
   height: auto;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+.skills-image {
+  transform: translateZ(30px) rotateX(var(--skills-tilt-x, 0deg)) rotateY(var(--skills-tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease, filter 0.2s ease;
+  will-change: transform;
 }
 /* Tema claro e escuro - círculo com sol e lua */
 .theme-switch {
