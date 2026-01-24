@@ -88,6 +88,25 @@ nav ul li a:hover {
     color: #FFD700;
 }
 
+.cart-toggle {
+    background: transparent;
+    border: 1px solid #daa520;
+    color: #daa520;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-toggle:hover {
+    background: #daa520;
+    color: #000;
+}
+
 /* Hero Section */
 .hero {
     background: url('images/hero-bg.jpg') no-repeat center center/cover;
@@ -128,6 +147,12 @@ nav ul li a:hover {
     background: #111;
     text-align: center;
     animation: slideUp 1.5s ease-out;
+}
+
+.product-category {
+    margin: 40px 0 20px;
+    color: #FFD700;
+    font-size: 1.6em;
 }
 
 .product-list {
@@ -244,6 +269,80 @@ nav ul li a:hover {
     animation: fadeIn 2.5s ease-out;
 }
 
+#kits,
+#events {
+    padding: 80px 0;
+    background: #0a0a0a;
+    text-align: center;
+}
+
+.kits-grid,
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.kit-card,
+.event-form,
+.event-calendar {
+    background: #000;
+    border: 1px solid #daa520;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 5px rgba(255, 215, 0, 0.2);
+    text-align: left;
+}
+
+.kit-card h3,
+.event-form h3,
+.event-calendar h3 {
+    color: #FFD700;
+    margin-bottom: 16px;
+}
+
+.kit-card ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.event-form label {
+    display: block;
+    margin-top: 12px;
+    color: #FFD700;
+}
+
+.event-form input {
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+}
+
+.event-form button {
+    margin-top: 16px;
+    width: 100%;
+}
+
+.event-calendar ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.event-calendar li {
+    background: #111;
+    padding: 12px;
+    border-radius: 8px;
+    display: grid;
+    gap: 6px;
+}
+
 .contact-info {
     list-style: none;
     padding: 0;
@@ -310,6 +409,27 @@ footer {
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
     z-index: 1000;
+    display: none;
+}
+
+#cart.is-visible {
+    display: block;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-close {
+    background: transparent;
+    border: 1px solid #FFD700;
+    color: #FFD700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #cart h2 {
@@ -404,3 +524,258 @@ footer {
     #payment a {
         color: #FFD700;
     }
+
+#payment-confirmation {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #FFD700;
+    z-index: 1001;
+    padding: 4rem 1rem 1rem 1rem;
+    box-sizing: border-box;
+}
+
+#payment-confirmation .cart-container {
+    margin: 0 auto;
+    max-width: 360px;
+    text-align: center;
+}
+
+.purchase-animated {
+    --width: 170px;
+    --height: 45px;
+    --tooltip-height: 35px;
+    --tooltip-width: 130px;
+    --gap-between-tooltip-to-button: 18px;
+    --button-color: #222;
+    --tooltip-color: #fff;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+    position: relative;
+    text-align: center;
+    border-radius: 0.45em;
+    font-family: "Arial", sans-serif;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.purchase-animated::before {
+    position: absolute;
+    content: attr(data-tooltip);
+    width: var(--tooltip-width);
+    height: var(--tooltip-height);
+    background-color: #555;
+    font-size: 0.9rem;
+    color: #fff;
+    border-radius: 0.25em;
+    line-height: var(--tooltip-height);
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+    left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.purchase-animated::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #555;
+    left: calc(50% - 10px);
+    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.purchase-animated::after,
+.purchase-animated::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
+
+.purchase-wrapper,
+.purchase-text,
+.purchase-icon {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: #fff;
+}
+
+.purchase-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    transition: top 0.5s;
+}
+
+.purchase-icon {
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s;
+}
+
+.purchase-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.purchase-animated:hover {
+    background: #111;
+}
+
+.purchase-animated:hover .purchase-text {
+    top: -100%;
+}
+
+.purchase-animated:hover .purchase-icon {
+    top: 0;
+}
+
+.purchase-animated:hover::before,
+.purchase-animated:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.purchase-animated:hover::after {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.purchase-animated:hover::before {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+.payment-modal {
+    width: fit-content;
+    height: fit-content;
+    background: #ffffff;
+    color: #111;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 26px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.payment-options {
+    width: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 10px;
+}
+
+.payment-option {
+    height: 55px;
+    background: #f2f2f2;
+    border-radius: 11px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.payment-option.is-active {
+    background: #111;
+    color: #fff;
+}
+
+.payment-separator {
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    color: #8b8e98;
+    margin: 0 10px;
+    align-items: center;
+}
+
+.payment-separator p {
+    word-break: keep-all;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+    margin: auto;
+}
+
+.payment-separator .line {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    background-color: #e8e8e8;
+    margin: auto;
+}
+
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-label {
+    font-size: 10px;
+    color: #8b8e98;
+    font-weight: 600;
+}
+
+.input-field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 16px;
+    border-radius: 9px;
+    outline: none;
+    background-color: #f2f2f2;
+    border: 1px solid #e5e5e500;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input-field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #242424;
+    background-color: transparent;
+}
+
+.purchase-btn {
+    height: 55px;
+    background: #f2f2f2;
+    border-radius: 11px;
+    border: 0;
+    outline: none;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #363636 0%, #1B1B1B 50%, #000000 100%);
+    box-shadow: 0px 0px 0px 0px #FFFFFF, 0px 0px 0px 0px #000000;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    cursor: pointer;
+}
+
+.purchase-btn:hover {
+    box-shadow: 0px 0px 0px 2px #FFFFFF, 0px 0px 0px 4px #0000003a;
+}
