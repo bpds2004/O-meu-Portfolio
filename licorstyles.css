@@ -170,6 +170,10 @@ nav ul li a:hover {
     width: 280px;
     box-shadow: 0 2px 5px rgba(255, 215, 0, 0.2);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -189,8 +193,26 @@ nav ul li a:hover {
 }
 
 .product h3 {
-    margin: 15px 0 10px;
+    margin: 0;
     color: #daa520;
+}
+
+.product label {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.product-select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+}
+
+.product p {
+    margin: 0;
 }
 
 .product button {
@@ -202,6 +224,7 @@ nav ul li a:hover {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease, transform 0.2s;
+    width: 100%;
 }
 
 .product button:hover {
