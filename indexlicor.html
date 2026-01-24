@@ -15,8 +15,15 @@
                 <ul>
                     <li><a href="#home">Início</a></li>
                     <li><a href="#products">Produtos</a></li>
+                    <li><a href="#kits">Os nossos kits</a></li>
+                    <li><a href="#events">Os nossos eventos</a></li>
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#contact">Contatos</a></li>
+                    <li>
+                        <button class="cart-toggle" id="cart-toggle" type="button" aria-controls="cart" aria-expanded="false">
+                            <i class="fas fa-shopping-cart"></i> Carrinho
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -33,12 +40,14 @@
     <section id="products">
         <div class="container">
             <h2>Os Nossos Produtos</h2>
+            <h3 class="product-category">Sabores tradicionais</h3>
             <div class="product-list">
                 <div class="product">
                     <img src="frutos.jpg" alt="Licor Frutos Vermelhos">
                     <h3>L'amour</h3>
                     <p>
                         <select id="size-lamour">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -52,6 +61,7 @@
                     <h3>Fresh</h3>
                     <p>
                         <select id="size-fresh">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -65,6 +75,7 @@
                     <h3>Afrodite</h3>
                     <p>
                         <select id="size-afrodite">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -78,6 +89,7 @@
                     <h3>Fonte Azul</h3>
                     <p>
                         <select id="size-fonteazul">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -86,11 +98,15 @@
                     <p>Descrição </p>
                     <button onclick="adicionarAoCarrinho('Fonte Azul', 'size-fonteazul')">Adicionar ao Carrinho</button>
                 </div>
+            </div>
+            <h3 class="product-category">Sabores premium</h3>
+            <div class="product-list">
                 <div class="product">
                     <img src="cafe.jpg" alt="Licor Cafe">
                     <h3>Pleasure</h3>
                     <p>
                         <select id="size-pleasure">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -104,6 +120,7 @@
                     <h3>S Frei Gil </h3>
                     <p>
                         <select id="size-sfreigil">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -117,6 +134,7 @@
                     <h3>João Ramalho</h3>
                     <p>
                         <select id="size-joaoramalho">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -130,6 +148,7 @@
                     <h3> Morais de Carvalho </h3>
                     <p>
                         <select id="size-moraiscarvalho">
+                            <option value="30.00">500ml - 30,00€</option>
                             <option value="16.00">200ml - 16,00€</option>
                             <option value="11.00">100ml - 11€</option>
                             <option value="4.50">50ml - 4,5€</option>
@@ -138,7 +157,48 @@
                     <p>Descrição </p>
                     <button onclick="adicionarAoCarrinho('Morais de Carvalho', 'size-moraiscarvalho')">Adicionar ao Carrinho</button>
                 </div>
-                
+            </div>
+        </div>
+    </section>
+
+    <section id="kits">
+        <div class="container">
+            <h2>Os nossos kits</h2>
+            <div class="kits-grid">
+                <article class="kit-card">
+                    <h3>Kits</h3>
+                    <ul>
+                        <li>Kit de 5 garrafas de 100ml</li>
+                        <li>Kit garrafa 200ml + copo</li>
+                        <li>Kit garrafa 200ml + copos de chocolates</li>
+                        <li>Kit garrafa 200ml + bombons</li>
+                        <li>Kit jogo xadrez + garrafa 200ml</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container">
+            <h2>Os nossos eventos</h2>
+            <div class="events-grid">
+                <div class="event-form">
+                    <h3>Adicionar evento</h3>
+                    <label for="event-name">Nome do evento</label>
+                    <input id="event-name" type="text" placeholder="Ex: Feira de Sabores" />
+                    <label for="event-location">Local</label>
+                    <input id="event-location" type="text" placeholder="Ex: Vouzela" />
+                    <label for="event-start">Início</label>
+                    <input id="event-start" type="datetime-local" />
+                    <label for="event-end">Fim</label>
+                    <input id="event-end" type="datetime-local" />
+                    <button type="button" id="event-add">Adicionar ao calendário</button>
+                </div>
+                <div class="event-calendar">
+                    <h3>Calendário</h3>
+                    <ul id="event-list"></ul>
+                </div>
             </div>
         </div>
     </section>
@@ -166,42 +226,93 @@
                 <li><i class="fas fa-phone-alt"></i> <strong>Telemóvel:</strong> <a href="tel:+351938923021">+351 938 923 021</a></li>
             </ul>
         </div>
+    </section>
 
-        <section id="cart">
-            <div class="cart-container">
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Licor Dª Graça. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <section id="cart" aria-hidden="true">
+        <div class="cart-container">
+            <div class="cart-header">
                 <h2>Carrinho de Compras</h2>
-                <ul id="cart-list"></ul>
-                <p id="cart-total">Total: €0.00</p>
-                <button onclick="finalizarCompra()">Finalizar Compra</button>
+                <button class="cart-close" type="button" id="cart-close" aria-label="Fechar carrinho">✕</button>
             </div>
-        </section>
+            <ul id="cart-list"></ul>
+            <p id="cart-total">Total: €0.00</p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </section>
 
-        <section id="checkout" style="display:none;">
-            <div class="cart-container">
-                <h2>Finalizar Compra</h2>
-                <ul id="checkout-list"></ul>
-                <p id="checkout-total"></p>
-                <label for="name">Nome:</label>
-                <input id="name" type="text" placeholder="Insira o seu nome" required />
-                <label for="phone">Contacto:</label>
-                <input id="phone" type="text" placeholder="Insira o seu contacto" required />
-                <label for="address">Morada:</label>
-                <textarea id="address" placeholder="Insira a sua morada" required></textarea>
-                <button onclick="comprar()">Comprar</button>
-            </div>
-        </section>
+    <section id="checkout" style="display:none;">
+        <div class="cart-container">
+            <h2>Finalizar Compra</h2>
+            <ul id="checkout-list"></ul>
+            <p id="checkout-total"></p>
+            <label for="name">Nome:</label>
+            <input id="name" type="text" placeholder="Insira o seu nome" required />
+            <label for="phone">Contacto:</label>
+            <input id="phone" type="text" placeholder="Insira o seu contacto" required />
+            <label for="address">Morada:</label>
+            <textarea id="address" placeholder="Insira a sua morada" required></textarea>
+            <button class="purchase-animated" id="purchase-button" type="button" data-tooltip="Total: €0.00" onclick="comprar()">
+                <span class="purchase-wrapper">
+                    <span class="purchase-text">Comprar</span>
+                    <span class="purchase-icon" aria-hidden="true">
+                        <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                    </span>
+                </span>
+            </button>
+        </div>
+    </section>
 
-        <section id="payment" style="display:none;">
-            <div class="cart-container">
-                <h2>Dados para Pagamento</h2>
-                <p>Entidade: 12345</p>
-                <p>Referência: 000 000 000</p>
-                <p>Tem 5 dias para realizar o pagamento e enviar o comprovativo para <a href="mailto:licor.donagraca@gmail.com">licor.donagraca@gmail.com</a>.</p>
-            </div>
-        </section>
+    <section id="payment" style="display:none;">
+        <div class="payment-modal">
+            <form class="payment-form">
+                <h2>Pagamento</h2>
+                <div class="payment-options">
+                    <button type="button" class="payment-option" data-method="mbway">MB Way</button>
+                    <button type="button" class="payment-option" data-method="entidade">Entidade & Referência</button>
+                </div>
+                <div class="payment-separator">
+                    <span class="line"></span>
+                    <p>Escolha o método de pagamento</p>
+                    <span class="line"></span>
+                </div>
+                <div class="payment-details">
+                    <div class="input-container" id="mbway-fields">
+                        <label class="input-label" for="mbway-number">Número MB Way</label>
+                        <input id="mbway-number" class="input-field" type="text" placeholder="Ex: 912 345 678" />
+                    </div>
+                    <div class="input-container" id="entity-fields" style="display:none;">
+                        <label class="input-label" for="entity-number">Entidade</label>
+                        <input id="entity-number" class="input-field" type="text" value="12345" readonly />
+                        <label class="input-label" for="reference-number">Referência</label>
+                        <input id="reference-number" class="input-field" type="text" value="000 000 000" readonly />
+                    </div>
+                    <div class="input-container">
+                        <label class="input-label" for="payment-amount">Valor a pagar</label>
+                        <input id="payment-amount" class="input-field" type="text" readonly />
+                    </div>
+                </div>
+                <button class="purchase-btn" type="button" id="payment-confirm">Pagamento efetuado</button>
+            </form>
+        </div>
+    </section>
 
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script>
+    <section id="payment-confirmation" style="display:none;">
+        <div class="cart-container">
+            <h2>Compra efetuada</h2>
+            <p>Receberá em 5 a 8 dias.</p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
             const EMAILJS_SERVICE_ID = 'replace_with_your_service_id';
             const EMAILJS_TEMPLATE_ID = 'replace_with_your_template_id';
             const EMAILJS_PUBLIC_KEY = 'replace_with_your_public_key';
@@ -248,10 +359,123 @@
                         btn.style.transform = "scale(1)";
                     });
                 });
+
+                const cartSection = document.getElementById("cart");
+                const cartToggle = document.getElementById("cart-toggle");
+                const cartClose = document.getElementById("cart-close");
+                const paymentSection = document.getElementById("payment");
+                const confirmationSection = document.getElementById("payment-confirmation");
+                const paymentOptions = document.querySelectorAll(".payment-option");
+                const mbwayFields = document.getElementById("mbway-fields");
+                const entityFields = document.getElementById("entity-fields");
+                const paymentConfirm = document.getElementById("payment-confirm");
+
+                const toggleCart = (isOpen) => {
+                    cartSection.classList.toggle("is-visible", isOpen);
+                    cartSection.setAttribute("aria-hidden", String(!isOpen));
+                    cartToggle.setAttribute("aria-expanded", String(isOpen));
+                };
+
+                cartToggle.addEventListener("click", () => {
+                    const isVisible = cartSection.classList.contains("is-visible");
+                    toggleCart(!isVisible);
+                });
+
+                cartClose.addEventListener("click", () => toggleCart(false));
+
+                paymentOptions.forEach(option => {
+                    option.addEventListener("click", () => {
+                        selectedPaymentMethod = option.dataset.method;
+                        paymentOptions.forEach(btn => btn.classList.remove("is-active"));
+                        option.classList.add("is-active");
+                        const isMbway = selectedPaymentMethod === "mbway";
+                        mbwayFields.style.display = isMbway ? "block" : "none";
+                        entityFields.style.display = isMbway ? "none" : "block";
+                    });
+                });
+
+                if (paymentOptions.length > 0) {
+                    paymentOptions[0].click();
+                }
+
+                paymentConfirm.addEventListener("click", () => {
+                    if (!orderPayload) {
+                        alert("Nenhuma encomenda encontrada.");
+                        return;
+                    }
+
+                    const mbwayNumber = document.getElementById("mbway-number").value.trim();
+                    if (selectedPaymentMethod === "mbway" && !mbwayNumber) {
+                        alert("Indique o número MB Way.");
+                        return;
+                    }
+
+                    const templateParams = {
+                        ...orderPayload,
+                        payment_method: selectedPaymentMethod === "mbway" ? "MB Way" : "Entidade e Referência",
+                        mbway_number: mbwayNumber || "N/A"
+                    };
+
+                    const enviarEmail = () => {
+                        if (typeof emailjs === 'undefined') {
+                            return Promise.reject(new Error('EmailJS não está disponível.'));
+                        }
+
+                        if (!EMAILJS_SERVICE_ID.startsWith('replace_') &&
+                            !EMAILJS_TEMPLATE_ID.startsWith('replace_') &&
+                            !EMAILJS_PUBLIC_KEY.startsWith('replace_')) {
+                            return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                        }
+                        return Promise.reject(new Error('Configuração do EmailJS em falta.'));
+                    };
+
+                    enviarEmail()
+                        .then(() => {
+                            paymentSection.style.display = "none";
+                            confirmationSection.style.display = "block";
+                        })
+                        .catch(() => {
+                            alert("Não foi possível enviar o email automaticamente. Verifique a configuração do EmailJS.");
+                        });
+                });
+
+                const eventAdd = document.getElementById("event-add");
+                const eventList = document.getElementById("event-list");
+                const eventName = document.getElementById("event-name");
+                const eventLocation = document.getElementById("event-location");
+                const eventStart = document.getElementById("event-start");
+                const eventEnd = document.getElementById("event-end");
+
+                eventAdd.addEventListener("click", () => {
+                    const name = eventName.value.trim();
+                    const location = eventLocation.value.trim();
+                    const start = eventStart.value;
+                    const end = eventEnd.value;
+
+                    if (!name || !location || !start || !end) {
+                        alert("Preencha todos os campos do evento.");
+                        return;
+                    }
+
+                    const item = document.createElement("li");
+                    item.innerHTML = `
+                        <strong>${name}</strong>
+                        <span>${location}</span>
+                        <span>${new Date(start).toLocaleString("pt-PT")} - ${new Date(end).toLocaleString("pt-PT")}</span>
+                    `;
+                    eventList.appendChild(item);
+
+                    eventName.value = "";
+                    eventLocation.value = "";
+                    eventStart.value = "";
+                    eventEnd.value = "";
+                });
             });
 
 
             let total = 0;
+            let orderPayload = null;
+            let selectedPaymentMethod = 'mbway';
 
             function adicionarAoCarrinho(nome, selectId) {
                 const listaCarrinho = document.getElementById('cart-list');
@@ -262,7 +486,7 @@
                 item.textContent = `${nome} ${selectedText}`;
                 listaCarrinho.appendChild(item);
 
-                
+
                 total += precoNumerico;
                 document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
             }
@@ -284,6 +508,8 @@
                     checkoutList.appendChild(li);
                 }
                 document.getElementById('checkout-total').textContent = `Total: €${total.toFixed(2)}`;
+                const purchaseButton = document.getElementById('purchase-button');
+                purchaseButton.setAttribute('data-tooltip', `Total: €${total.toFixed(2)}`);
                 document.getElementById('checkout').style.display = 'block';
             }
 
@@ -313,16 +539,9 @@
                     return;
                 }
 
-                const encodedAddress = encodeURIComponent(address);
-                let corpo = `Morada:%20${encodedAddress}%0D%0A%0D%0AProdutos:%0D%0A`;
-                checkoutItems.forEach(item => {
-                    corpo += `${encodeURIComponent(item.textContent)}%0D%0A`;
-                });
-                corpo += `%0D%0ATotal: €${total.toFixed(2)}`;
-
                 const produtos = Array.from(checkoutItems).map(item => item.textContent).join('\n');
 
-                const templateParams = {
+                orderPayload = {
                     customer_name: name,
                     customer_contact: phone,
                     customer_address: address,
@@ -330,37 +549,12 @@
                     order_total: `€${total.toFixed(2)}`
                 };
 
-                const enviarEmail = () => {
-                    if (typeof emailjs === 'undefined') {
-                        return Promise.reject(new Error('EmailJS não está disponível.'));
-                    }
-
-                    if (!EMAILJS_SERVICE_ID.startsWith('replace_') &&
-                        !EMAILJS_TEMPLATE_ID.startsWith('replace_') &&
-                        !EMAILJS_PUBLIC_KEY.startsWith('replace_')) {
-                        return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-                    }
-                    return Promise.reject(new Error('Configuração do EmailJS em falta.'));
-                };
-
-                enviarEmail()
-                    .then(() => {
-                        alert('Encomenda enviada com sucesso! Entraremos em contacto em breve.');
-                        document.getElementById('checkout').style.display = 'none';
-                        document.getElementById('payment').style.display = 'block';
-                    })
-                    .catch(() => {
-                        window.location.href = `mailto:licor.donagraca@gmail.com?subject=Nova%20Encomenda&body=Nome:%20${encodeURIComponent(name)}%0D%0AContacto:%20${encodeURIComponent(phone)}%0D%0A${corpo}`;
-                    });
+                document.getElementById('payment-amount').value = `€${total.toFixed(2)}`;
+                document.getElementById('checkout').style.display = 'none';
+                document.getElementById('payment').style.display = 'block';
             }
 
 
         </script>
-
-        <footer>
-            <div class="container">
-                <p>&copy; 2025 Licor Dª Graça. Todos os direitos reservados.</p>
-            </div>
-        </footer>
 </body>
 </html>
