@@ -295,6 +295,31 @@ nav ul li a:hover {
     text-align: left;
 }
 
+.kit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3);
+}
+
+.kit-card img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.kit-card:hover img {
+    transform: scale(1.05);
+}
+
 .kit-card h3,
 .event-form h3,
 .event-calendar h3 {
@@ -302,9 +327,41 @@ nav ul li a:hover {
     margin-bottom: 16px;
 }
 
-.kit-card ul {
-    list-style: disc;
-    padding-left: 20px;
+.kit-card label {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+.kit-card select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+}
+
+.kit-price {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #FFD700;
+}
+
+.kit-card button {
+    background: #daa520;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s;
+    width: 100%;
+}
+
+.kit-card button:hover {
+    background: #FFD700;
+    transform: scale(1.03);
 }
 
 .event-form label {
@@ -341,6 +398,11 @@ nav ul li a:hover {
     border-radius: 8px;
     display: grid;
     gap: 6px;
+}
+
+.event-calendar .event-empty {
+    text-align: center;
+    color: #ccc;
 }
 
 .contact-info {
@@ -606,6 +668,10 @@ footer {
     height: 100%;
     left: 0;
     color: #fff;
+}
+
+.purchase-wrapper {
+    top: 0;
 }
 
 .purchase-text {
