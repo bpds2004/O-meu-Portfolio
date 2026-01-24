@@ -167,14 +167,43 @@
             <h2>Os nossos kits</h2>
             <div class="kits-grid">
                 <article class="kit-card">
-                    <h3>Kits</h3>
-                    <ul>
-                        <li>Kit de 5 garrafas de 100ml</li>
-                        <li>Kit garrafa 200ml + copo</li>
-                        <li>Kit garrafa 200ml + copos de chocolates</li>
-                        <li>Kit garrafa 200ml + bombons</li>
-                        <li>Kit jogo xadrez + garrafa 200ml</li>
-                    </ul>
+                    <img src="frutos.jpg" alt="Kit Mini Sabores">
+                    <h3>Kit Mini Sabores</h3>
+                    <label for="kit-mini-flavor">Escolhe o sabor</label>
+                    <select id="kit-mini-flavor" class="kit-select">
+                        <option value="L'amour">L'amour</option>
+                        <option value="Fresh">Fresh</option>
+                        <option value="Afrodite">Afrodite</option>
+                        <option value="Fonte Azul">Fonte Azul</option>
+                    </select>
+                    <p class="kit-price">Preço do kit: €45,00</p>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Mini Sabores', 'kit-mini-flavor', 45.00)">Adicionar ao Carrinho</button>
+                </article>
+                <article class="kit-card">
+                    <img src="cafe.jpg" alt="Kit Premium Degustação">
+                    <h3>Kit Premium Degustação</h3>
+                    <label for="kit-premium-flavor">Escolhe o sabor</label>
+                    <select id="kit-premium-flavor" class="kit-select">
+                        <option value="Pleasure">Pleasure</option>
+                        <option value="S Frei Gil">S Frei Gil</option>
+                        <option value="João Ramalho">João Ramalho</option>
+                        <option value="Morais de Carvalho">Morais de Carvalho</option>
+                    </select>
+                    <p class="kit-price">Preço do kit: €60,00</p>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Premium Degustação', 'kit-premium-flavor', 60.00)">Adicionar ao Carrinho</button>
+                </article>
+                <article class="kit-card">
+                    <img src="pastel.jpg" alt="Kit Oferta Especial">
+                    <h3>Kit Oferta Especial</h3>
+                    <label for="kit-gift-flavor">Escolhe o sabor</label>
+                    <select id="kit-gift-flavor" class="kit-select">
+                        <option value="L'amour">L'amour</option>
+                        <option value="Fresh">Fresh</option>
+                        <option value="Pleasure">Pleasure</option>
+                        <option value="João Ramalho">João Ramalho</option>
+                    </select>
+                    <p class="kit-price">Preço do kit: €55,00</p>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Oferta Especial', 'kit-gift-flavor', 55.00)">Adicionar ao Carrinho</button>
                 </article>
             </div>
         </div>
@@ -184,21 +213,11 @@
         <div class="container">
             <h2>Os nossos eventos</h2>
             <div class="events-grid">
-                <div class="event-form">
-                    <h3>Adicionar evento</h3>
-                    <label for="event-name">Nome do evento</label>
-                    <input id="event-name" type="text" placeholder="Ex: Feira de Sabores" />
-                    <label for="event-location">Local</label>
-                    <input id="event-location" type="text" placeholder="Ex: Vouzela" />
-                    <label for="event-start">Início</label>
-                    <input id="event-start" type="datetime-local" />
-                    <label for="event-end">Fim</label>
-                    <input id="event-end" type="datetime-local" />
-                    <button type="button" id="event-add">Adicionar ao calendário</button>
-                </div>
                 <div class="event-calendar">
                     <h3>Calendário</h3>
-                    <ul id="event-list"></ul>
+                    <ul id="event-list">
+                        <li class="event-empty">Nenhum evento adicionado ainda.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -440,37 +459,10 @@
                         });
                 });
 
-                const eventAdd = document.getElementById("event-add");
                 const eventList = document.getElementById("event-list");
-                const eventName = document.getElementById("event-name");
-                const eventLocation = document.getElementById("event-location");
-                const eventStart = document.getElementById("event-start");
-                const eventEnd = document.getElementById("event-end");
-
-                eventAdd.addEventListener("click", () => {
-                    const name = eventName.value.trim();
-                    const location = eventLocation.value.trim();
-                    const start = eventStart.value;
-                    const end = eventEnd.value;
-
-                    if (!name || !location || !start || !end) {
-                        alert("Preencha todos os campos do evento.");
-                        return;
-                    }
-
-                    const item = document.createElement("li");
-                    item.innerHTML = `
-                        <strong>${name}</strong>
-                        <span>${location}</span>
-                        <span>${new Date(start).toLocaleString("pt-PT")} - ${new Date(end).toLocaleString("pt-PT")}</span>
-                    `;
-                    eventList.appendChild(item);
-
-                    eventName.value = "";
-                    eventLocation.value = "";
-                    eventStart.value = "";
-                    eventEnd.value = "";
-                });
+                if (eventList) {
+                    eventList.innerHTML = eventList.innerHTML.trim();
+                }
             });
 
 
@@ -489,6 +481,18 @@
 
 
                 total += precoNumerico;
+                document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
+            }
+
+            function adicionarKitAoCarrinho(nome, selectId, preco) {
+                const listaCarrinho = document.getElementById('cart-list');
+                const select = document.getElementById(selectId);
+                const sabor = select.options[select.selectedIndex].text;
+                const item = document.createElement('li');
+                item.textContent = `${nome} - ${sabor}`;
+                listaCarrinho.appendChild(item);
+
+                total += parseFloat(preco);
                 document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
             }
 
