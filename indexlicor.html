@@ -590,6 +590,12 @@
             <input id="phone" type="tel" placeholder="Insira o seu número de telefone" required />
             <label for="email">Email:</label>
             <input id="email" type="email" placeholder="Insira o seu email" required />
+            <label>Escolha o método de pagamento:</label>
+            <div class="payment-options">
+                <button class="payment-option" id="pay-mbway" type="button">MB Way</button>
+                <button class="payment-option" id="pay-multibanco" type="button">Referência Multibanco</button>
+                <button class="payment-option" id="pay-transferencia" type="button">Transferência Bancária</button>
+            </div>
             <label for="nif">NIF (opcional):</label>
             <input id="nif" type="text" placeholder="Insira o seu NIF (opcional)" />
             <button class="purchase-animated" id="purchase-button" type="button" data-tooltip="Total: €0.00" onclick="comprar()">
