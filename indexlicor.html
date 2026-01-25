@@ -853,9 +853,9 @@
             <input id="email" type="email" placeholder="Insira o seu email" required />
             <label>Escolha o método de pagamento:</label>
             <div class="payment-options">
-                <button class="payment-option" id="pay-mbway" type="button">MB Way</button>
-                <button class="payment-option" id="pay-multibanco" type="button">Referência Multibanco</button>
-                <button class="payment-option" id="pay-transferencia" type="button">Transferência Bancária</button>
+                <button class="payment-option" id="pay-mbway" type="button" data-method="mbway">MB Way</button>
+                <button class="payment-option" id="pay-multibanco" type="button" data-method="multibanco">Referência Multibanco</button>
+                <button class="payment-option" id="pay-transferencia" type="button" data-method="transferencia">Transferência Bancária</button>
             </div>
             <label for="nif">NIF (opcional):</label>
             <input id="nif" type="text" placeholder="Insira o seu NIF (opcional)" />
@@ -1010,7 +1010,7 @@
 
                 paymentOptions.forEach(option => {
                     option.addEventListener("click", () => {
-                        selectedPaymentMethod = option.dataset.method;
+                        selectedPaymentMethod = option.dataset.method || 'mbway';
                         paymentOptions.forEach(btn => btn.classList.remove("is-active"));
                         option.classList.add("is-active");
                         const isMbway = selectedPaymentMethod === "mbway";
@@ -1037,7 +1037,7 @@
 
                     const templateParams = {
                         ...orderPayload,
-                        payment_method: selectedPaymentMethod === "mbway" ? "MB Way" : "Entidade e Referência",
+                        payment_method: paymentMethodLabels[selectedPaymentMethod] || selectedPaymentMethod,
                         mbway_number: mbwayNumber || "N/A"
                     };
 
@@ -1074,6 +1074,11 @@
             let total = 0;
             let orderPayload = null;
             let selectedPaymentMethod = 'mbway';
+            const paymentMethodLabels = {
+                mbway: 'MB Way',
+                multibanco: 'Referência Multibanco',
+                transferencia: 'Transferência Bancária'
+            };
 
             function adicionarAoCarrinho(nome, groupName) {
                 const selected = document.querySelector(`input[name="${groupName}"]:checked`);
@@ -1226,12 +1231,18 @@
                     return;
                 }
 
+                if (!selectedPaymentMethod) {
+                    alert('Por favor, selecione um método de pagamento.');
+                    return;
+                }
+
                 const checkoutItems = document.querySelectorAll('#checkout-list li');
                 if (!checkoutItems.length) {
                     alert('O carrinho está vazio.');
                     return;
                 }
 
+                const metodoPagamentoLabel = paymentMethodLabels[selectedPaymentMethod] || selectedPaymentMethod;
                 const produtos = Array.from(checkoutItems).map(item => item.textContent).join('\n');
 
                 orderPayload = {
@@ -1240,6 +1251,7 @@
                     customer_email: email,
                     customer_address: address,
                     customer_nif: nif,
+                    payment_method: metodoPagamentoLabel,
                     order_items: produtos,
                     order_total: `€${total.toFixed(2)}`
                 };
@@ -1250,6 +1262,7 @@
                     `<strong>Telefone:</strong> ${phone}`,
                     `<strong>Email:</strong> ${email}`,
                     `<strong>NIF:</strong> ${nif ? nif : 'Não indicado'}`,
+                    `<strong>Método de pagamento:</strong> ${metodoPagamentoLabel}`,
                     `<strong>Produtos:</strong><br>${produtos.replace(/\n/g, '<br>')}`,
                     `<strong>Total:</strong> €${total.toFixed(2)}`,
                     'Receberá entre 1 a 2 dias úteis informações para realizar o pagamento.'
