@@ -765,6 +765,31 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
+.kits-grid {
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .kits-grid {
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+        grid-template-areas:
+            "featured featured"
+            "premium gift";
+    }
+
+    .kit-card--featured {
+        grid-area: featured;
+    }
+
+    .kit-card--premium {
+        grid-area: premium;
+    }
+
+    .kit-card--gift {
+        grid-area: gift;
+    }
+}
+
 .kit-card,
 .event-form,
 .event-calendar {
