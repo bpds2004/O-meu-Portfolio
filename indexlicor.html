@@ -219,7 +219,6 @@
                         </div>
                     </div>
                     <h3>Kit Mini Sabores</h3>
-                    <p class="kit-description">Caixa de madeira com 5 garrafas de 100ml já selecionadas.</p>
                     <p class="kit-price">Preço do kit: 20,00€</p>
                     <button type="button" onclick="adicionarKitAoCarrinho('Kit Mini Sabores', null, 20.00, 'Sabores predefinidos (5 x 100ml)')">Adicionar ao Carrinho</button>
                 </article>
@@ -245,7 +244,6 @@
                         <option value="João Ramalho">João Ramalho</option>
                         <option value="Morais de Carvalho">Morais de Carvalho</option>
                     </select>
-                    <p class="kit-description">Duas garrafas de 100ml à escolha + copo de shot em vidro.</p>
                     <p class="kit-price">Preço do kit: 11,00€</p>
                     <button type="button" onclick="adicionarKitAoCarrinho('Kit Premium Degustação', [{ id: 'kit-premium-flavor-1', label: 'Sabor 1' }, { id: 'kit-premium-flavor-2', label: 'Sabor 2' }], 11.00)">Adicionar ao Carrinho</button>
                 </article>
@@ -276,7 +274,6 @@
                         <option value="Bombons">Bombons</option>
                         <option value="Copos de chocolate">Copos de Chocolate</option>
                     </select>
-                    <p class="kit-description">Garrafa de 200ml + oferta personalizada à sua escolha.</p>
                     <p class="kit-price">Preço do kit: 20,00€</p>
                     <button type="button" onclick="adicionarKitAoCarrinho('Kit Oferta Especial', [{ id: 'kit-gift-flavor', label: 'Sabor' }, { id: 'kit-gift-offer', label: 'Oferta' }], 20.00)">Adicionar ao Carrinho</button>
                 </article>
@@ -385,57 +382,7 @@
         </div>
     </section>
 
-    <section id="payment" style="display:none;">
-        <div class="payment-modal">
-            <form class="payment-form">
-                <h2>Pagamento</h2>
-                <div class="payment-options">
-                    <button type="button" class="payment-option" data-method="mbway">MB Way</button>
-                    <button type="button" class="payment-option" data-method="entidade">Entidade & Referência</button>
-                </div>
-                <div class="payment-separator">
-                    <span class="line"></span>
-                    <p>Escolha o método de pagamento</p>
-                    <span class="line"></span>
-                </div>
-                <div class="payment-details">
-                    <div class="input-container" id="mbway-fields">
-                        <label class="input-label" for="mbway-number">Número MB Way</label>
-                        <input id="mbway-number" class="input-field" type="text" placeholder="Ex: 912 345 678" />
-                    </div>
-                    <div class="input-container" id="entity-fields" style="display:none;">
-                        <label class="input-label" for="entity-number">Entidade</label>
-                        <input id="entity-number" class="input-field" type="text" value="12345" readonly />
-                        <label class="input-label" for="reference-number">Referência</label>
-                        <input id="reference-number" class="input-field" type="text" value="000 000 000" readonly />
-                    </div>
-                    <div class="input-container">
-                        <label class="input-label" for="payment-amount">Valor a pagar</label>
-                        <input id="payment-amount" class="input-field" type="text" readonly />
-                    </div>
-                </div>
-                <button class="purchase-btn" type="button" id="payment-confirm">Pagamento efetuado</button>
-            </form>
-        </div>
-    </section>
-
-    <section id="payment-confirmation" style="display:none;">
-        <div class="cart-container">
-            <h2>Compra efetuada</h2>
-            <p>Receberá em 5 a 8 dias.</p>
-        </div>
-    </section>
-
-    <section id="order-summary-modal" aria-hidden="true">
-        <div class="order-summary-card" role="dialog" aria-modal="true" aria-labelledby="order-summary-title">
-            <h2 id="order-summary-title">Compra efetuada 🎉</h2>
-            <p class="order-summary-intro">Obrigado pela sua encomenda! Aqui está o resumo:</p>
-            <div class="order-summary-content">
-                <p id="order-summary-details"></p>
-            </div>
-            <button class="order-summary-button" type="button" id="order-summary-close">Ok</button>
-        </div>
-    </section>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
