@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/bpds2004/O-meu-Portfolio#readme",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "body-parser": "^1.20.3",
     "express": "^4.21.2",
     "nodemailer": "^6.10.0"
