@@ -809,14 +809,16 @@ nav ul li a:hover {
 .option-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 5px;
     justify-content: center;
-    margin: 12px 0 18px;
+    margin: 5px 0 5px;
+    
 }
 
 .option-wrapper--compact {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    font-weight: 100;
 }
 
 .option-input {
@@ -827,8 +829,8 @@ nav ul li a:hover {
 
 .option-card {
     position: relative;
-    width: 120px;
-    min-height: 78px;
+    width: 60px;
+    min-height: 70px;
     padding: 10px 12px;
     border-radius: 14px;
     border: 1px solid rgba(255, 215, 0, 0.18);
@@ -836,16 +838,18 @@ nav ul li a:hover {
     color: #f7f1d0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
     align-items: flex-start;
     justify-content: center;
     cursor: pointer;
+    font-size: small;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .option-card--compact {
-    width: 110px;
+    width: 85px;
     min-height: 70px;
+    font-size: 0.05rem;
 }
 
 .option-card:hover {
