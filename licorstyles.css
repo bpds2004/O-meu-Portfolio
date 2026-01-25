@@ -815,7 +815,8 @@ nav ul li a:hover {
 }
 
 .option-wrapper--compact {
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
 }
 
 .option-input {
@@ -826,9 +827,9 @@ nav ul li a:hover {
 
 .option-card {
     position: relative;
-    width: 150px;
-    min-height: 98px;
-    padding: 14px 16px;
+    width: 120px;
+    min-height: 78px;
+    padding: 10px 12px;
     border-radius: 14px;
     border: 1px solid rgba(255, 215, 0, 0.18);
     background: #0b0b0b;
@@ -843,8 +844,8 @@ nav ul li a:hover {
 }
 
 .option-card--compact {
-    width: 140px;
-    min-height: 80px;
+    width: 110px;
+    min-height: 70px;
 }
 
 .option-card:hover {
