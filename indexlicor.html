@@ -49,7 +49,7 @@
                             <img src="frutos.png" alt="Licor Frutos Vermelhos">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Sabor intenso de frutos vermelhos, perfeito para momentos especiais.</p>
+                            <p class="card-description">Notas de frutos vermelhos que brilham no primeiro gole e aquecem o final.</p>
                         </div>
                     </div>
                     <h3>L'amour</h3>
@@ -68,7 +68,7 @@
                             <img src="limao.png" alt="Licor Limão">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Desfrute do frescor cítrico do limão, ideal para dias quentes.</p>
+                            <p class="card-description">Frescura cítrica envolvente, como um pôr do sol de verão em cada gota.</p>
                         </div>
                     </div>
                     <h3>Fresh</h3>
@@ -87,7 +87,7 @@
                             <img src="chocolimao.png" alt="Licor chocolate">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Combinação irresistível de chocolate e limão para os amantes de sabores únicos.</p>
+                            <p class="card-description">Chocolate sedoso com um toque cítrico que surpreende e apaixona.</p>
                         </div>
                     </div>
                     <h3>Afrodite</h3>
@@ -106,7 +106,7 @@
                             <img src="laranja.png" alt="Licor Laranja">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Desfrute do sabor vibrante da laranja, perfeito para qualquer ocasião.</p>
+                            <p class="card-description">Laranja solar com aroma vibrante que desperta os sentidos.</p>
                         </div>
                     </div>
                     <h3>Fonte Azul</h3>
@@ -125,7 +125,7 @@
                             <img src="cafe.png" alt="Licor Cafe">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Sabor rico e encorpado de grãos de café, ideal para os amantes desta bebida.</p>
+                            <p class="card-description">Café intenso e aveludado, perfeito para fechar um jantar com classe.</p>
                         </div>
                     </div>
                     <h3>Pleasure</h3>
@@ -150,7 +150,7 @@
                             <img src="ervas.png" alt="Licor Ervas">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Ervas aromáticas selecionadas para um sabor único e sofisticado.</p>
+                            <p class="card-description">Ervas aromáticas e toque elegante, com final longo e perfumado.</p>
                         </div>
                     </div>
                     <h3>S Frei Gil </h3>
@@ -169,7 +169,7 @@
                             <img src="pastel.png" alt="Licor Pastel">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Sabor inspirado no tradicional pastel de Vouzela, uma delícia para os sentidos.</p>
+                            <p class="card-description">Doçura inspirada no pastel de Vouzela, cremosa e irresistível.</p>
                         </div>
                     </div>
                     <h3>João Ramalho</h3>
@@ -188,7 +188,7 @@
                             <img src="chocopimenta.png" alt="Licor Pimenta">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="card-description">Combinação ousada de chocolate com um toque picante de pimenta.</p>
+                            <p class="card-description">Chocolate quente com pimenta subtil para um final provocante.</p>
                         </div>
                     </div>
                     <h3> Morais de Carvalho </h3>
@@ -215,13 +215,13 @@
                             <img src="caixamadeira.png" alt="Kit Mini Sabores">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="kit-description">Caixa de madeira que inclui 5 garrafas de 100ml.</p>
+                            <p class="kit-description">Seleção surpresa de 5 mini garrafas, ideal para provar os clássicos.</p>
                         </div>
                     </div>
                     <h3>Kit Mini Sabores</h3>
-                    <p class="kit-description">Caixa de madeira que inclui 5 garrafas de 100ml .</p>
+                    <p class="kit-description">Caixa de madeira com 5 garrafas de 100ml já selecionadas.</p>
                     <p class="kit-price">Preço do kit: 20,00€</p>
-                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Mini Sabores', 'kit-mini-flavor', 20.00)">Adicionar ao Carrinho</button>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Mini Sabores', null, 20.00, 'Sabores predefinidos (5 x 100ml)')">Adicionar ao Carrinho</button>
                 </article>
                 <article class="kit-card">
                     <div class="card-media">
@@ -229,29 +229,25 @@
                             <img src="caixadedois.png" alt="Kit Premium Degustação">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="kit-description">Caixa de 2 garrafas de 100ml + copo de shot vidro.</p>
+                            <p class="kit-description">Dupla premium com copo shot incluído para brindar em grande estilo.</p>
                         </div>
                     </div>
                     <h3>Kit Premium Degustação</h3>
-                    <label for="kit-premium-flavor">Escolhe o sabor</label>
-                    <select id="kit-premium-flavor" class="kit-select">
-                        
+                    <label for="kit-premium-flavor-1">Escolhe o 1.º sabor</label>
+                    <select id="kit-premium-flavor-1" class="kit-select">
                         <option value="S Frei Gil">S Frei Gil</option>
                         <option value="João Ramalho">João Ramalho</option>
                         <option value="Morais de Carvalho">Morais de Carvalho</option>
-                        
-
                     </select>
-                    <select id="kit-premium-flavor" class="kit-select">
+                    <label for="kit-premium-flavor-2">Escolhe o 2.º sabor</label>
+                    <select id="kit-premium-flavor-2" class="kit-select">
                         <option value="S Frei Gil">S Frei Gil</option>
                         <option value="João Ramalho">João Ramalho</option>
                         <option value="Morais de Carvalho">Morais de Carvalho</option>
-                       
-
                     </select>
-                    <p class="kit-description"> Caixa de 2 garrafas de 100ml + copo de shot vidro</p>
+                    <p class="kit-description">Duas garrafas de 100ml à escolha + copo de shot em vidro.</p>
                     <p class="kit-price">Preço do kit: 11,00€</p>
-                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Premium Degustação', 'kit-premium-flavor', 11.00)">Adicionar ao Carrinho</button>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Premium Degustação', [{ id: 'kit-premium-flavor-1', label: 'Sabor 1' }, { id: 'kit-premium-flavor-2', label: 'Sabor 2' }], 11.00)">Adicionar ao Carrinho</button>
                 </article>
                 <article class="kit-card">
                     <div class="card-media">
@@ -259,7 +255,7 @@
                             <img src="kit.png" alt="Kit Oferta Especial">
                         </div>
                         <div class="card-face card-face-back">
-                            <p class="kit-description">Kit Garrafa de 200ml mais oferta à escolha: copo de shot vidro, bombons ou copos de chocolate.</p>
+                            <p class="kit-description">Garrafa de 200ml com oferta à escolha para um presente memorável.</p>
                         </div>
                     </div>
                     <h3>Kit Oferta Especial</h3>
@@ -274,14 +270,15 @@
                         <option value="Afrodite">Afrodite</option>
                         <option value="Fonte Azul">Fonte Azul</option>
                     </select>
-                    <select id="kit-premium-flavor" class="kit-select">
+                    <label for="kit-gift-offer">Escolhe a oferta</label>
+                    <select id="kit-gift-offer" class="kit-select">
                         <option value="Copo">Copo de shot vidro</option>
                         <option value="Bombons">Bombons</option>
                         <option value="Copos de chocolate">Copos de Chocolate</option>
                     </select>
-                    <p class="kit-description"> Kit Garrafa de 200ml ma is oferta à escolha: copo de shot vidro, bombons ou copos de chocolate.</p>
+                    <p class="kit-description">Garrafa de 200ml + oferta personalizada à sua escolha.</p>
                     <p class="kit-price">Preço do kit: 20,00€</p>
-                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Oferta Especial', 'kit-gift-flavor', 20.00)">Adicionar ao Carrinho</button>
+                    <button type="button" onclick="adicionarKitAoCarrinho('Kit Oferta Especial', [{ id: 'kit-gift-flavor', label: 'Sabor' }, { id: 'kit-gift-offer', label: 'Oferta' }], 20.00)">Adicionar ao Carrinho</button>
                 </article>
             </div>
         </div>
@@ -429,6 +426,17 @@
         </div>
     </section>
 
+    <section id="order-summary-modal" aria-hidden="true">
+        <div class="order-summary-card" role="dialog" aria-modal="true" aria-labelledby="order-summary-title">
+            <h2 id="order-summary-title">Compra efetuada 🎉</h2>
+            <p class="order-summary-intro">Obrigado pela sua encomenda! Aqui está o resumo:</p>
+            <div class="order-summary-content">
+                <p id="order-summary-details"></p>
+            </div>
+            <button class="order-summary-button" type="button" id="order-summary-close">Ok</button>
+        </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
             const EMAILJS_SERVICE_ID = 'replace_with_your_service_id';
@@ -569,29 +577,88 @@
             let selectedPaymentMethod = 'mbway';
 
             function adicionarAoCarrinho(nome, selectId) {
-                const listaCarrinho = document.getElementById('cart-list');
                 const select = document.getElementById(selectId);
                 const selectedText = select.options[select.selectedIndex].text;
                 const precoNumerico = parseFloat(select.value);
-                const item = document.createElement('li');
-                item.textContent = `${nome} ${selectedText}`;
-                listaCarrinho.appendChild(item);
+                const descricao = `${nome} ${selectedText}`;
+                adicionarItemAoCarrinho(descricao, precoNumerico);
+            }
 
+            function adicionarKitAoCarrinho(nome, selectIds, preco, detalheExtra = '') {
+                let detalhes = '';
 
-                total += precoNumerico;
+                if (Array.isArray(selectIds)) {
+                    const selections = selectIds.map((entry) => {
+                        const select = document.getElementById(entry.id);
+                        const valor = select.options[select.selectedIndex].text;
+                        return `${entry.label}: ${valor}`;
+                    });
+                    detalhes = selections.join(' | ');
+                } else if (typeof selectIds === 'string' && selectIds) {
+                    const select = document.getElementById(selectIds);
+                    detalhes = select.options[select.selectedIndex].text;
+                }
+
+                if (detalheExtra) {
+                    detalhes = detalhes ? `${detalhes} | ${detalheExtra}` : detalheExtra;
+                }
+
+                const descricao = detalhes ? `${nome} - ${detalhes}` : nome;
+                adicionarItemAoCarrinho(descricao, parseFloat(preco));
+            }
+
+            function adicionarItemAoCarrinho(descricao, preco) {
+                const listaCarrinho = document.getElementById('cart-list');
+                const key = descricao.toLowerCase();
+                const existingItem = listaCarrinho.querySelector(`li[data-key="${key}"]`);
+
+                if (existingItem) {
+                    const qtySpan = existingItem.querySelector('.cart-qty');
+                    const qty = parseInt(qtySpan.textContent, 10) + 1;
+                    qtySpan.textContent = qty;
+                } else {
+                    const item = document.createElement('li');
+                    item.className = 'cart-item';
+                    item.dataset.key = key;
+                    item.dataset.price = preco.toFixed(2);
+                    item.innerHTML = `
+                        <span class="cart-item-name">${descricao}</span>
+                        <div class="cart-item-controls">
+                            <button type="button" class="qty-btn" data-action="decrease" aria-label="Diminuir quantidade">−</button>
+                            <span class="cart-qty">1</span>
+                            <button type="button" class="qty-btn" data-action="increase" aria-label="Aumentar quantidade">+</button>
+                        </div>
+                        <button type="button" class="cart-remove" aria-label="Remover item">🗑️</button>
+                    `;
+                    listaCarrinho.appendChild(item);
+                }
+
+                atualizarTotal();
+            }
+
+            function atualizarTotal() {
+                const items = document.querySelectorAll('#cart-list li');
+                let novoTotal = 0;
+                items.forEach(item => {
+                    const preco = parseFloat(item.dataset.price || '0');
+                    const qty = parseInt(item.querySelector('.cart-qty').textContent, 10);
+                    novoTotal += preco * qty;
+                });
+                total = novoTotal;
                 document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
             }
 
-            function adicionarKitAoCarrinho(nome, selectId, preco) {
-                const listaCarrinho = document.getElementById('cart-list');
-                const select = document.getElementById(selectId);
-                const sabor = select.options[select.selectedIndex].text;
-                const item = document.createElement('li');
-                item.textContent = `${nome} - ${sabor}`;
-                listaCarrinho.appendChild(item);
-
-                total += parseFloat(preco);
-                document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
+            function limparCarrinho() {
+                document.getElementById('cart-list').innerHTML = '';
+                document.getElementById('checkout-list').innerHTML = '';
+                total = 0;
+                document.getElementById('cart-total').textContent = 'Total: €0.00';
+                document.getElementById('checkout-total').textContent = 'Total: €0.00';
+                const purchaseButton = document.getElementById('purchase-button');
+                if (purchaseButton) {
+                    purchaseButton.setAttribute('data-tooltip', 'Total: €0.00');
+                }
+                orderPayload = null;
             }
 
             function finalizarCompra() {
@@ -607,7 +674,9 @@
 
                 for (let i = 0; i < items.length; i++) {
                     const li = document.createElement('li');
-                    li.textContent = items[i].textContent;
+                    const name = items[i].querySelector('.cart-item-name')?.textContent || '';
+                    const qty = items[i].querySelector('.cart-qty')?.textContent || '1';
+                    li.textContent = `${name} x${qty}`;
                     checkoutList.appendChild(li);
                 }
                 document.getElementById('checkout-total').textContent = `Total: €${total.toFixed(2)}`;
@@ -673,22 +742,64 @@
                 };
 
                 const resumo = [
-                    'Compra efetuada!',
-                    `Nome: ${firstName} ${lastName}`,
-                    `Morada: ${address}`,
-                    `Telefone: ${phone}`,
-                    `Email: ${email}`,
-                    `NIF: ${nif ? nif : 'Não indicado'}`,
-                    `Produtos:\n${produtos}`,
-                    `Total: €${total.toFixed(2)}`,
+                    `<strong>Nome:</strong> ${firstName} ${lastName}`,
+                    `<strong>Morada:</strong> ${address}`,
+                    `<strong>Telefone:</strong> ${phone}`,
+                    `<strong>Email:</strong> ${email}`,
+                    `<strong>NIF:</strong> ${nif ? nif : 'Não indicado'}`,
+                    `<strong>Produtos:</strong><br>${produtos.replace(/\n/g, '<br>')}`,
+                    `<strong>Total:</strong> €${total.toFixed(2)}`,
                     'Receberá entre 1 a 2 dias úteis informações para realizar o pagamento.'
-                ].join('\n');
+                ].join('<br>');
 
-                alert(resumo);
+                const modal = document.getElementById('order-summary-modal');
+                const modalDetails = document.getElementById('order-summary-details');
+                modalDetails.innerHTML = resumo;
+                modal.classList.add('is-visible');
+                modal.setAttribute('aria-hidden', 'false');
                 document.getElementById('checkout').style.display = 'none';
             }
 
+            const orderSummaryClose = document.getElementById('order-summary-close');
+            if (orderSummaryClose) {
+                orderSummaryClose.addEventListener('click', () => {
+                    const modal = document.getElementById('order-summary-modal');
+                    modal.classList.remove('is-visible');
+                    modal.setAttribute('aria-hidden', 'true');
+                    limparCarrinho();
+                    document.getElementById('first-name').value = '';
+                    document.getElementById('last-name').value = '';
+                    document.getElementById('address').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('nif').value = '';
+                });
+            }
 
+            document.getElementById('cart-list').addEventListener('click', (event) => {
+                const target = event.target;
+                const item = target.closest('li');
+                if (!item) {
+                    return;
+                }
+
+                if (target.classList.contains('qty-btn')) {
+                    const qtySpan = item.querySelector('.cart-qty');
+                    let qty = parseInt(qtySpan.textContent, 10);
+                    if (target.dataset.action === 'increase') {
+                        qty += 1;
+                    } else {
+                        qty = Math.max(1, qty - 1);
+                    }
+                    qtySpan.textContent = qty;
+                    atualizarTotal();
+                }
+
+                if (target.classList.contains('cart-remove')) {
+                    item.remove();
+                    atualizarTotal();
+                }
+            });
         </script>
 </body>
 </html>
