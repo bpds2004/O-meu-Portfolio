@@ -207,6 +207,7 @@ header nav ul li a:hover {
     gap: 2.5rem;
     width: 100%;
     flex-wrap: wrap;
+ 
 }
 
 .projects-grid {
@@ -349,12 +350,7 @@ body.dark-mode .chibi-panel {
     overflow: hidden;
     text-align: center;
     position: relative;
-    transform-style: preserve-3d;
-    --pointer-x: 50%;
-    --pointer-y: 50%;
-    --about-tilt-x: 0deg;
-    --about-tilt-y: 0deg;
-    --about-glow: rgba(0, 0, 0, 0.35);
+    
 }
 
 
@@ -363,12 +359,10 @@ body.dark-mode .chibi-panel {
     box-shadow: 10px 10px 20px #151515, -10px -10px 20px #232323;
 }
 
-#about:hover {
-    transform: scale(1.02);
-}
+
 
 #about.about-active {
-    transform: perspective(900px) rotateX(var(--about-tilt-x)) rotateY(var(--about-tilt-y)) scale(1.02);
+    
     box-shadow: 0 16px 40px rgba(15, 25, 50, 0.35);
 }
 
