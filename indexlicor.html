@@ -839,6 +839,8 @@
                 <button class="cart-close" type="button" id="cart-close" aria-label="Fechar carrinho">✕</button>
             </div>
             <ul id="cart-list"></ul>
+            <p id="cart-subtotal">Subtotal: €0.00</p>
+            <p id="cart-shipping">Portes (Portugal continental): €0.00</p>
             <p id="cart-total">Total: €0.00</p>
             <button onclick="finalizarCompra()">Finalizar Compra</button>
         </div>
@@ -848,25 +850,51 @@
         <div class="cart-container">
             <h2>Finalizar Compra</h2>
             <ul id="checkout-list"></ul>
+            <p id="checkout-subtotal"></p>
+            <p id="checkout-shipping"></p>
             <p id="checkout-total"></p>
-            <label for="first-name">Primeiro nome:</label>
-            <input id="first-name" type="text" placeholder="Insira o seu primeiro nome" required />
-            <label for="last-name">Último nome:</label>
-            <input id="last-name" type="text" placeholder="Insira o seu último nome" required />
-            <label for="address">Morada:</label>
-            <textarea id="address" placeholder="Insira a sua morada" required></textarea>
-            <label for="phone">Número de telefone:</label>
-            <input id="phone" type="tel" placeholder="Insira o seu número de telefone" required />
-            <label for="email">Email:</label>
-            <input id="email" type="email" placeholder="Insira o seu email" required />
+            <div class="group">
+                <input id="first-name" class="input" type="text" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="first-name">Primeiro nome</label>
+            </div>
+            <div class="group">
+                <input id="last-name" class="input" type="text" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="last-name">Último nome</label>
+            </div>
+            <div class="group">
+                <textarea id="address" class="input" required></textarea>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="address">Morada</label>
+            </div>
+            <div class="group">
+                <input id="phone" class="input" type="tel" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="phone">Número de telefone</label>
+            </div>
+            <div class="group">
+                <input id="email" class="input" type="email" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="email">Email</label>
+            </div>
             <label>Escolha o método de pagamento:</label>
             <div class="payment-options">
                 <button class="payment-option" id="pay-mbway" type="button" data-method="mbway">MB Way</button>
                 <button class="payment-option" id="pay-multibanco" type="button" data-method="multibanco">Referência Multibanco</button>
                 <button class="payment-option" id="pay-transferencia" type="button" data-method="transferencia">Transferência Bancária</button>
             </div>
-            <label for="nif">NIF (opcional):</label>
-            <input id="nif" type="text" placeholder="Insira o seu NIF (opcional)" />
+            <div class="group">
+                <input id="nif" class="input" type="text" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label for="nif">NIF (opcional)</label>
+            </div>
             <button class="purchase-animated" id="purchase-button" type="button" data-tooltip="Total: €0.00" onclick="comprar()">
                 <span class="purchase-wrapper">
                     <span class="purchase-text">Comprar</span>
@@ -1079,6 +1107,10 @@
             });
 
 
+            const SHIPPING_BASE = 4.5;
+            const SHIPPING_PER_EXTRA_ITEM = 0.5;
+            let subtotal = 0;
+            let shippingTotal = 0;
             let total = 0;
             let orderPayload = null;
             let selectedPaymentMethod = 'mbway';
@@ -1152,23 +1184,48 @@
                 atualizarTotal();
             }
 
+            function calcularPortes(items) {
+                if (!items || !items.length) {
+                    return 0;
+                }
+                let quantity = 0;
+                items.forEach(item => {
+                    const qty = parseInt(item.querySelector('.cart-qty').textContent, 10);
+                    quantity += qty;
+                });
+                if (quantity === 0) {
+                    return 0;
+                }
+                return SHIPPING_BASE + Math.max(0, quantity - 1) * SHIPPING_PER_EXTRA_ITEM;
+            }
+
             function atualizarTotal() {
                 const items = document.querySelectorAll('#cart-list li');
-                let novoTotal = 0;
+                let novoSubtotal = 0;
                 items.forEach(item => {
                     const preco = parseFloat(item.dataset.price || '0');
                     const qty = parseInt(item.querySelector('.cart-qty').textContent, 10);
-                    novoTotal += preco * qty;
+                    novoSubtotal += preco * qty;
                 });
-                total = novoTotal;
+                subtotal = novoSubtotal;
+                shippingTotal = calcularPortes(Array.from(items));
+                total = subtotal + shippingTotal;
+                document.getElementById('cart-subtotal').textContent = `Subtotal: €${subtotal.toFixed(2)}`;
+                document.getElementById('cart-shipping').textContent = `Portes (Portugal continental): €${shippingTotal.toFixed(2)}`;
                 document.getElementById('cart-total').textContent = `Total: €${total.toFixed(2)}`;
             }
 
             function limparCarrinho() {
                 document.getElementById('cart-list').innerHTML = '';
                 document.getElementById('checkout-list').innerHTML = '';
+                subtotal = 0;
+                shippingTotal = 0;
                 total = 0;
+                document.getElementById('cart-subtotal').textContent = 'Subtotal: €0.00';
+                document.getElementById('cart-shipping').textContent = 'Portes (Portugal continental): €0.00';
                 document.getElementById('cart-total').textContent = 'Total: €0.00';
+                document.getElementById('checkout-subtotal').textContent = 'Subtotal: €0.00';
+                document.getElementById('checkout-shipping').textContent = 'Portes (Portugal continental): €0.00';
                 document.getElementById('checkout-total').textContent = 'Total: €0.00';
                 const purchaseButton = document.getElementById('purchase-button');
                 if (purchaseButton) {
@@ -1195,6 +1252,8 @@
                     li.textContent = `${name} x${qty}`;
                     checkoutList.appendChild(li);
                 }
+                document.getElementById('checkout-subtotal').textContent = `Subtotal: €${subtotal.toFixed(2)}`;
+                document.getElementById('checkout-shipping').textContent = `Portes (Portugal continental): €${shippingTotal.toFixed(2)}`;
                 document.getElementById('checkout-total').textContent = `Total: €${total.toFixed(2)}`;
                 const purchaseButton = document.getElementById('purchase-button');
                 purchaseButton.setAttribute('data-tooltip', `Total: €${total.toFixed(2)}`);
@@ -1261,6 +1320,8 @@
                     customer_nif: nif,
                     payment_method: metodoPagamentoLabel,
                     order_items: produtos,
+                    order_subtotal: `€${subtotal.toFixed(2)}`,
+                    order_shipping: `€${shippingTotal.toFixed(2)}`,
                     order_total: `€${total.toFixed(2)}`
                 };
 
@@ -1272,6 +1333,8 @@
                     `<strong>NIF:</strong> ${nif ? nif : 'Não indicado'}`,
                     `<strong>Método de pagamento:</strong> ${metodoPagamentoLabel}`,
                     `<strong>Produtos:</strong><br>${produtos.replace(/\n/g, '<br>')}`,
+                    `<strong>Subtotal:</strong> €${subtotal.toFixed(2)}`,
+                    `<strong>Portes (Portugal continental):</strong> €${shippingTotal.toFixed(2)}`,
                     `<strong>Total:</strong> €${total.toFixed(2)}`,
                     'Receberá entre 1 a 2 dias úteis informações para realizar o pagamento.'
                 ].join('<br>');
