@@ -1163,22 +1163,106 @@ footer {
         padding-bottom: 2rem;
     }
 
-    #checkout label {
+    #checkout .group {
+        position: relative;
+        margin-top: 1.25rem;
+        text-align: left;
+    }
+
+    #checkout .input {
+        font-size: 16px;
+        padding: 10px 10px 10px 5px;
         display: block;
-        margin-top: 0.75rem;
-    }
-
-    #checkout input,
-    #checkout textarea {
         width: 100%;
-        margin-top: 0.5rem;
-        padding: 0.5rem;
-        border-radius: 5px;
         border: none;
+        border-bottom: 1px solid #daa520;
+        background: transparent;
+        color: #f1f1f1;
     }
 
-    #checkout textarea {
-        height: 80px;
+    #checkout .input:focus {
+        outline: none;
+    }
+
+    #checkout .group label {
+        color: #FFD700;
+        font-size: 18px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    #checkout .input:focus ~ label,
+    #checkout .input:valid ~ label {
+        top: -20px;
+        font-size: 14px;
+        color: #daa520;
+    }
+
+    #checkout .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+    #checkout .bar:before,
+    #checkout .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #FFD700;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    #checkout .bar:before {
+        left: 50%;
+    }
+
+    #checkout .bar:after {
+        right: 50%;
+    }
+
+    #checkout .input:focus ~ .bar:before,
+    #checkout .input:focus ~ .bar:after {
+        width: 50%;
+    }
+
+    #checkout .highlight {
+        position: absolute;
+        height: 60%;
+        width: 100px;
+        top: 25%;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    #checkout .input:focus ~ .highlight {
+        animation: inputHighlighter 0.3s ease;
+    }
+
+    @keyframes inputHighlighter {
+        from {
+            background: #FFD700;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    #checkout textarea.input {
+        min-height: 80px;
         resize: vertical;
     }
 
