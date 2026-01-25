@@ -765,6 +765,10 @@ nav ul li a:hover {
     margin-top: 30px;
 }
 
+.kits-grid {
+    align-items: start;
+}
+
 .kit-card,
 .event-form,
 .event-calendar {
