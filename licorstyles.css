@@ -770,26 +770,7 @@ nav ul li a:hover {
     align-items: start;
 }
 
-@media (min-width: 768px) {
-    .kits-grid {
-        grid-template-columns: repeat(2, minmax(280px, 1fr));
-        grid-template-areas:
-            "featured featured"
-            "premium gift";
-    }
 
-    .kit-card--featured {
-        grid-area: featured;
-    }
-
-    .kit-card--premium {
-        grid-area: premium;
-    }
-
-    .kit-card--gift {
-        grid-area: gift;
-    }
-}
 
 .kit-card,
 .event-form,
@@ -798,7 +779,7 @@ nav ul li a:hover {
     border: 1px solid #daa520;
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(255, 215, 0, 0.2);
-    text-align: left;
+    text-align: center;
 }
 
 .kit-card {
@@ -809,6 +790,8 @@ nav ul li a:hover {
     align-items: center;
     gap: 12px;
     transition: box-shadow 0.3s ease;
+    max-width: 400px;
+    max-height: 600px;
 }
 
 .event-form,
@@ -837,14 +820,14 @@ nav ul li a:hover {
     flex-wrap: wrap;
     gap: 5px;
     justify-content: center;
-    margin: 5px 0 5px;
+    margin: 2px 0 2px;
     
 }
 
 .option-wrapper--compact {
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
-    font-weight: 100;
+    font-weight: 1em;
 }
 
 .option-input {
@@ -855,8 +838,8 @@ nav ul li a:hover {
 
 .option-card {
     position: relative;
-    width: 60px;
-    min-height: 70px;
+    width: 40px;
+    min-height: 20px;
     padding: 10px 12px;
     border-radius: 14px;
     border: 1px solid rgba(255, 215, 0, 0.18);
@@ -873,8 +856,8 @@ nav ul li a:hover {
 }
 
 .option-card--compact {
-    width: 85px;
-    min-height: 70px;
+    width: 50px;
+    min-height: 30px;
     font-size: 0.05rem;
 }
 
@@ -908,20 +891,20 @@ nav ul li a:hover {
 }
 
 .option-title {
-    font-size: 0.95rem;
+    font-size: 0.5rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
 .option-price {
-    font-size: 0.95rem;
+    font-size: 0.5rem;
     font-weight: 700;
     color: #ffd700;
 }
 
 .kit-price {
-    font-size: 1.1em;
+    font-size: 0.8em;
     font-weight: 600;
     color: #FFD700;
 }
