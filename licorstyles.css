@@ -318,6 +318,217 @@ nav ul li a:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* FAQ Cards */
+#faq {
+    padding: 80px 0;
+}
+
+.faq-grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.faq-card {
+    position: relative;
+    min-height: 260px;
+    height: 260px;
+    transition: 200ms;
+}
+
+.faq-canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    perspective: 800px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0;
+}
+
+.faq-card-surface {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    border-radius: 18px;
+    background: #000;
+    border: 1px solid rgba(255, 215, 0, 0.7);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    transition: transform 200ms ease, filter 200ms ease;
+}
+
+.faq-card-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.2), transparent 60%);
+    opacity: 0.2;
+    filter: blur(20px);
+    z-index: -1;
+    transition: opacity 200ms ease;
+}
+
+.faq-question {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.faq-answer {
+    margin: 12px 0 0;
+    color: #ffd700;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.faq-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    font-size: 0.85rem;
+    color: #ffd700;
+    transition: opacity 200ms ease;
+}
+
+.faq-tracker {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.faq-tracker:hover {
+    cursor: pointer;
+}
+
+.faq-tracker:hover ~ .faq-card-surface .faq-answer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-tracker:hover ~ .faq-card-surface .faq-hint {
+    opacity: 0;
+}
+
+.faq-tracker:hover ~ .faq-card-surface {
+    filter: brightness(1.1);
+}
+
+.faq-card:hover .faq-card-surface::before {
+    opacity: 0.45;
+}
+
+.faq-card .tr-1:hover ~ .faq-card-surface {
+    transform: rotateX(20deg) rotateY(-10deg);
+}
+
+.faq-card .tr-2:hover ~ .faq-card-surface {
+    transform: rotateX(20deg) rotateY(-5deg);
+}
+
+.faq-card .tr-3:hover ~ .faq-card-surface {
+    transform: rotateX(20deg) rotateY(0deg);
+}
+
+.faq-card .tr-4:hover ~ .faq-card-surface {
+    transform: rotateX(20deg) rotateY(5deg);
+}
+
+.faq-card .tr-5:hover ~ .faq-card-surface {
+    transform: rotateX(20deg) rotateY(10deg);
+}
+
+.faq-card .tr-6:hover ~ .faq-card-surface {
+    transform: rotateX(10deg) rotateY(-10deg);
+}
+
+.faq-card .tr-7:hover ~ .faq-card-surface {
+    transform: rotateX(10deg) rotateY(-5deg);
+}
+
+.faq-card .tr-8:hover ~ .faq-card-surface {
+    transform: rotateX(10deg) rotateY(0deg);
+}
+
+.faq-card .tr-9:hover ~ .faq-card-surface {
+    transform: rotateX(10deg) rotateY(5deg);
+}
+
+.faq-card .tr-10:hover ~ .faq-card-surface {
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
+.faq-card .tr-11:hover ~ .faq-card-surface {
+    transform: rotateX(0deg) rotateY(-10deg);
+}
+
+.faq-card .tr-12:hover ~ .faq-card-surface {
+    transform: rotateX(0deg) rotateY(-5deg);
+}
+
+.faq-card .tr-13:hover ~ .faq-card-surface {
+    transform: rotateX(0deg) rotateY(0deg);
+}
+
+.faq-card .tr-14:hover ~ .faq-card-surface {
+    transform: rotateX(0deg) rotateY(5deg);
+}
+
+.faq-card .tr-15:hover ~ .faq-card-surface {
+    transform: rotateX(0deg) rotateY(10deg);
+}
+
+.faq-card .tr-16:hover ~ .faq-card-surface {
+    transform: rotateX(-10deg) rotateY(-10deg);
+}
+
+.faq-card .tr-17:hover ~ .faq-card-surface {
+    transform: rotateX(-10deg) rotateY(-5deg);
+}
+
+.faq-card .tr-18:hover ~ .faq-card-surface {
+    transform: rotateX(-10deg) rotateY(0deg);
+}
+
+.faq-card .tr-19:hover ~ .faq-card-surface {
+    transform: rotateX(-10deg) rotateY(5deg);
+}
+
+.faq-card .tr-20:hover ~ .faq-card-surface {
+    transform: rotateX(-10deg) rotateY(10deg);
+}
+
+.faq-card .tr-21:hover ~ .faq-card-surface {
+    transform: rotateX(-20deg) rotateY(-10deg);
+}
+
+.faq-card .tr-22:hover ~ .faq-card-surface {
+    transform: rotateX(-20deg) rotateY(-5deg);
+}
+
+.faq-card .tr-23:hover ~ .faq-card-surface {
+    transform: rotateX(-20deg) rotateY(0deg);
+}
+
+.faq-card .tr-24:hover ~ .faq-card-surface {
+    transform: rotateX(-20deg) rotateY(5deg);
+}
+
+.faq-card .tr-25:hover ~ .faq-card-surface {
+    transform: rotateX(-20deg) rotateY(10deg);
+}
+
 
 
 
@@ -327,6 +538,85 @@ nav ul li a:hover {
     background: #111;
     text-align: center;
     animation: fadeIn 2.5s ease-out;
+}
+
+#feedback-actions {
+    padding: 70px 0 90px;
+    background: #0a0a0a;
+    text-align: center;
+}
+
+.feedback-buttons {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+
+.complaint-button,
+.feedback-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 220px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.complaint-button {
+    background: transparent;
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.complaint-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.5);
+}
+
+.feedback-button {
+    position: relative;
+    overflow: hidden;
+    color: #0a0a0a;
+    background: linear-gradient(120deg, #ffd700, #f4b400);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.feedback-button-glow {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent 70%);
+    opacity: 0;
+    animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+.feedback-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 26px rgba(255, 215, 0, 0.6);
+}
+
+.feedback-button:hover .feedback-button-glow {
+    opacity: 1;
+}
+
+@keyframes glowPulse {
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.2;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.6;
+    }
 }
 
 #kits,
