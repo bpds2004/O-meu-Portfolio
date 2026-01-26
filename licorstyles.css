@@ -658,6 +658,129 @@ nav ul li a:hover {
     justify-content: center;
 }
 
+.photo-disclaimer {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2300;
+}
+
+.photo-disclaimer.is-visible {
+    display: flex;
+}
+
+.photo-disclaimer__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 7, 3, 0.78);
+    backdrop-filter: blur(6px);
+}
+
+.photo-disclaimer__card {
+    position: relative;
+    z-index: 1;
+    width: min(560px, 92vw);
+    background: #12110e;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    padding: 30px;
+    color: #f7f4e4;
+    text-align: center;
+}
+
+.photo-disclaimer__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffd700;
+    font-size: 20px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.photo-disclaimer__content {
+    display: grid;
+    gap: 16px;
+}
+
+.photo-disclaimer__eyebrow {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 215, 0, 0.8);
+    margin: 0;
+}
+
+.photo-disclaimer__content h2 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: #ffd700;
+}
+
+.photo-disclaimer__content p {
+    margin: 0;
+    line-height: 1.5;
+    color: rgba(247, 244, 228, 0.9);
+}
+
+.photo-disclaimer__remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: rgba(247, 244, 228, 0.85);
+}
+
+.photo-disclaimer__remember input {
+    width: 18px;
+    height: 18px;
+    accent-color: #ffd700;
+}
+
+.photo-disclaimer__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-disclaimer__button {
+    border: none;
+    background: linear-gradient(135deg, #ffd700, #f6a623);
+    color: #1a140b;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.photo-disclaimer__link {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.photo-disclaimer__link:hover {
+    background: rgba(255, 215, 0, 0.15);
+    color: #fff1a8;
+}
+
 .feedback-panel {
     display: grid;
     gap: 18px;
