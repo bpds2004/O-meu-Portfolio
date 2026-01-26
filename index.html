@@ -583,11 +583,7 @@
 
 <script>
     function openCode(project) {
-      // If a project is still under construction, show a user-friendly popup instead of opening a repo
-      if (project === 'expenseflow') {
-        showConstructionModal('Este projeto está em construção. Volte mais tarde.');
-        return;
-      }
+      
 
       let urls = {
             netflix: 'perfis.html',
@@ -599,7 +595,7 @@
            sicaps: 'https://sicaps.vercel.app/',
             atlas: 'https://atlas.vercel.app/',
             pingpong: 'https://github.com/bpds2004/Ping-Pong-simples',
-            expenseflow: 'https://github.com/bpds2004/ExpenseFlow',
+            expenseflow: 'https://expenseflow.vercel.app/',
             okt: 'https://okt-lovat.vercel.app'
         };
 
